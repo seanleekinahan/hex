@@ -1,4 +1,4 @@
-let hex = require('/Users/seankinahan/hex/bindings/hex.js')
+import * as hex from '/Users/seankinahan/hex/bindings/bindings.js';
 
 console.log("All Exported Data: ")
 console.log(hex)
