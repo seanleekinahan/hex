@@ -1,2 +1,7 @@
 .idea/
 .DS_Store
+three/
+gRPC/
+client/.parcel-cache/
+client/node_modules/
+client/dist/
