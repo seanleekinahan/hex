@@ -49,3 +49,83 @@ function directionalLight() {
     const shadowHelper = new THREE.CameraHelper(light.shadow.camera)
     return {light, helper, shadowHelper}
 }
+
+let usedPaths = []
+let backtrackCounter = 0;
+function myPathfinder(origin, destination){
+
+    let cameFrom = new Map()
+    let current = origin
+    function bestTile(current){
+        let bestPath = 2000000000
+        let bestPathTile = null
+        let paths = getViableNeighbours(current.cubeCoords)
+        let foundPath = false
+        let destPos = destination.cubeCoords
+        for(let i = 0; i < paths.length; i++) {
+            let pos = paths[i].cubeCoords
+            let distance = pos.distance(destPos)
+            if(distance > bestPath) {
+                console.log("Distance of ",distance, " is larger than best path of: ", bestPath)
+                continue
+            }
+            if(paths[i].pathStatus === IMPASSABLE) {
+                console.log("Path is impassable.")
+                continue
+            }
+            if(cameFrom.get(paths[i].name)){
+                console.log("Path already visited.")
+                continue
+            }
+
+            bestPath = distance
+            bestPathTile = paths[i]
+            cameFrom.set(paths[i].name, current.name)
+            let newColor = "#"+colorLightener(bestPathTile.pathColour, 100)
+            bestPathTile.material.color.set(newColor)
+            usedPaths.push(bestPathTile)
+            foundPath = true
+        }
+
+        if(!foundPath){
+            backtrackCounter++
+            console.log("Backtracked ", backtrackCounter, " times.")
+            cameFrom.set(usedPaths[usedPaths.length-1].name, current.name)
+            bestPathTile = usedPaths[usedPaths.length-1]
+            console.log("Using backtrack tile: ", bestPathTile.cubeCoords)
+            usedPaths.pop()
+
+        }
+
+        return bestPathTile
+    }
+
+    let tile = bestTile(current)
+
+    let iterations = 0
+    while(tile.cubeCoords.distance(destination.cubeCoords) > 1){
+        iterations++
+        tile = bestTile(tile)
+        if(tile.cubeCoords.distance(destination.cubeCoords) === 1) {
+            console.log(" myPathfinder Found the destination after ",iterations, "iterations.")
+            break
+        }
+    }
+
+
+    let check = cameFrom.get(destination.name)
+    console.log(cameFrom)
+    let path = []
+    while(check !== origin.name) {
+        path.push(check)
+        check = cameFrom.get(check)
+    }
+
+    for(let i = 0; i < path.length; i++){
+        let pathObject = scene.getObjectByName(path[i])
+        pathObject.material.color.set(pathObject.clickColour)
+    }
+
+    console.log("myPathfinder PathLength: ", path.length)
+
+}

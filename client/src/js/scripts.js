@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls.js";
 import { InteractionManager } from "three.interactive";
 import {Vector2, Vector3} from "three";
+import Queue from './queue'
+import PriorityQueue from './priorityqueue'
 
 class CCVector {
     constructor(q, r, s) {
@@ -30,6 +32,9 @@ class CCVector {
     }
 }
 
+
+
+
 const DIR_TOP = 'top'
 const DIR_TOPRIGHT = 'topRight'
 const DIR_BOTTOMRIGHT = 'bottomRight'
@@ -37,9 +42,9 @@ const DIR_BOTTOM = 'bottom'
 const DIR_BOTTOMLEFT = 'bottomLeft'
 const DIR_TOPLEFT = 'topLeft'
 
-const ORIGIN = "origin"
-const DESTINATION = "destination"
 const IMPASSABLE = "impassable"
+const ORIGIN = "origin"
+const TARGET = "target"
 let origin = null
 let destination = null
 
@@ -95,14 +100,6 @@ function animate() {
     orbit.update();
 }
 
-function degToRad(deg){
-    return (Math.PI/180) * deg
-}
-
-function round(num) {
-    return Math.round((num + Number.EPSILON) * 100) / 100
-}
-
 function hexSpiral(radius) {
     let parent = hexMesh()
     sceneArray.push(parent)
@@ -153,8 +150,7 @@ function hexSpiral(radius) {
     }
 }
 
-function getHexMeshNeighbours(vector) {
-    let q, r, s = 0
+function getViableNeighbours(vector) {
     let neighbours = {}
 
     let tKey = new CCVector(vector.q, vector.r-1, vector.s+1).toKey()
@@ -175,20 +171,227 @@ function getHexMeshNeighbours(vector) {
     let tLKey = new CCVector(vector.q-1, vector.r, vector.s+1).toKey()
     neighbours.topLeft = scene.getObjectByName(tileMap.get(tLKey))
 
-    return neighbours
-}
-
-
-function getViablePaths(neighbours) {
     let paths = []
-    for(let i = 0; i < Object.values(neighbours).length; i++) {
-        if(Object.values(neighbours)[i] && Object.values(neighbours)[i].pathStatus !== IMPASSABLE){
-            paths.push(Object.values(neighbours)[i])
+    neighbours = Object.values(neighbours)
+    for(let i = 0; i < neighbours.length; i++) {
+        if(!neighbours[i]){
+            //console.log("Neighbour was out of bounds.")
+            continue
         }
+        if(neighbours[i].pathStatus === IMPASSABLE){
+            //console.log("Neighbour was impassable.")
+            continue
+        }
+
+        //console.log("Neighbour viable!")
+        paths.push(neighbours[i])
     }
 
     return paths
 }
+
+let reached = new Map()
+
+function breadthFirst(origin, destination) {
+    let frontier = new Queue()
+    let cameFrom = new Map()
+    frontier.enqueue(origin)
+    reached.set(origin.name, origin.name)
+    //console.log("Created Frontier Queue and Reached Map: ")
+
+
+    let found = false
+    let iterations = 0;
+    while(!frontier.isEmpty()){
+        iterations++
+        let current = frontier.dequeue()
+        let neighbours = getViableNeighbours(current.cubeCoords, reached)
+
+        for(let i = 0; i < neighbours.length; i++) {
+            if(cameFrom.get(neighbours[i].name)){
+                //console.log("Neighbour has already been visited.")
+                continue
+            }
+
+
+            reached.set(neighbours[i].name, neighbours[i].name)
+            cameFrom.set(neighbours[i].name, current.name)
+
+            if(neighbours[i].name === destination.name){
+                console.log("breadthFirst Found the destination after ",iterations, "iterations.")
+                found = true
+                break
+            }
+
+            frontier.enqueue(neighbours[i])
+            if(neighbours[i].pathStatus !== ORIGIN && neighbours[i].pathStatus !== TARGET) {
+                let newColor = "#"+colorLightener(neighbours[i].pathColour, frontier.size())
+                neighbours[i].material.color.set(newColor)
+            }
+        }
+
+        if(frontier.isEmpty() && found === false) {
+            console.log("No Path Found!")
+            break
+        }
+    }
+
+    if(found) {
+        let check = cameFrom.get(destination.name)
+        let path = []
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+
+
+        for(let i = 0; i < path.length; i++){
+            let pathObject = scene.getObjectByName(path[i])
+            pathObject.material.color.set(pathObject.clickColour)
+        }
+
+    }
+
+
+
+}
+
+function uniformCost(origin, destination) {
+    let frontier = new PriorityQueue()
+    frontier.enqueue(origin, 0)
+    let costSoFar = new Map()
+    costSoFar.set(origin.name, 0)
+    let cameFrom = new Map()
+    reached.set(origin.name, origin.name)
+
+    let found = false
+    let iterations = 0;
+    while(!frontier.isEmpty()){
+        iterations++
+        let current = frontier.dequeue().element
+        let neighbours = getViableNeighbours(current.cubeCoords, reached)
+
+        for(let i = 0; i < neighbours.length; i++) {
+            if(cameFrom.get(neighbours[i].name)){
+                //console.log("Neighbour has already been visited.")
+                continue
+            }
+
+            let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords)
+
+            if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
+                costSoFar.set(neighbours[i].name, newCost)
+                let priority = newCost
+
+
+                reached.set(neighbours[i].name, neighbours[i].name)
+                cameFrom.set(neighbours[i].name, current.name)
+
+
+                frontier.enqueue(neighbours[i], priority)
+                if(neighbours[i].pathStatus !== ORIGIN && neighbours[i].pathStatus !== TARGET) {
+                    let newColor = "#"+colorLightener(neighbours[i].pathColour, priority)
+                    neighbours[i].material.color.set(newColor)
+                }
+
+
+            }
+
+
+            if(neighbours[i].name === destination.name){
+                console.log("uniformCost Found the destination after ",iterations, "iterations.")
+                found = true;
+                break
+            }
+
+        }
+
+        if(frontier.isEmpty() && found === false) {
+            console.log("No Path Found!")
+            break
+        }
+    }
+
+    if(found) {
+        let check = cameFrom.get(destination.name)
+        let path = []
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+
+
+        for(let i = 0; i < path.length; i++){
+            let pathObject = scene.getObjectByName(path[i])
+            pathObject.material.color.set(pathObject.clickColour)
+        }
+
+    }
+}
+
+function greedyDepthFirst(origin, destination) {
+    let frontier = new PriorityQueue()
+    frontier.enqueue(origin, 0)
+    let cameFrom = new Map()
+    reached.set(origin.name, origin.name)
+
+    let found = false
+    let iterations = 0;
+    while(!frontier.isEmpty()){
+        iterations++
+        let current = frontier.dequeue().element
+        let neighbours = getViableNeighbours(current.cubeCoords, reached)
+
+        for(let i = 0; i < neighbours.length; i++) {
+            if(cameFrom.get(neighbours[i].name)){
+                //console.log("Neighbour has already been visited.")
+                continue
+            }
+
+                let priority = destination.cubeCoords.distance(neighbours[i].cubeCoords)
+                reached.set(neighbours[i].name, neighbours[i].name)
+                cameFrom.set(neighbours[i].name, current.name)
+                frontier.enqueue(neighbours[i], priority)
+
+            if(neighbours[i].pathStatus !== ORIGIN && neighbours[i].pathStatus !== TARGET) {
+                let newColor = "#"+colorLightener(neighbours[i].pathColour, priority)
+                neighbours[i].material.color.set(newColor)
+            }
+
+
+            if(neighbours[i].name === destination.name){
+                console.log("greedyDepthFirst Found the destination after ",iterations, "iterations.")
+                found = true;
+                break
+            }
+
+        }
+
+        if(frontier.isEmpty() && found === false) {
+            console.log("No Path Found!")
+            break
+        }
+    }
+
+    if(found) {
+        let check = cameFrom.get(destination.name)
+        let path = []
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+
+
+        for(let i = 0; i < path.length; i++){
+            let pathObject = scene.getObjectByName(path[i])
+            pathObject.material.color.set(pathObject.clickColour)
+        }
+
+    }
+}
+
+
+
 
 function hexMesh(parent, dir) {
     let x = 0
@@ -291,6 +494,7 @@ function hexMesh(parent, dir) {
     if(rng > 60) {
         impassableTileHandler(hex)
     }
+    hex.cost = rng;
 
     return hex
 }
@@ -298,155 +502,28 @@ function hexMesh(parent, dir) {
 function addMouseEvents(object, interactionManager){
     interactionManager.add(object)
 
-
-    // object.addEventListener('mouseout', function() {
-    //     //console.log("MouseOut of", object.name)
-    //     if(object.name !== interactionManager.lastClicked) {
-    //         object.material.color.set(object.baseColor)
-    //     }
-    //     document.body.style.cursor ='auto'
-    // });
-    //
-    //
-    // object.addEventListener('mouseover', function() {
-    //     //console.log("MouseOver ", object.name)
-    //     // if(object.name !== interactionManager.lastClicked) {
-    //     //     object.material.color.set(object.hoverColour)
-    //     // }
-    //     if(object.clickCycle && object.clickStatus === 0) {
-    //         object.material.color.set(object.hoverColour)
-    //     }
-    //
-    //     if(object.clickable) {
-    //         document.body.style.cursor ='pointer'
-    //     }
-    // });
-
-
     object.addEventListener('click', function(e) {
         e.stopPropagation()
 
-        clickCycle(object)
+        clickHandler(object)
         if(origin && destination) {
 
-            let originPos = scene.getObjectByName(origin).cubeCoords
-            let destPos = scene.getObjectByName(destination).cubeCoords
-            let neighbours = getHexMeshNeighbours(originPos)
-            let paths = getViablePaths(neighbours)
-            let nextTile = getNextStep(paths)
-            let distance = originPos.distance(destPos)
-            let i = 0;
-            let safety = 500
-            while(distance > 1) {
-                i++
-                console.log("Safety Counter: ", i, "of maximum ",safety)
-                if(i > safety) {
-                    console.log("Failed to find a path!")
-                    break
-                }
-                neighbours = getHexMeshNeighbours(nextTile.cubeCoords)
-                paths = getViablePaths(neighbours)
-                nextTile = getNextStep(paths)
-                if(nextTile){
-                    distance = nextTile.cubeCoords.distance(destPos)
-                    console.log("Distance: ", distance)
-                } else {
-                    break
-                }
 
-            }
+            breadthFirst(scene.getObjectByName(origin), scene.getObjectByName(destination))
+            uniformCost(scene.getObjectByName(origin), scene.getObjectByName(destination))
+            greedyDepthFirst(scene.getObjectByName(origin), scene.getObjectByName(destination))
         }
-
-
-        //console.log("Viable Steps: ", paths)
-
-
-
-
-
-
-        // object.material.color.set(object.clickColour)
-        //
-        // let oldClick =  interactionManager.lastClicked
-        // interactionManager.lastClicked = object.name
-        //
-        // if(oldClick !== object.name) {
-        //     let old = scene.getObjectByName(oldClick)
-        //     if(old) {
-        //         old.material.color.set(old.baseColor)
-        //     }
-        // }
-
-        // let oldObj = scene.getObjectByName(interactionManager.lastClicked)
-        // console.log("Object From Click", oldObj.name)
-        // if(oldObj.parentHex) {
-        //     console.log("Parent: ",oldObj.parentHex)
-        // }
-        //
-        // if(object.cubeCoords) {
-        //     console.log("Object Key: ",object.cubeCoords.toKey())
-        //     console.log("Object has Neighbours: ",getHexMeshNeighbours(object.cubeCoords))
-        // }
-
-
-
-
 
     })
 }
 
-let visited = new Map()
-let usedPaths = []
-let backtrackCounter = 0;
-function getNextStep(paths){
-    let bestPath = 2000000000
-    let bestPathTile = null
-    if(origin && destination){
 
-        let foundPath = false
-        let destPos = scene.getObjectByName(destination).cubeCoords
-        for(let i = 0; i < paths.length; i++) {
-            let pos = paths[i].cubeCoords
-            let distance = pos.distance(destPos)
-            if(distance < bestPath &&
-                !visited.get(paths[i].name) && paths[i].pathStatus !== IMPASSABLE) {
-                bestPath = distance
-                bestPathTile = paths[i]
-                foundPath = true
-            }
-        }
 
-        if(!foundPath){
-            backtrackCounter++
-            console.log("Backtracked ", backtrackCounter, " times.")
-            bestPathTile = usedPaths[usedPaths.length-1]
-            console.log("Using backtrack tile: ", bestPathTile.cubeCoords)
-            usedPaths.pop()
 
-        }
-        if(foundPath){
-            usedPaths.push(bestPathTile)
-        }
-
-        visited.set(bestPathTile.name, bestPathTile.name)
-        if (bestPathTile.name === destination) {
-            console.log("WE MADE IT!")
-            return
-        }
-
-        let newColor = "#"+colorLightener(bestPathTile.pathColour, visited.size*10)
-        bestPathTile.material.color.set(newColor)
-
-    }
-
-    return bestPathTile
-
-}
-
-function clickCycle(object) {
+function clickHandler(object) {
 
     if(object.pathStatus === IMPASSABLE) {
-        clearTileHandler()
+        clearMapHandler()
         return
     }
 
@@ -459,8 +536,6 @@ function clickCycle(object) {
         destinationHandler(object)
         return
     }
-
-
 }
 
 function impassableTileHandler(object){
@@ -468,7 +543,17 @@ function impassableTileHandler(object){
     object.material.color.set(object.impassableColour)
 }
 
-function clearTileHandler() {
+function clearTileHandler(object) {
+    object.material.color.set(object.baseColour)
+    object.pathStatus = null
+}
+
+function badTileHandler(object) {
+    object.material.color.set("#fa1100")
+    object.pathStatus = null
+}
+
+function clearMapHandler() {
 
     if(origin) {
         let originObj = scene.getObjectByName(origin)
@@ -484,26 +569,24 @@ function clearTileHandler() {
         destination = null
     }
 
-    for(let[k] of visited.entries()) {
+    for(let[k] of reached.entries()) {
         let obj = scene.getObjectByName(k)
-        visited.delete(k)
-        console.log("Visited Object Clearing: ",obj)
+        reached.delete(k)
         obj.material.color.set(obj.baseColour)
         obj.pathStatus = null
     }
-
-    backtrackCounter = 0
-    usedPaths = []
 
 }
 
 function originHandler(object){
     origin = object.name
+    object.pathStatus = ORIGIN
     object.material.color.set(object.originColour)
 }
 
 function destinationHandler(object){
     destination = object.name
+    object.pathStatus = TARGET
     object.material.color.set(object.destinationColour)
 }
 
@@ -554,4 +637,12 @@ function sleep(milliseconds) {
             break;
         }
     }
+}
+
+function degToRad(deg){
+    return (Math.PI/180) * deg
+}
+
+function round(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100
 }
