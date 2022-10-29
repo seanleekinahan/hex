@@ -28,12 +28,14 @@ let Queue = (function () {
             return items.get(this).length === 0;
         }
 
+
+
         size(){
             let q = items.get(this);
             return q.length;
         }
 
-        clear(){
+        flush(){
             items.set(this, []);
         }
 

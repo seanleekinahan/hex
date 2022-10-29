@@ -57,6 +57,10 @@ let PriorityQueue = (function(){
             return this.items.length;
         }
 
+        flush(){
+            return this.items = []
+        }
+
         isEmpty()
         {
             return this.items.length === 0;
