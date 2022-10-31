@@ -4,6 +4,7 @@ import { InteractionManager } from "three.interactive";
 import {Vector2, Vector3} from "three";
 import Queue from './queue'
 import PriorityQueue from './priorityqueue'
+import axios from 'axios'
 
 class CCVector {
     constructor(q, r, s) {
@@ -32,6 +33,27 @@ class CCVector {
     }
 }
 
+function sendState(state){
+
+
+    console.log("PAYLOAD: ",state)
+
+    let config = {
+        headers: {
+           //'Content-Type': 'application/json',
+           'Content-Type': 'application/x-www-form-urlencoded'
+        } 
+   }
+    axios.post("http://localhost:8080/api/gamestate",  JSON.stringify(state), config)
+    .catch((err) => {
+        console.error(err)
+    })
+    .then( res => {
+        console.log(res)
+    })
+
+}
+
 const DIR_TOP = 'top'
 const DIR_TOPRIGHT = 'topRight'
 const DIR_BOTTOMRIGHT = 'bottomRight'
@@ -46,6 +68,12 @@ const FINDABLE = "findable"
 let origin = null
 let destinationTotal = 2
 let destinations = []
+
+let mapStore = {
+    gameData: {
+        tiles: []
+    }
+}
 
 const SHOWSPIRAL = false
 
@@ -78,9 +106,10 @@ const interactionManager = new InteractionManager(
 )
 
 //Tiles
-hexSpiral(50)
+hexSpiral(10)
 populateScene(sceneArray)
-
+console.log(mapStore)
+sendState(mapStore)
 //Lights
 let sLight = spotLight()
 scene.add(sLight.light)
@@ -100,7 +129,7 @@ function hexSpiral(radius) {
     sceneArray.push(parent)
     for(let i = 1; i <= radius; i++) {
 
-        parent = hexMesh(parent, DIR_TOP)
+        parent = hexMesh(parent, DIR_TOP, true)
         for(let j = 0; j < i; j++) {
             let hex = hexMesh(parent, DIR_BOTTOMRIGHT)
             hex.originDir = DIR_BOTTOMRIGHT
@@ -635,7 +664,7 @@ function weightedAStar(origin, destinations) {
 }
 
 
-function hexMesh(parent, dir) {
+function hexMesh(parent, dir, isDummy) {
     let x = 0
     let y = 3
     let z = 0
@@ -733,7 +762,7 @@ function hexMesh(parent, dir) {
     hex.name = hex.id
     hex.clickable = true;
     addMouseEvents(hex, interactionManager)
-    hexCount++
+    
 
     let rng = Math.floor(Math.random() * 100);
     if(rng > 50) {
@@ -743,6 +772,20 @@ function hexMesh(parent, dir) {
         hex.cost = 10
         findableTileHandler(hex)
     }
+
+    if(!isDummy) {
+        hexCount++
+        let tile = {
+            pos: [x,y,z],
+            type: (hex.pathStatus === IMPASSABLE ? "mountain" : "plain"),
+            hexid: hexCount
+        }
+
+        console.log("hexid",tile.hexid)
+    
+        mapStore.gameData.tiles.push(tile)
+    }
+   
 
     return hex
 }

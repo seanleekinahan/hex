@@ -3,33 +3,28 @@ import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import './App.css';
 import Hex from './components/hex'
 import Lights from './components/lights'
+import Camera from './components/camera';
 import { useEffect, useState } from 'react';
+
+import GetGamestate from './api/gamestate';
+import GetStateUpdates from './api/updatestate';
 
 function App() {
 
   const [gameData, setGameData] = useState({});
   const [tiles, setTiles] = useState([]);
+  const [updateData, setUpdateData] = useState({});
 
+  const MINUTE_MS = 60000;
+  const SECOND_MS = 1000;
 
-  //dummy - replace with api call
+  //Load Full State on Client Load
   useEffect(() => {
-    let data = {}
-    data.tiles = [
-      { 
-        pos: [0,0,0],
-        name: 1,
-        colour: '#b9f542'
-      },
-      { 
-        pos: [0,0,2],
-        name: 2,
-        colour: '#b14400'
-      }
-    ]
-
-    setGameData(data)
+      console.log("Setting Game State!")
+      GetGamestate(setGameData)
   }, [])
 
+  //Populate Meshes
   useEffect(() => {
     if(gameData.tiles){
 
@@ -38,8 +33,9 @@ function App() {
         hexes.push(
           < Hex 
             position={[tile.pos[0], tile.pos[1], tile.pos[2]]}
-            key={tile.name}
-            colour={tile.colour}            />
+            key={tile.hexid}
+            hexid={tile.hexid}
+            type={tile.type}            />
         )
       }
   
@@ -48,14 +44,13 @@ function App() {
   }, [gameData]) 
 
 
-
   return (
     <Canvas>
       < Lights />
-      < PerspectiveCamera makeDefault position={[0,0,10]}/>
+      < Camera />
       
       {tiles}
-      <OrbitControls/>
+
     </Canvas>
   );
 }
