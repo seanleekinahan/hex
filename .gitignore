@@ -5,3 +5,4 @@ gRPC/
 client/.parcel-cache/
 client/node_modules/
 client/dist/
+react-client/node_modules/

@@ -32,9 +32,6 @@ class CCVector {
     }
 }
 
-
-
-
 const DIR_TOP = 'top'
 const DIR_TOPRIGHT = 'topRight'
 const DIR_BOTTOMRIGHT = 'bottomRight'
@@ -45,8 +42,10 @@ const DIR_TOPLEFT = 'topLeft'
 const IMPASSABLE = "impassable"
 const ORIGIN = "origin"
 const TARGET = "target"
+const FINDABLE = "findable"
 let origin = null
-let destination = null
+let destinationTotal = 2
+let destinations = []
 
 const SHOWSPIRAL = false
 
@@ -267,15 +266,104 @@ function breadthFirst(origin, destination) {
 
 }
 
-function uniformCost(origin, destination) {
+function uniformCost(origin, destinations) {
+
+    if(destinations && !destinations.length) {
+        destinations = [destinations]
+    }
+    let pathBroken = false
+    let path = []
+    for(let d = 0;d  < destinations.length; d++) {
+
+        if(pathBroken){
+            break
+        }
+
+        if(d !== 0) {
+            origin = destinations[d-1]
+        }
+
+        let cameFrom = new Map()
+        let frontier = new PriorityQueue()
+        frontier.enqueue(origin, 0)
+        let costSoFar = new Map()
+        costSoFar.set(origin.name, 0)
+
+        reached.set(origin.name, origin.name)
+    
+
+        let found = false
+        let iterations = 0;
+        while(!frontier.isEmpty()){
+            iterations++
+            let current = frontier.dequeue().element
+            let neighbours = getViableNeighbours(current.cubeCoords, reached)
+
+            console.log
+    
+            for(let i = 0; i < neighbours.length; i++) {
+                if(cameFrom.get(neighbours[i].name)){
+                    console.log("Neighbour has already been visited.")
+                    continue
+                }
+    
+                let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords)
+    
+                if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
+                    costSoFar.set(neighbours[i].name, newCost)
+                    let priority = newCost
+    
+                    reached.set(neighbours[i].name, neighbours[i].name)
+                    cameFrom.set(neighbours[i].name, current.name)
+
+                    frontier.enqueue(neighbours[i], priority)
+                    if(!neighbours[i].pathStatus) {
+                        neighbours[i].material.color.set(uniformCostColour)
+                    }
+    
+                }
+    
+    
+                if(neighbours[i].name === destinations[d].name){
+                    console.log("uniformCost (blue) Found the destination after ",iterations, "iterations.")
+                    found = true;
+                    frontier.flush()
+                    break
+                }
+    
+            }
+    
+            if(frontier.isEmpty() && found === false) {
+                console.log("No Path Found!")
+                pathBroken = true
+                break
+            }
+        }
+
+        let check = cameFrom.get(destinations[d].name)
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+    
+    
+    }
+    
+
+
+    for(let i = 0; i < path.length; i++){
+        let pathObject = scene.getObjectByName(path[i])
+        pathObject.material.color.set(pathObject.clickColour)
+    }
+}
+
+function breadthFirstAsSearch(origin, radius) {
+      
     let frontier = new PriorityQueue()
     frontier.enqueue(origin, 0)
-    let costSoFar = new Map()
-    costSoFar.set(origin.name, 0)
-    let cameFrom = new Map()
     reached.set(origin.name, origin.name)
 
-    let found = false
+    let findables = 0
     let iterations = 0;
     while(!frontier.isEmpty()){
         iterations++
@@ -283,62 +371,37 @@ function uniformCost(origin, destination) {
         let neighbours = getViableNeighbours(current.cubeCoords, reached)
 
         for(let i = 0; i < neighbours.length; i++) {
-            if(cameFrom.get(neighbours[i].name)){
+            if(reached.get(neighbours[i].name)){
                 //console.log("Neighbour has already been visited.")
                 continue
             }
 
-            let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords)
-
-            if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
-                costSoFar.set(neighbours[i].name, newCost)
-                let priority = newCost
-
-
-                reached.set(neighbours[i].name, neighbours[i].name)
-                cameFrom.set(neighbours[i].name, current.name)
-
-
-
-                frontier.enqueue(neighbours[i], priority)
-                if(neighbours[i].pathStatus !== ORIGIN && neighbours[i].pathStatus !== TARGET) {
-                    neighbours[i].material.color.set(uniformCostColour)
-                }
-
-
+            if(neighbours[i].cubeCoords.distance(origin.cubeCoords) > radius){
+                console.log("Neighbour is out of reach.")
+                continue
             }
 
+            reached.set(neighbours[i].name, neighbours[i].name)
+            frontier.enqueue(neighbours[i], 0)
 
-            if(neighbours[i].name === destination.name){
-                console.log("uniformCost (blue) Found the destination after ",iterations, "iterations.")
-                found = true;
-                frontier.flush()
-                break
+            if(neighbours[i].pathStatus === FINDABLE){
+                findables++
+            }
+
+            if(!neighbours[i].pathStatus) {
+                neighbours[i].material.color.set(floodFillColour)
             }
 
         }
 
-        if(frontier.isEmpty() && found === false) {
-            console.log("No Path Found!")
+        if(frontier.isEmpty()) {
+            console.log("breadthFirstasSearch (red) found ", findables, " within radius ", radius)
             break
         }
     }
+    
 
-    if(found) {
-        let check = cameFrom.get(destination.name)
-        let path = []
-        while(check !== origin.name) {
-            path.push(check)
-            check = cameFrom.get(check)
-        }
-
-
-        for(let i = 0; i < path.length; i++){
-            let pathObject = scene.getObjectByName(path[i])
-            pathObject.material.color.set(pathObject.clickColour)
-        }
-
-    }
+ 
 }
 
 function greedyDepthFirst(origin, destination) {
@@ -477,6 +540,100 @@ function aStar(origin, destination) {
     }
 }
 
+function weightedAStar(origin, destinations) {
+
+    if(destinations && !destinations.length) {
+        destinations = [destinations]
+    }
+    let pathBroken = false
+    let path = []
+
+
+    for(let d = 0;d  < destinations.length; d++) {
+
+        if(pathBroken){
+            break
+        }
+
+        if(d !== 0) {
+            origin = destinations[d-1]
+        }
+
+        let frontier = new PriorityQueue()
+        frontier.enqueue(origin, 0)
+        let costSoFar = new Map()
+        costSoFar.set(origin.name, 0)
+        let cameFrom = new Map()
+        reached.set(origin.name, origin.name)
+    
+        let found = false
+        let iterations = 0;
+        while(!frontier.isEmpty()){
+            iterations++
+            let current = frontier.dequeue().element
+            let neighbours = getViableNeighbours(current.cubeCoords, reached)
+    
+            for(let i = 0; i < neighbours.length; i++) {
+                if(cameFrom.get(neighbours[i].name)){
+                    //console.log("Neighbour has already been visited.")
+                    continue
+                }
+    
+                let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords) 
+                newCost = newCost * neighbours[i].cost
+
+    
+                if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
+                    costSoFar.set(neighbours[i].name, newCost)
+                    let priority = newCost + destinations[d].cubeCoords.distance(neighbours[i].cubeCoords)
+    
+    
+                    reached.set(neighbours[i].name, neighbours[i].name)
+                    cameFrom.set(neighbours[i].name, current.name)
+    
+    
+    
+                    frontier.enqueue(neighbours[i], priority)
+                    if(!neighbours[i].pathStatus) {
+                        neighbours[i].material.color.set(aStarColour)
+                    }
+    
+    
+                }
+    
+    
+                if(neighbours[i].name === destinations[d].name){
+                    console.log("aStar (yellow) Found the destination after ",iterations, "iterations.")
+                    found = true;
+                    frontier.flush()
+                    break
+                }
+    
+            }
+    
+            if(frontier.isEmpty() && found === false) {
+                console.log("No Path Found!")
+                break
+            }
+    
+
+        }
+    
+        let check = cameFrom.get(destinations[d].name)
+            while(check !== origin.name) {
+                path.push(check)
+                check = cameFrom.get(check)
+            }
+
+    }
+    
+    for(let i = 0; i < path.length; i++){
+        let pathObject = scene.getObjectByName(path[i])
+        pathObject.material.color.set(pathObject.clickColour)
+    }
+
+}
+
 
 function hexMesh(parent, dir) {
     let x = 0
@@ -570,7 +727,9 @@ function hexMesh(parent, dir) {
     hex.destinationColour = "#11f2f2"
     hex.impassableColour = "#202430"
     hex.pathColour = "#e88858"
+    hex.findableColour = "#ff0000"
 
+    hex.cost = 1
     hex.name = hex.id
     hex.clickable = true;
     addMouseEvents(hex, interactionManager)
@@ -580,7 +739,10 @@ function hexMesh(parent, dir) {
     if(rng > 50) {
         impassableTileHandler(hex)
     }
-    hex.cost = rng;
+    if(rng > 98) {
+        hex.cost = 10
+        findableTileHandler(hex)
+    }
 
     return hex
 }
@@ -592,21 +754,13 @@ function addMouseEvents(object, interactionManager){
         e.stopPropagation()
 
         clickHandler(object)
-        if(origin && destination) {
+        if(origin && destinations.length === destinationTotal) {
+
+            console.log(performance)
 
             let t1 = performance.now()
-            uniformCost(scene.getObjectByName(origin), scene.getObjectByName(destination))
+            weightedAStar(origin,destinations)
             let t2 = performance.now()
-            console.log("Time To Run: ", round(t2-t1),"ms, total memory usage: ", round(performance.memory.usedJSHeapSize/1000000), "Mb")
-
-            t1 = performance.now()
-            aStar(scene.getObjectByName(origin), scene.getObjectByName(destination))
-            t2 = performance.now()
-            console.log("Time To Run: ", round(t2-t1),"ms, total memory usage: ", round(performance.memory.usedJSHeapSize/1000000), "Mb")
-
-            t1 = performance.now()
-            greedyDepthFirst(scene.getObjectByName(origin), scene.getObjectByName(destination))
-            t2 = performance.now()
             console.log("Time To Run: ", round(t2-t1),"ms, total memory usage: ", round(performance.memory.usedJSHeapSize/1000000), "Mb")
 
         }
@@ -629,7 +783,7 @@ function clickHandler(object) {
         return
     }
 
-    if(!object.pathStatus && origin && !destination){
+    if(!object.pathStatus && origin && destinations.length < destinationTotal){
         destinationHandler(object)
         return
     }
@@ -639,6 +793,12 @@ function impassableTileHandler(object){
     object.pathStatus = IMPASSABLE
     object.material.color.set(object.impassableColour)
 }
+
+function findableTileHandler(object){
+    object.pathStatus = FINDABLE
+    object.material.color.set(object.findableColour)
+}
+
 
 function clearTileHandler(object) {
     object.material.color.set(object.baseColour)
@@ -653,21 +813,33 @@ function badTileHandler(object) {
 function clearMapHandler() {
 
     if(origin) {
-        let originObj = scene.getObjectByName(origin)
-        originObj.pathStatus = null
-        originObj.material.color.set(originObj.baseColour)
+        origin.pathStatus = null
+        origin.material.color.set(origin.baseColour)
         origin = null
     }
 
-    if(destination) {
-        let destObj = scene.getObjectByName(destination)
-        destObj.pathStatus = null
-        destObj.material.color.set(destObj.baseColour)
-        destination = null
+    if(destinations.length) {
+        for(let i = 0; i < destinations.length; i++) {
+            let destObj = destinations[i]
+            destObj.pathStatus = null
+            destObj.material.color.set(destObj.baseColour)
+            
+        }
+        destinations = []
+        
     }
 
     for(let[k] of reached.entries()) {
         let obj = scene.getObjectByName(k)
+
+        if(obj.pathStatus){
+            if(obj.pathStatus === FINDABLE) {
+                obj.material.color.set(obj.findableColour)
+            }
+
+          continue
+        }
+
         reached.delete(k)
         obj.material.color.set(obj.baseColour)
         obj.pathStatus = null
@@ -676,13 +848,13 @@ function clearMapHandler() {
 }
 
 function originHandler(object){
-    origin = object.name
+    origin = object
     object.pathStatus = ORIGIN
-    object.material.color.set(object.originColour)
+    object.material.color.set(object.destinationColour)
 }
 
 function destinationHandler(object){
-    destination = object.name
+    destinations.push(object)
     object.pathStatus = TARGET
     object.material.color.set(object.destinationColour)
 }
