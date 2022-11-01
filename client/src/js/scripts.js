@@ -23,7 +23,7 @@ const FINDABLE = "findable"
 const colours = {
     //tile generation colours
     plain: "#00ff00",
-    mountain: "#202430",
+    mountain: "#6b7574",
 
     //mouse interaction colours
     waypoint: "#11f2f2",
@@ -34,7 +34,7 @@ const colours = {
     //search fill colours
     path: "#e88858",
     aStar: "#ffe600",
-    breadthFirst: "#e31010",
+    breadthFirst: "#e88858",
     uniformCost:"#10a0e3",
     greedyDepthFirst:"#d810e3"
 }
@@ -50,8 +50,8 @@ let waypointTotal =3
 let waypoints = []
 
 //Mode Flags
-const MODE_FIND = false
-const MODE_WAYPOINTS = true
+const MODE_FIND = true
+const MODE_WAYPOINTS = false
 const SHOW_SEARCH_AREA = true
 
 //Renderer and Scene init
@@ -100,45 +100,48 @@ renderer.setAnimationLoop(() => {
 });
 
 function hexSpiral(radius) {
-    let parent = hexMesh()
+
+    //Creates Origin Mesh
+    let next = hexMesh()
     for(let i = 1; i <= radius; i++) {
 
-        parent = hexMesh(parent, DIR_TOP, true)
+        //Creates six sides of length i starting from a dummy position above
+        //the last tile in the previous layer
+        next = hexMesh(next, DIR_TOP, true)
         for(let j = 0; j < i; j++) {
-            let hex = hexMesh(parent, DIR_BOTTOMRIGHT)
-            hex.originDir = DIR_BOTTOMRIGHT
-            parent = hex
+            next = hexMesh(next, DIR_BOTTOMRIGHT)
+
         }
 
         for(let j = 0; j < i; j++) {
-            let hex = hexMesh(parent, DIR_BOTTOM)
-            hex.originDir = DIR_BOTTOM
-            parent = hex
+            next = hexMesh(next, DIR_BOTTOM)
+
         }
 
         for(let j = 0; j < i; j++) {
-            let hex = hexMesh(parent, DIR_BOTTOMLEFT)
-            hex.originDir = DIR_BOTTOMLEFT
-            parent = hex
+            next = hexMesh(next, DIR_BOTTOMLEFT)
         }
 
         for(let j = 0; j < i; j++) {
-            let hex = hexMesh(parent, DIR_TOPLEFT)
-            hex.originDir = DIR_TOPLEFT
-            parent = hex
+            next = hexMesh(next, DIR_TOPLEFT)
+
         }
 
         for(let j = 0; j < i; j++) {
-            let hex = hexMesh(parent, DIR_TOP)
-            hex.originDir = DIR_TOP
-            parent = hex
+            next = hexMesh(next, DIR_TOP)
+
         }
 
         for(let j = 0; j < i; j++) {
-            let hex = hexMesh(parent, DIR_TOPRIGHT)
-            hex.originDir = DIR_TOPRIGHT
-            parent = hex
+            next = hexMesh(next, DIR_TOPRIGHT)
+
         }
+    }
+}
+
+function dummyTopHex(parent){
+    let hex = {
+
     }
 }
 
@@ -203,8 +206,6 @@ function hexMesh(parent, dir, isDummy) {
             z = parent.position.z + q
             hex.cpos = [c[0]-1, c[1], c[2]+1]
         }
-    } else {
-        hex.parentHex = true
     }
 
     if(!isDummy) {
@@ -307,10 +308,14 @@ function breadthFirstAsSearch(origin, radius) {
         let neighbours = getAllNeighbours(current.cpos)
 
         for(let i = 0; i < neighbours.length; i++) {
-            let nb = tileMapByID[neighbours[i]]
+            let nb = tileMapByID.get(neighbours[i])
+            //Void Tiles
+            if (!nb || nb.uid === "null") {
+                continue
+            }
 
             if(reached.get(nb.uid)){
-                //console.log("Neighbour has already been visited.")
+                console.log("Neighbour has already been visited.")
                 continue
             }
 
@@ -333,7 +338,7 @@ function breadthFirstAsSearch(origin, radius) {
         }
 
         if(frontier.isEmpty()) {
-            console.log("breadthFirstasSearch (red) found ", findables, " within radius ", radius)
+            console.log("breadthFirstAsSearch (red) found ", findables, " within radius ", radius)
             break
         }
     }
@@ -374,10 +379,6 @@ function weightedAStar(origin, waypoints) {
             iterations++
             let current = frontier.dequeue().element
             let neighbours = getAllNeighbours(current.cpos)
-
-            for(let n of neighbours) {
-                console.log(n)
-            }
 
             if(neighbours.length) {
                 for(let i = 0; i < neighbours.length; i++) {
@@ -430,13 +431,14 @@ function weightedAStar(origin, waypoints) {
 
             if(frontier.isEmpty() && found === false) {
                 console.log("No Path Found!")
+                pathBroken = true
                 break
             }
 
 
         }
 
-        if(found) {
+        if(found && !pathBroken) {
             let check = cameFrom.get(waypoints[d].uid)
             while(check !== origin.uid) {
                 path.push(check)
@@ -447,7 +449,7 @@ function weightedAStar(origin, waypoints) {
 
     }
 
-    if(found){
+    if(found && !pathBroken){
         for(let i = 0; i < path.length; i++){
             let pathObject = tileMapByID.get(path[i])
 
@@ -588,8 +590,14 @@ function waypointHandler(object){
     object.material.color.set(colours.waypoint)
 }
 
+function pointLight() {
+    const light = new THREE.PointLight( 0xff0000, 1, 100 );
+    light.position.set( 50, 50, 50 );
+    scene.add( light );
+}
+
 function spotLight() {
-    const light = new THREE.SpotLight(0xFFFFFF, 0.2);
+    const light = new THREE.SpotLight(0xFFFFFF, 0.15);
     light.position.set(0, 1000, 0);
     light.rotation.set(DegToRad(180),0,0)
     light.castShadow = true;
@@ -625,14 +633,9 @@ function getRenderer() {
 }
 
 function populateScene(meshMap) {
-
     for (let [,v] of meshMap){
         scene.add(v)
     }
-
-    // for(let i = 0; i < meshArray.length; i++){
-    //     scene.add(meshArray[i])
-    // }
 }
 
 

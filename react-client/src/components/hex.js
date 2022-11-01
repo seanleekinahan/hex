@@ -7,7 +7,7 @@ function Hex(props) {
 
     let tileColours = {
         water: "#4287f5",
-        mountain: "#737b7d",
+        mountain: "#6b7574",
         plain: "#9be670"
     }
 
