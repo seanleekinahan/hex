@@ -2,3315 +2,7618 @@
  "gameData": {
   "stateID": 5,
   "tiles": {
-   "1": {
+   "0": {
     "pos": [
      0,
      0,
      0
     ],
+    "uid": "0",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "6",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "cpos": [
+     0,
+     0,
+     0
+    ]
+   },
+   "1": {
+    "pos": [
+     -18,
+     0,
+     10.39
+    ],
     "uid": "1",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "8",
+     "9",
+     "2",
+     "0",
+     "6"
+    ],
+    "cpos": [
+     1,
+     -1,
+     0
+    ]
    },
    "10": {
     "pos": [
      -36,
      0,
-     0
+     -20.78
     ],
     "uid": "10",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "23",
+     "24",
+     "25",
+     "11",
+     "2"
+    ],
+    "cpos": [
+     2,
+     0,
+     -2
+    ]
    },
    "100": {
     "pos": [
      -108,
      0,
-     0
+     -20.78
     ],
     "uid": "100",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "137",
+     "138",
+     "101",
+     "69",
+     "68"
+    ],
+    "cpos": [
+     6,
+     -2,
+     -4
+    ]
    },
    "101": {
     "pos": [
      -108,
      0,
-     -20.78
+     -41.56
     ],
     "uid": "101",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "138",
+     "139",
+     "102",
+     "70",
+     "69"
+    ],
+    "cpos": [
+     6,
+     -1,
+     -5
+    ]
    },
    "102": {
     "pos": [
      -108,
      0,
-     -41.56
-    ],
-    "uid": "102",
-    "type": "plain",
-    "onTile": null
-   },
-   "103": {
-    "pos": [
-     -108,
-     0,
      -62.34
     ],
-    "uid": "103",
+    "uid": "102",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "139",
+     "140",
+     "141",
+     "103",
+     "70"
+    ],
+    "cpos": [
+     6,
+     0,
+     -6
+    ]
    },
-   "104": {
+   "103": {
     "pos": [
      -90,
      0,
      -72.73
     ],
-    "uid": "104",
-    "type": "mountain",
-    "onTile": null
+    "uid": "103",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "102",
+     "141",
+     "142",
+     "104",
+     "71"
+    ],
+    "cpos": [
+     5,
+     1,
+     -6
+    ]
    },
-   "105": {
+   "104": {
     "pos": [
      -72,
      0,
      -83.12
     ],
-    "uid": "105",
+    "uid": "104",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "103",
+     "142",
+     "143",
+     "105",
+     "72"
+    ],
+    "cpos": [
+     4,
+     2,
+     -6
+    ]
    },
-   "106": {
+   "105": {
     "pos": [
      -54,
      0,
      -93.51
     ],
-    "uid": "106",
-    "type": "plain",
-    "onTile": null
+    "uid": "105",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "104",
+     "143",
+     "144",
+     "106",
+     "73"
+    ],
+    "cpos": [
+     3,
+     3,
+     -6
+    ]
    },
-   "107": {
+   "106": {
     "pos": [
      -36,
      0,
      -103.9
     ],
-    "uid": "107",
-    "type": "mountain",
-    "onTile": null
+    "uid": "106",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "105",
+     "144",
+     "145",
+     "107",
+     "74"
+    ],
+    "cpos": [
+     2,
+     4,
+     -6
+    ]
    },
-   "108": {
+   "107": {
     "pos": [
      -18,
      0,
      -114.29
     ],
-    "uid": "108",
-    "type": "plain",
-    "onTile": null
+    "uid": "107",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "106",
+     "145",
+     "146",
+     "108",
+     "75"
+    ],
+    "cpos": [
+     1,
+     5,
+     -6
+    ]
    },
-   "109": {
+   "108": {
     "pos": [
      0,
      0,
      -124.68
     ],
-    "uid": "109",
+    "uid": "108",
     "type": "mountain",
-    "onTile": null
-   },
-   "11": {
-    "pos": [
-     -36,
-     0,
-     -20.78
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "107",
+     "146",
+     "147",
+     "148",
+     "109"
     ],
-    "uid": "11",
-    "type": "plain",
-    "onTile": null
+    "cpos": [
+     0,
+     6,
+     -6
+    ]
    },
-   "110": {
+   "109": {
     "pos": [
      18,
      0,
      -114.29
     ],
-    "uid": "110",
-    "type": "mountain",
-    "onTile": null
+    "uid": "109",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "75",
+     "108",
+     "148",
+     "149",
+     "110"
+    ],
+    "cpos": [
+     -1,
+     6,
+     -5
+    ]
    },
-   "111": {
+   "11": {
+    "pos": [
+     -18,
+     0,
+     -31.17
+    ],
+    "uid": "11",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "10",
+     "25",
+     "26",
+     "12",
+     "3"
+    ],
+    "cpos": [
+     1,
+     1,
+     -2
+    ]
+   },
+   "110": {
     "pos": [
      36,
      0,
      -103.9
     ],
-    "uid": "111",
-    "type": "mountain",
-    "onTile": null
+    "uid": "110",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "76",
+     "109",
+     "149",
+     "150",
+     "111"
+    ],
+    "cpos": [
+     -2,
+     6,
+     -4
+    ]
    },
-   "112": {
+   "111": {
     "pos": [
      54,
      0,
      -93.51
     ],
-    "uid": "112",
+    "uid": "111",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "77",
+     "110",
+     "150",
+     "151",
+     "112"
+    ],
+    "cpos": [
+     -3,
+     6,
+     -3
+    ]
    },
-   "113": {
+   "112": {
     "pos": [
      72,
      0,
      -83.12
     ],
-    "uid": "113",
-    "type": "mountain",
-    "onTile": null
+    "uid": "112",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "78",
+     "111",
+     "151",
+     "152",
+     "113"
+    ],
+    "cpos": [
+     -4,
+     6,
+     -2
+    ]
    },
-   "114": {
+   "113": {
     "pos": [
      90,
      0,
      -72.73
     ],
+    "uid": "113",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "79",
+     "112",
+     "152",
+     "153",
+     "114"
+    ],
+    "cpos": [
+     -5,
+     6,
+     -1
+    ]
+   },
+   "114": {
+    "pos": [
+     108,
+     0,
+     -62.34
+    ],
     "uid": "114",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "80",
+     "113",
+     "153",
+     "154",
+     "155"
+    ],
+    "cpos": [
+     -6,
+     6,
+     0
+    ]
    },
    "115": {
     "pos": [
      108,
      0,
-     -62.34
+     -41.56
     ],
     "uid": "115",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "81",
+     "80",
+     "114",
+     "155",
+     "156"
+    ],
+    "cpos": [
+     -6,
+     5,
+     1
+    ]
    },
    "116": {
     "pos": [
      108,
      0,
-     -41.56
+     -20.78
     ],
     "uid": "116",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "82",
+     "81",
+     "115",
+     "156",
+     "157"
+    ],
+    "cpos": [
+     -6,
+     4,
+     2
+    ]
    },
    "117": {
     "pos": [
      108,
      0,
-     -20.78
+     0
     ],
     "uid": "117",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "118",
+     "83",
+     "82",
+     "116",
+     "157",
+     "158"
+    ],
+    "cpos": [
+     -6,
+     3,
+     3
+    ]
    },
    "118": {
     "pos": [
      108,
      0,
-     0
+     20.78
     ],
     "uid": "118",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "84",
+     "83",
+     "117",
+     "158",
+     "159"
+    ],
+    "cpos": [
+     -6,
+     2,
+     4
+    ]
    },
    "119": {
     "pos": [
      108,
      0,
-     20.78
+     41.56
     ],
     "uid": "119",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "85",
+     "84",
+     "118",
+     "159",
+     "160"
+    ],
+    "cpos": [
+     -6,
+     1,
+     5
+    ]
    },
    "12": {
     "pos": [
-     -18,
      0,
-     -31.17
+     0,
+     -41.56
     ],
     "uid": "12",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "11",
+     "26",
+     "27",
+     "28",
+     "13"
+    ],
+    "cpos": [
+     0,
+     2,
+     -2
+    ]
    },
    "120": {
     "pos": [
      108,
      0,
-     41.56
-    ],
-    "uid": "120",
-    "type": "plain",
-    "onTile": null
-   },
-   "121": {
-    "pos": [
-     108,
-     0,
      62.34
     ],
-    "uid": "121",
-    "type": "plain",
-    "onTile": null
+    "uid": "120",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "121",
+     "85",
+     "119",
+     "160",
+     "161"
+    ],
+    "cpos": [
+     -6,
+     0,
+     6
+    ]
    },
-   "122": {
+   "121": {
     "pos": [
      90,
      0,
      72.73
     ],
-    "uid": "122",
-    "type": "mountain",
-    "onTile": null
+    "uid": "121",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "122",
+     "86",
+     "85",
+     "120",
+     "162"
+    ],
+    "cpos": [
+     -5,
+     -1,
+     6
+    ]
    },
-   "123": {
+   "122": {
     "pos": [
      72,
      0,
      83.12
     ],
-    "uid": "123",
-    "type": "plain",
-    "onTile": null
+    "uid": "122",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "123",
+     "87",
+     "86",
+     "121",
+     "163"
+    ],
+    "cpos": [
+     -4,
+     -2,
+     6
+    ]
    },
-   "124": {
+   "123": {
     "pos": [
      54,
      0,
      93.51
     ],
-    "uid": "124",
+    "uid": "123",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "124",
+     "88",
+     "87",
+     "122",
+     "164"
+    ],
+    "cpos": [
+     -3,
+     -3,
+     6
+    ]
    },
-   "125": {
+   "124": {
     "pos": [
      36,
      0,
      103.9
     ],
-    "uid": "125",
-    "type": "mountain",
-    "onTile": null
+    "uid": "124",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "125",
+     "89",
+     "88",
+     "123",
+     "165"
+    ],
+    "cpos": [
+     -2,
+     -4,
+     6
+    ]
    },
-   "126": {
+   "125": {
     "pos": [
      18,
      0,
      114.29
     ],
-    "uid": "126",
-    "type": "mountain",
-    "onTile": null
+    "uid": "125",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "126",
+     "90",
+     "89",
+     "124",
+     "166"
+    ],
+    "cpos": [
+     -1,
+     -5,
+     6
+    ]
    },
-   "127": {
+   "126": {
     "pos": [
      0,
      0,
      124.68
     ],
-    "uid": "127",
-    "type": "plain",
-    "onTile": null
+    "uid": "126",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "127",
+     "91",
+     "90",
+     "125",
+     "167"
+    ],
+    "cpos": [
+     0,
+     -6,
+     6
+    ]
    },
-   "128": {
+   "127": {
     "pos": [
      -18,
      0,
      135.07
     ],
-    "uid": "128",
+    "uid": "127",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "170",
+     "128",
+     "91",
+     "126",
+     "168"
+    ],
+    "cpos": [
+     1,
+     -7,
+     6
+    ]
    },
-   "129": {
+   "128": {
     "pos": [
      -36,
      0,
      124.68
     ],
-    "uid": "129",
-    "type": "mountain",
-    "onTile": null
-   },
-   "13": {
-    "pos": [
-     0,
-     0,
-     -41.56
-    ],
-    "uid": "13",
+    "uid": "128",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "171",
+     "129",
+     "92",
+     "91",
+     "127"
+    ],
+    "cpos": [
+     2,
+     -7,
+     5
+    ]
    },
-   "130": {
+   "129": {
     "pos": [
      -54,
      0,
      114.29
     ],
-    "uid": "130",
-    "type": "mountain",
-    "onTile": null
+    "uid": "129",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "172",
+     "130",
+     "93",
+     "92",
+     "128"
+    ],
+    "cpos": [
+     3,
+     -7,
+     4
+    ]
    },
-   "131": {
+   "13": {
+    "pos": [
+     18,
+     0,
+     -31.17
+    ],
+    "uid": "13",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "3",
+     "12",
+     "28",
+     "29",
+     "14"
+    ],
+    "cpos": [
+     -1,
+     2,
+     -1
+    ]
+   },
+   "130": {
     "pos": [
      -72,
      0,
      103.9
     ],
-    "uid": "131",
+    "uid": "130",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "173",
+     "131",
+     "94",
+     "93",
+     "129"
+    ],
+    "cpos": [
+     4,
+     -7,
+     3
+    ]
    },
-   "132": {
+   "131": {
     "pos": [
      -90,
      0,
      93.51
     ],
-    "uid": "132",
-    "type": "mountain",
-    "onTile": null
+    "uid": "131",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "174",
+     "132",
+     "95",
+     "94",
+     "130"
+    ],
+    "cpos": [
+     5,
+     -7,
+     2
+    ]
    },
-   "133": {
+   "132": {
     "pos": [
      -108,
      0,
      83.12
     ],
+    "uid": "132",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "175",
+     "133",
+     "96",
+     "95",
+     "131"
+    ],
+    "cpos": [
+     6,
+     -7,
+     1
+    ]
+   },
+   "133": {
+    "pos": [
+     -126,
+     0,
+     72.73
+    ],
     "uid": "133",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "176",
+     "177",
+     "134",
+     "96",
+     "132"
+    ],
+    "cpos": [
+     7,
+     -7,
+     0
+    ]
    },
    "134": {
     "pos": [
      -126,
      0,
-     72.73
+     51.95
     ],
     "uid": "134",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "177",
+     "178",
+     "135",
+     "97",
+     "96"
+    ],
+    "cpos": [
+     7,
+     -6,
+     -1
+    ]
    },
    "135": {
     "pos": [
      -126,
      0,
-     51.95
+     31.17
     ],
     "uid": "135",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "178",
+     "179",
+     "136",
+     "98",
+     "97"
+    ],
+    "cpos": [
+     7,
+     -5,
+     -2
+    ]
    },
    "136": {
     "pos": [
      -126,
      0,
-     31.17
+     10.39
     ],
     "uid": "136",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "179",
+     "180",
+     "137",
+     "99",
+     "98"
+    ],
+    "cpos": [
+     7,
+     -4,
+     -3
+    ]
    },
    "137": {
     "pos": [
      -126,
      0,
-     10.39
+     -10.39
     ],
     "uid": "137",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "180",
+     "181",
+     "138",
+     "100",
+     "99"
+    ],
+    "cpos": [
+     7,
+     -3,
+     -4
+    ]
    },
    "138": {
     "pos": [
      -126,
      0,
-     -10.39
+     -31.17
     ],
     "uid": "138",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "181",
+     "182",
+     "139",
+     "101",
+     "100"
+    ],
+    "cpos": [
+     7,
+     -2,
+     -5
+    ]
    },
    "139": {
     "pos": [
      -126,
      0,
-     -31.17
+     -51.95
     ],
     "uid": "139",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "182",
+     "183",
+     "140",
+     "102",
+     "101"
+    ],
+    "cpos": [
+     7,
+     -1,
+     -6
+    ]
    },
    "14": {
     "pos": [
-     18,
+     36,
      0,
-     -31.17
+     -20.78
     ],
     "uid": "14",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "4",
+     "13",
+     "29",
+     "30",
+     "31"
+    ],
+    "cpos": [
+     -2,
+     2,
+     0
+    ]
    },
    "140": {
     "pos": [
      -126,
      0,
-     -51.95
+     -72.73
     ],
     "uid": "140",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "183",
+     "184",
+     "185",
+     "141",
+     "102"
+    ],
+    "cpos": [
+     7,
+     0,
+     -7
+    ]
    },
    "141": {
-    "pos": [
-     -126,
-     0,
-     -72.73
-    ],
-    "uid": "141",
-    "type": "mountain",
-    "onTile": null
-   },
-   "142": {
     "pos": [
      -108,
      0,
      -83.12
     ],
-    "uid": "142",
-    "type": "plain",
-    "onTile": null
+    "uid": "141",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "140",
+     "185",
+     "186",
+     "142",
+     "103"
+    ],
+    "cpos": [
+     6,
+     1,
+     -7
+    ]
    },
-   "143": {
+   "142": {
     "pos": [
      -90,
      0,
      -93.51
     ],
-    "uid": "143",
+    "uid": "142",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "141",
+     "186",
+     "187",
+     "143",
+     "104"
+    ],
+    "cpos": [
+     5,
+     2,
+     -7
+    ]
    },
-   "144": {
+   "143": {
     "pos": [
      -72,
      0,
      -103.9
     ],
-    "uid": "144",
-    "type": "plain",
-    "onTile": null
+    "uid": "143",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "142",
+     "187",
+     "188",
+     "144",
+     "105"
+    ],
+    "cpos": [
+     4,
+     3,
+     -7
+    ]
    },
-   "145": {
+   "144": {
     "pos": [
      -54,
      0,
      -114.29
     ],
-    "uid": "145",
+    "uid": "144",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "143",
+     "188",
+     "189",
+     "145",
+     "106"
+    ],
+    "cpos": [
+     3,
+     4,
+     -7
+    ]
    },
-   "146": {
+   "145": {
     "pos": [
      -36,
      0,
      -124.68
     ],
-    "uid": "146",
-    "type": "mountain",
-    "onTile": null
+    "uid": "145",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "144",
+     "189",
+     "190",
+     "146",
+     "107"
+    ],
+    "cpos": [
+     2,
+     5,
+     -7
+    ]
    },
-   "147": {
+   "146": {
     "pos": [
      -18,
      0,
      -135.07
     ],
-    "uid": "147",
-    "type": "plain",
-    "onTile": null
+    "uid": "146",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "145",
+     "190",
+     "191",
+     "147",
+     "108"
+    ],
+    "cpos": [
+     1,
+     6,
+     -7
+    ]
    },
-   "148": {
+   "147": {
     "pos": [
      0,
      0,
      -145.46
     ],
-    "uid": "148",
-    "type": "mountain",
-    "onTile": null
+    "uid": "147",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "146",
+     "191",
+     "192",
+     "193",
+     "148"
+    ],
+    "cpos": [
+     0,
+     7,
+     -7
+    ]
    },
-   "149": {
+   "148": {
     "pos": [
      18,
      0,
      -135.07
     ],
+    "uid": "148",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "108",
+     "147",
+     "193",
+     "194",
+     "149"
+    ],
+    "cpos": [
+     -1,
+     7,
+     -6
+    ]
+   },
+   "149": {
+    "pos": [
+     36,
+     0,
+     -124.68
+    ],
     "uid": "149",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "109",
+     "148",
+     "194",
+     "195",
+     "150"
+    ],
+    "cpos": [
+     -2,
+     7,
+     -5
+    ]
    },
    "15": {
     "pos": [
      36,
      0,
-     -20.78
+     0
     ],
     "uid": "15",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "16",
+     "5",
+     "4",
+     "14",
+     "31",
+     "32"
+    ],
+    "cpos": [
+     -2,
+     1,
+     1
+    ]
    },
    "150": {
-    "pos": [
-     36,
-     0,
-     -124.68
-    ],
-    "uid": "150",
-    "type": "plain",
-    "onTile": null
-   },
-   "151": {
     "pos": [
      54,
      0,
      -114.29
     ],
-    "uid": "151",
+    "uid": "150",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "110",
+     "149",
+     "195",
+     "196",
+     "151"
+    ],
+    "cpos": [
+     -3,
+     7,
+     -4
+    ]
    },
-   "152": {
+   "151": {
     "pos": [
      72,
      0,
      -103.9
     ],
-    "uid": "152",
-    "type": "mountain",
-    "onTile": null
+    "uid": "151",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "111",
+     "150",
+     "196",
+     "197",
+     "152"
+    ],
+    "cpos": [
+     -4,
+     7,
+     -3
+    ]
    },
-   "153": {
+   "152": {
     "pos": [
      90,
      0,
      -93.51
     ],
-    "uid": "153",
+    "uid": "152",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "112",
+     "151",
+     "197",
+     "198",
+     "153"
+    ],
+    "cpos": [
+     -5,
+     7,
+     -2
+    ]
    },
-   "154": {
+   "153": {
     "pos": [
      108,
      0,
      -83.12
     ],
-    "uid": "154",
+    "uid": "153",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "113",
+     "152",
+     "198",
+     "199",
+     "154"
+    ],
+    "cpos": [
+     -6,
+     7,
+     -1
+    ]
+   },
+   "154": {
+    "pos": [
+     126,
+     0,
+     -72.73
+    ],
+    "uid": "154",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "114",
+     "153",
+     "199",
+     "200",
+     "201"
+    ],
+    "cpos": [
+     -7,
+     7,
+     0
+    ]
    },
    "155": {
     "pos": [
      126,
      0,
-     -72.73
+     -51.95
     ],
     "uid": "155",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "115",
+     "114",
+     "154",
+     "201",
+     "202"
+    ],
+    "cpos": [
+     -7,
+     6,
+     1
+    ]
    },
    "156": {
     "pos": [
      126,
      0,
-     -51.95
+     -31.17
     ],
     "uid": "156",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "116",
+     "115",
+     "155",
+     "202",
+     "203"
+    ],
+    "cpos": [
+     -7,
+     5,
+     2
+    ]
    },
    "157": {
     "pos": [
      126,
      0,
-     -31.17
+     -10.39
     ],
     "uid": "157",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "117",
+     "116",
+     "156",
+     "203",
+     "204"
+    ],
+    "cpos": [
+     -7,
+     4,
+     3
+    ]
    },
    "158": {
     "pos": [
      126,
      0,
-     -10.39
+     10.39
     ],
     "uid": "158",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "118",
+     "117",
+     "157",
+     "204",
+     "205"
+    ],
+    "cpos": [
+     -7,
+     3,
+     4
+    ]
    },
    "159": {
     "pos": [
      126,
      0,
-     10.39
+     31.17
     ],
     "uid": "159",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "119",
+     "118",
+     "158",
+     "205",
+     "206"
+    ],
+    "cpos": [
+     -7,
+     2,
+     5
+    ]
    },
    "16": {
     "pos": [
      36,
      0,
-     0
+     20.78
     ],
     "uid": "16",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "17",
+     "5",
+     "15",
+     "32",
+     "33"
+    ],
+    "cpos": [
+     -2,
+     0,
+     2
+    ]
    },
    "160": {
     "pos": [
      126,
      0,
-     31.17
+     51.95
     ],
     "uid": "160",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "120",
+     "119",
+     "159",
+     "206",
+     "207"
+    ],
+    "cpos": [
+     -7,
+     1,
+     6
+    ]
    },
    "161": {
     "pos": [
      126,
      0,
-     51.95
-    ],
-    "uid": "161",
-    "type": "mountain",
-    "onTile": null
-   },
-   "162": {
-    "pos": [
-     126,
-     0,
      72.73
     ],
-    "uid": "162",
-    "type": "mountain",
-    "onTile": null
+    "uid": "161",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "162",
+     "120",
+     "160",
+     "207",
+     "208"
+    ],
+    "cpos": [
+     -7,
+     0,
+     7
+    ]
    },
-   "163": {
+   "162": {
     "pos": [
      108,
      0,
      83.12
     ],
-    "uid": "163",
-    "type": "plain",
-    "onTile": null
+    "uid": "162",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "163",
+     "121",
+     "120",
+     "161",
+     "209"
+    ],
+    "cpos": [
+     -6,
+     -1,
+     7
+    ]
    },
-   "164": {
+   "163": {
     "pos": [
      90,
      0,
      93.51
     ],
-    "uid": "164",
+    "uid": "163",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "164",
+     "122",
+     "121",
+     "162",
+     "210"
+    ],
+    "cpos": [
+     -5,
+     -2,
+     7
+    ]
    },
-   "165": {
+   "164": {
     "pos": [
      72,
      0,
      103.9
     ],
-    "uid": "165",
-    "type": "plain",
-    "onTile": null
+    "uid": "164",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "165",
+     "123",
+     "122",
+     "163",
+     "211"
+    ],
+    "cpos": [
+     -4,
+     -3,
+     7
+    ]
    },
-   "166": {
+   "165": {
     "pos": [
      54,
      0,
      114.29
     ],
-    "uid": "166",
+    "uid": "165",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "166",
+     "124",
+     "123",
+     "164",
+     "212"
+    ],
+    "cpos": [
+     -3,
+     -4,
+     7
+    ]
    },
-   "167": {
+   "166": {
     "pos": [
      36,
      0,
      124.68
     ],
-    "uid": "167",
-    "type": "mountain",
-    "onTile": null
+    "uid": "166",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "167",
+     "125",
+     "124",
+     "165",
+     "213"
+    ],
+    "cpos": [
+     -2,
+     -5,
+     7
+    ]
    },
-   "168": {
+   "167": {
     "pos": [
      18,
      0,
      135.07
     ],
-    "uid": "168",
-    "type": "plain",
-    "onTile": null
+    "uid": "167",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "168",
+     "126",
+     "125",
+     "166",
+     "214"
+    ],
+    "cpos": [
+     -1,
+     -6,
+     7
+    ]
    },
-   "169": {
+   "168": {
     "pos": [
      0,
      0,
      145.46
     ],
-    "uid": "169",
+    "uid": "168",
     "type": "mountain",
-    "onTile": null
-   },
-   "17": {
-    "pos": [
-     36,
-     0,
-     20.78
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "169",
+     "127",
+     "126",
+     "167",
+     "215"
     ],
-    "uid": "17",
-    "type": "mountain",
-    "onTile": null
+    "cpos": [
+     0,
+     -7,
+     7
+    ]
    },
-   "170": {
+   "169": {
     "pos": [
      -18,
      0,
      155.85
     ],
-    "uid": "170",
-    "type": "plain",
-    "onTile": null
+    "uid": "169",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "218",
+     "170",
+     "127",
+     "168",
+     "216"
+    ],
+    "cpos": [
+     1,
+     -8,
+     7
+    ]
    },
-   "171": {
+   "17": {
+    "pos": [
+     18,
+     0,
+     31.17
+    ],
+    "uid": "17",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "18",
+     "6",
+     "5",
+     "16",
+     "34"
+    ],
+    "cpos": [
+     -1,
+     -1,
+     2
+    ]
+   },
+   "170": {
     "pos": [
      -36,
      0,
      145.46
     ],
-    "uid": "171",
-    "type": "plain",
-    "onTile": null
+    "uid": "170",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "219",
+     "171",
+     "128",
+     "127",
+     "169"
+    ],
+    "cpos": [
+     2,
+     -8,
+     6
+    ]
    },
-   "172": {
+   "171": {
     "pos": [
      -54,
      0,
      135.07
     ],
-    "uid": "172",
-    "type": "plain",
-    "onTile": null
+    "uid": "171",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "220",
+     "172",
+     "129",
+     "128",
+     "170"
+    ],
+    "cpos": [
+     3,
+     -8,
+     5
+    ]
    },
-   "173": {
+   "172": {
     "pos": [
      -72,
      0,
      124.68
     ],
-    "uid": "173",
+    "uid": "172",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "221",
+     "173",
+     "130",
+     "129",
+     "171"
+    ],
+    "cpos": [
+     4,
+     -8,
+     4
+    ]
    },
-   "174": {
+   "173": {
     "pos": [
      -90,
      0,
      114.29
     ],
-    "uid": "174",
-    "type": "mountain",
-    "onTile": null
+    "uid": "173",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "222",
+     "174",
+     "131",
+     "130",
+     "172"
+    ],
+    "cpos": [
+     5,
+     -8,
+     3
+    ]
    },
-   "175": {
+   "174": {
     "pos": [
      -108,
      0,
      103.9
     ],
-    "uid": "175",
-    "type": "mountain",
-    "onTile": null
+    "uid": "174",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "223",
+     "175",
+     "132",
+     "131",
+     "173"
+    ],
+    "cpos": [
+     6,
+     -8,
+     2
+    ]
    },
-   "176": {
+   "175": {
     "pos": [
      -126,
      0,
      93.51
     ],
+    "uid": "175",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "224",
+     "176",
+     "133",
+     "132",
+     "174"
+    ],
+    "cpos": [
+     7,
+     -8,
+     1
+    ]
+   },
+   "176": {
+    "pos": [
+     -144,
+     0,
+     83.12
+    ],
     "uid": "176",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "225",
+     "226",
+     "177",
+     "133",
+     "175"
+    ],
+    "cpos": [
+     8,
+     -8,
+     0
+    ]
    },
    "177": {
     "pos": [
      -144,
      0,
-     83.12
+     62.34
     ],
     "uid": "177",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "226",
+     "227",
+     "178",
+     "134",
+     "133"
+    ],
+    "cpos": [
+     8,
+     -7,
+     -1
+    ]
    },
    "178": {
     "pos": [
      -144,
      0,
-     62.34
+     41.56
     ],
     "uid": "178",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "227",
+     "228",
+     "179",
+     "135",
+     "134"
+    ],
+    "cpos": [
+     8,
+     -6,
+     -2
+    ]
    },
    "179": {
     "pos": [
      -144,
      0,
-     41.56
+     20.78
     ],
     "uid": "179",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "228",
+     "229",
+     "180",
+     "136",
+     "135"
+    ],
+    "cpos": [
+     8,
+     -5,
+     -3
+    ]
    },
    "18": {
     "pos": [
-     18,
      0,
-     31.17
+     0,
+     41.56
     ],
     "uid": "18",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "19",
+     "7",
+     "6",
+     "17",
+     "35"
+    ],
+    "cpos": [
+     0,
+     -2,
+     2
+    ]
    },
    "180": {
     "pos": [
      -144,
      0,
-     20.78
+     -1.4210855e-14
     ],
     "uid": "180",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "179",
+     "229",
+     "230",
+     "181",
+     "137",
+     "136"
+    ],
+    "cpos": [
+     8,
+     -4,
+     -4
+    ]
    },
    "181": {
     "pos": [
      -144,
      0,
-     -1.4210855e-14
+     -20.78
     ],
     "uid": "181",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "230",
+     "231",
+     "182",
+     "138",
+     "137"
+    ],
+    "cpos": [
+     8,
+     -3,
+     -5
+    ]
    },
    "182": {
     "pos": [
      -144,
      0,
-     -20.78
+     -41.56
     ],
     "uid": "182",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "231",
+     "232",
+     "183",
+     "139",
+     "138"
+    ],
+    "cpos": [
+     8,
+     -2,
+     -6
+    ]
    },
    "183": {
     "pos": [
      -144,
      0,
-     -41.56
+     -62.34
     ],
     "uid": "183",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "232",
+     "233",
+     "184",
+     "140",
+     "139"
+    ],
+    "cpos": [
+     8,
+     -1,
+     -7
+    ]
    },
    "184": {
     "pos": [
      -144,
      0,
-     -62.34
+     -83.12
     ],
     "uid": "184",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "233",
+     "234",
+     "235",
+     "185",
+     "140"
+    ],
+    "cpos": [
+     8,
+     0,
+     -8
+    ]
    },
    "185": {
-    "pos": [
-     -144,
-     0,
-     -83.12
-    ],
-    "uid": "185",
-    "type": "plain",
-    "onTile": null
-   },
-   "186": {
     "pos": [
      -126,
      0,
      -93.51
     ],
-    "uid": "186",
-    "type": "plain",
-    "onTile": null
+    "uid": "185",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "184",
+     "235",
+     "236",
+     "186",
+     "141"
+    ],
+    "cpos": [
+     7,
+     1,
+     -8
+    ]
    },
-   "187": {
+   "186": {
     "pos": [
      -108,
      0,
      -103.9
     ],
-    "uid": "187",
-    "type": "mountain",
-    "onTile": null
+    "uid": "186",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "185",
+     "236",
+     "237",
+     "187",
+     "142"
+    ],
+    "cpos": [
+     6,
+     2,
+     -8
+    ]
    },
-   "188": {
+   "187": {
     "pos": [
      -90,
      0,
      -114.29
     ],
-    "uid": "188",
+    "uid": "187",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "186",
+     "237",
+     "238",
+     "188",
+     "143"
+    ],
+    "cpos": [
+     5,
+     3,
+     -8
+    ]
    },
-   "189": {
+   "188": {
     "pos": [
      -72,
      0,
      -124.68
     ],
-    "uid": "189",
-    "type": "plain",
-    "onTile": null
-   },
-   "19": {
-    "pos": [
-     0,
-     0,
-     41.56
-    ],
-    "uid": "19",
+    "uid": "188",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "187",
+     "238",
+     "239",
+     "189",
+     "144"
+    ],
+    "cpos": [
+     4,
+     4,
+     -8
+    ]
    },
-   "190": {
+   "189": {
     "pos": [
      -54,
      0,
      -135.07
     ],
-    "uid": "190",
+    "uid": "189",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "188",
+     "239",
+     "240",
+     "190",
+     "145"
+    ],
+    "cpos": [
+     3,
+     5,
+     -8
+    ]
    },
-   "191": {
+   "19": {
+    "pos": [
+     -18,
+     0,
+     51.95
+    ],
+    "uid": "19",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "38",
+     "20",
+     "7",
+     "18",
+     "36"
+    ],
+    "cpos": [
+     1,
+     -3,
+     2
+    ]
+   },
+   "190": {
     "pos": [
      -36,
      0,
      -145.46
     ],
-    "uid": "191",
+    "uid": "190",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "189",
+     "240",
+     "241",
+     "191",
+     "146"
+    ],
+    "cpos": [
+     2,
+     6,
+     -8
+    ]
    },
-   "192": {
+   "191": {
     "pos": [
      -18,
      0,
      -155.85
     ],
-    "uid": "192",
+    "uid": "191",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "190",
+     "241",
+     "242",
+     "192",
+     "147"
+    ],
+    "cpos": [
+     1,
+     7,
+     -8
+    ]
    },
-   "193": {
+   "192": {
     "pos": [
      0,
      0,
      -166.24
     ],
-    "uid": "193",
+    "uid": "192",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "191",
+     "242",
+     "243",
+     "244",
+     "193"
+    ],
+    "cpos": [
+     0,
+     8,
+     -8
+    ]
    },
-   "194": {
+   "193": {
     "pos": [
      18,
      0,
      -155.85
     ],
-    "uid": "194",
+    "uid": "193",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "147",
+     "192",
+     "244",
+     "245",
+     "194"
+    ],
+    "cpos": [
+     -1,
+     8,
+     -7
+    ]
    },
-   "195": {
+   "194": {
     "pos": [
      36,
      0,
      -145.46
     ],
-    "uid": "195",
-    "type": "mountain",
-    "onTile": null
+    "uid": "194",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "148",
+     "193",
+     "245",
+     "246",
+     "195"
+    ],
+    "cpos": [
+     -2,
+     8,
+     -6
+    ]
    },
-   "196": {
+   "195": {
     "pos": [
      54,
      0,
      -135.07
     ],
-    "uid": "196",
-    "type": "mountain",
-    "onTile": null
+    "uid": "195",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "149",
+     "194",
+     "246",
+     "247",
+     "196"
+    ],
+    "cpos": [
+     -3,
+     8,
+     -5
+    ]
    },
-   "197": {
+   "196": {
     "pos": [
      72,
      0,
      -124.68
     ],
-    "uid": "197",
+    "uid": "196",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "150",
+     "195",
+     "247",
+     "248",
+     "197"
+    ],
+    "cpos": [
+     -4,
+     8,
+     -4
+    ]
    },
-   "198": {
+   "197": {
     "pos": [
      90,
      0,
      -114.29
     ],
-    "uid": "198",
+    "uid": "197",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "151",
+     "196",
+     "248",
+     "249",
+     "198"
+    ],
+    "cpos": [
+     -5,
+     8,
+     -3
+    ]
    },
-   "199": {
+   "198": {
     "pos": [
      108,
      0,
      -103.9
     ],
+    "uid": "198",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "152",
+     "197",
+     "249",
+     "250",
+     "199"
+    ],
+    "cpos": [
+     -6,
+     8,
+     -2
+    ]
+   },
+   "199": {
+    "pos": [
+     126,
+     0,
+     -93.51
+    ],
     "uid": "199",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "153",
+     "198",
+     "250",
+     "251",
+     "200"
+    ],
+    "cpos": [
+     -7,
+     8,
+     -1
+    ]
    },
    "2": {
     "pos": [
      -18,
      0,
-     10.39
+     -10.39
     ],
     "uid": "2",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "9",
+     "10",
+     "11",
+     "3",
+     "0"
+    ],
+    "cpos": [
+     1,
+     0,
+     -1
+    ]
    },
    "20": {
     "pos": [
-     -18,
+     -36,
      0,
-     51.95
+     41.56
     ],
     "uid": "20",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "39",
+     "21",
+     "8",
+     "7",
+     "19"
+    ],
+    "cpos": [
+     2,
+     -3,
+     1
+    ]
    },
    "200": {
     "pos": [
-     126,
+     144,
      0,
-     -93.51
+     -83.12
     ],
     "uid": "200",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "154",
+     "199",
+     "251",
+     "252",
+     "253"
+    ],
+    "cpos": [
+     -8,
+     8,
+     0
+    ]
    },
    "201": {
     "pos": [
      144,
      0,
-     -83.12
+     -62.34
     ],
     "uid": "201",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "155",
+     "154",
+     "200",
+     "253",
+     "254"
+    ],
+    "cpos": [
+     -8,
+     7,
+     1
+    ]
    },
    "202": {
     "pos": [
      144,
      0,
-     -62.34
+     -41.56
     ],
     "uid": "202",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "156",
+     "155",
+     "201",
+     "254",
+     "255"
+    ],
+    "cpos": [
+     -8,
+     6,
+     2
+    ]
    },
    "203": {
     "pos": [
      144,
      0,
-     -41.56
+     -20.78
     ],
     "uid": "203",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "157",
+     "156",
+     "202",
+     "255",
+     "256"
+    ],
+    "cpos": [
+     -8,
+     5,
+     3
+    ]
    },
    "204": {
     "pos": [
      144,
      0,
-     -20.78
+     -4.2632564e-14
     ],
     "uid": "204",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "205",
+     "158",
+     "157",
+     "203",
+     "256",
+     "257"
+    ],
+    "cpos": [
+     -8,
+     4,
+     4
+    ]
    },
    "205": {
     "pos": [
      144,
      0,
-     -4.2632564e-14
+     20.78
     ],
     "uid": "205",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "159",
+     "158",
+     "204",
+     "257",
+     "258"
+    ],
+    "cpos": [
+     -8,
+     3,
+     5
+    ]
    },
    "206": {
     "pos": [
      144,
      0,
-     20.78
+     41.56
     ],
     "uid": "206",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "160",
+     "159",
+     "205",
+     "258",
+     "259"
+    ],
+    "cpos": [
+     -8,
+     2,
+     6
+    ]
    },
    "207": {
     "pos": [
      144,
      0,
-     41.56
+     62.34
     ],
     "uid": "207",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "161",
+     "160",
+     "206",
+     "259",
+     "260"
+    ],
+    "cpos": [
+     -8,
+     1,
+     7
+    ]
    },
    "208": {
     "pos": [
      144,
      0,
-     62.34
+     83.12
     ],
     "uid": "208",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "209",
+     "161",
+     "207",
+     "260",
+     "261"
+    ],
+    "cpos": [
+     -8,
+     0,
+     8
+    ]
    },
    "209": {
-    "pos": [
-     144,
-     0,
-     83.12
-    ],
-    "uid": "209",
-    "type": "plain",
-    "onTile": null
-   },
-   "21": {
-    "pos": [
-     -36,
-     0,
-     41.56
-    ],
-    "uid": "21",
-    "type": "plain",
-    "onTile": null
-   },
-   "210": {
     "pos": [
      126,
      0,
      93.51
     ],
-    "uid": "210",
+    "uid": "209",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "210",
+     "162",
+     "161",
+     "208",
+     "262"
+    ],
+    "cpos": [
+     -7,
+     -1,
+     8
+    ]
    },
-   "211": {
+   "21": {
+    "pos": [
+     -54,
+     0,
+     31.17
+    ],
+    "uid": "21",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "40",
+     "41",
+     "22",
+     "8",
+     "20"
+    ],
+    "cpos": [
+     3,
+     -3,
+     0
+    ]
+   },
+   "210": {
     "pos": [
      108,
      0,
      103.9
     ],
-    "uid": "211",
+    "uid": "210",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "211",
+     "163",
+     "162",
+     "209",
+     "263"
+    ],
+    "cpos": [
+     -6,
+     -2,
+     8
+    ]
    },
-   "212": {
+   "211": {
     "pos": [
      90,
      0,
      114.29
     ],
-    "uid": "212",
+    "uid": "211",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "212",
+     "164",
+     "163",
+     "210",
+     "264"
+    ],
+    "cpos": [
+     -5,
+     -3,
+     8
+    ]
    },
-   "213": {
+   "212": {
     "pos": [
      72,
      0,
      124.68
     ],
-    "uid": "213",
+    "uid": "212",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "213",
+     "165",
+     "164",
+     "211",
+     "265"
+    ],
+    "cpos": [
+     -4,
+     -4,
+     8
+    ]
    },
-   "214": {
+   "213": {
     "pos": [
      54,
      0,
      135.07
     ],
-    "uid": "214",
+    "uid": "213",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "214",
+     "166",
+     "165",
+     "212",
+     "266"
+    ],
+    "cpos": [
+     -3,
+     -5,
+     8
+    ]
    },
-   "215": {
+   "214": {
     "pos": [
      36,
      0,
      145.46
     ],
-    "uid": "215",
-    "type": "plain",
-    "onTile": null
+    "uid": "214",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "215",
+     "167",
+     "166",
+     "213",
+     "267"
+    ],
+    "cpos": [
+     -2,
+     -6,
+     8
+    ]
    },
-   "216": {
+   "215": {
     "pos": [
      18,
      0,
      155.85
     ],
-    "uid": "216",
-    "type": "mountain",
-    "onTile": null
+    "uid": "215",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "216",
+     "168",
+     "167",
+     "214",
+     "268"
+    ],
+    "cpos": [
+     -1,
+     -7,
+     8
+    ]
    },
-   "217": {
+   "216": {
     "pos": [
      0,
      0,
      166.24
     ],
-    "uid": "217",
-    "type": "plain",
-    "onTile": null
+    "uid": "216",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "217",
+     "169",
+     "168",
+     "215",
+     "269"
+    ],
+    "cpos": [
+     0,
+     -8,
+     8
+    ]
    },
-   "218": {
+   "217": {
     "pos": [
      -18,
      0,
      176.63
     ],
-    "uid": "218",
+    "uid": "217",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "272",
+     "218",
+     "169",
+     "216",
+     "270"
+    ],
+    "cpos": [
+     1,
+     -9,
+     8
+    ]
    },
-   "219": {
+   "218": {
     "pos": [
      -36,
      0,
      166.24
     ],
+    "uid": "218",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "273",
+     "219",
+     "170",
+     "169",
+     "217"
+    ],
+    "cpos": [
+     2,
+     -9,
+     7
+    ]
+   },
+   "219": {
+    "pos": [
+     -54,
+     0,
+     155.85
+    ],
     "uid": "219",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "274",
+     "220",
+     "171",
+     "170",
+     "218"
+    ],
+    "cpos": [
+     3,
+     -9,
+     6
+    ]
    },
    "22": {
     "pos": [
      -54,
      0,
-     31.17
+     10.39
     ],
     "uid": "22",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "41",
+     "42",
+     "23",
+     "9",
+     "8"
+    ],
+    "cpos": [
+     3,
+     -2,
+     -1
+    ]
    },
    "220": {
-    "pos": [
-     -54,
-     0,
-     155.85
-    ],
-    "uid": "220",
-    "type": "plain",
-    "onTile": null
-   },
-   "221": {
     "pos": [
      -72,
      0,
      145.46
     ],
-    "uid": "221",
+    "uid": "220",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "275",
+     "221",
+     "172",
+     "171",
+     "219"
+    ],
+    "cpos": [
+     4,
+     -9,
+     5
+    ]
    },
-   "222": {
+   "221": {
     "pos": [
      -90,
      0,
      135.07
     ],
-    "uid": "222",
-    "type": "plain",
-    "onTile": null
+    "uid": "221",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "276",
+     "222",
+     "173",
+     "172",
+     "220"
+    ],
+    "cpos": [
+     5,
+     -9,
+     4
+    ]
    },
-   "223": {
+   "222": {
     "pos": [
      -108,
      0,
      124.68
     ],
-    "uid": "223",
+    "uid": "222",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "277",
+     "223",
+     "174",
+     "173",
+     "221"
+    ],
+    "cpos": [
+     6,
+     -9,
+     3
+    ]
    },
-   "224": {
+   "223": {
     "pos": [
      -126,
      0,
      114.29
     ],
-    "uid": "224",
+    "uid": "223",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "278",
+     "224",
+     "175",
+     "174",
+     "222"
+    ],
+    "cpos": [
+     7,
+     -9,
+     2
+    ]
    },
-   "225": {
+   "224": {
     "pos": [
      -144,
      0,
      103.9
     ],
+    "uid": "224",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "279",
+     "225",
+     "176",
+     "175",
+     "223"
+    ],
+    "cpos": [
+     8,
+     -9,
+     1
+    ]
+   },
+   "225": {
+    "pos": [
+     -162,
+     0,
+     93.51
+    ],
     "uid": "225",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "280",
+     "281",
+     "226",
+     "176",
+     "224"
+    ],
+    "cpos": [
+     9,
+     -9,
+     0
+    ]
    },
    "226": {
     "pos": [
      -162,
      0,
-     93.51
+     72.73
     ],
     "uid": "226",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "281",
+     "282",
+     "227",
+     "177",
+     "176"
+    ],
+    "cpos": [
+     9,
+     -8,
+     -1
+    ]
    },
    "227": {
     "pos": [
      -162,
      0,
-     72.73
+     51.95
     ],
     "uid": "227",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "282",
+     "283",
+     "228",
+     "178",
+     "177"
+    ],
+    "cpos": [
+     9,
+     -7,
+     -2
+    ]
    },
    "228": {
     "pos": [
      -162,
      0,
-     51.95
+     31.17
     ],
     "uid": "228",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "283",
+     "284",
+     "229",
+     "179",
+     "178"
+    ],
+    "cpos": [
+     9,
+     -6,
+     -3
+    ]
    },
    "229": {
     "pos": [
      -162,
      0,
-     31.17
+     10.39
     ],
     "uid": "229",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "284",
+     "285",
+     "230",
+     "180",
+     "179"
+    ],
+    "cpos": [
+     9,
+     -5,
+     -4
+    ]
    },
    "23": {
     "pos": [
      -54,
      0,
-     10.39
+     -10.39
     ],
     "uid": "23",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "42",
+     "43",
+     "24",
+     "10",
+     "9"
+    ],
+    "cpos": [
+     3,
+     -1,
+     -2
+    ]
    },
    "230": {
     "pos": [
      -162,
      0,
-     10.39
+     -10.39
     ],
     "uid": "230",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "285",
+     "286",
+     "231",
+     "181",
+     "180"
+    ],
+    "cpos": [
+     9,
+     -4,
+     -5
+    ]
    },
    "231": {
     "pos": [
      -162,
      0,
-     -10.39
+     -31.17
     ],
     "uid": "231",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "286",
+     "287",
+     "232",
+     "182",
+     "181"
+    ],
+    "cpos": [
+     9,
+     -3,
+     -6
+    ]
    },
    "232": {
     "pos": [
      -162,
      0,
-     -31.17
+     -51.95
     ],
     "uid": "232",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "287",
+     "288",
+     "233",
+     "183",
+     "182"
+    ],
+    "cpos": [
+     9,
+     -2,
+     -7
+    ]
    },
    "233": {
     "pos": [
      -162,
      0,
-     -51.95
+     -72.73
     ],
     "uid": "233",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "288",
+     "289",
+     "234",
+     "184",
+     "183"
+    ],
+    "cpos": [
+     9,
+     -1,
+     -8
+    ]
    },
    "234": {
     "pos": [
      -162,
      0,
-     -72.73
+     -93.51
     ],
     "uid": "234",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "289",
+     "290",
+     "291",
+     "235",
+     "184"
+    ],
+    "cpos": [
+     9,
+     0,
+     -9
+    ]
    },
    "235": {
-    "pos": [
-     -162,
-     0,
-     -93.51
-    ],
-    "uid": "235",
-    "type": "plain",
-    "onTile": null
-   },
-   "236": {
     "pos": [
      -144,
      0,
      -103.9
     ],
-    "uid": "236",
-    "type": "mountain",
-    "onTile": null
+    "uid": "235",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "234",
+     "291",
+     "292",
+     "236",
+     "185"
+    ],
+    "cpos": [
+     8,
+     1,
+     -9
+    ]
    },
-   "237": {
+   "236": {
     "pos": [
      -126,
      0,
      -114.29
     ],
-    "uid": "237",
+    "uid": "236",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "235",
+     "292",
+     "293",
+     "237",
+     "186"
+    ],
+    "cpos": [
+     7,
+     2,
+     -9
+    ]
    },
-   "238": {
+   "237": {
     "pos": [
      -108,
      0,
      -124.68
     ],
-    "uid": "238",
-    "type": "plain",
-    "onTile": null
+    "uid": "237",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "236",
+     "293",
+     "294",
+     "238",
+     "187"
+    ],
+    "cpos": [
+     6,
+     3,
+     -9
+    ]
    },
-   "239": {
+   "238": {
     "pos": [
      -90,
      0,
      -135.07
     ],
+    "uid": "238",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "237",
+     "294",
+     "295",
+     "239",
+     "188"
+    ],
+    "cpos": [
+     5,
+     4,
+     -9
+    ]
+   },
+   "239": {
+    "pos": [
+     -72,
+     0,
+     -145.46
+    ],
     "uid": "239",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "238",
+     "295",
+     "296",
+     "240",
+     "189"
+    ],
+    "cpos": [
+     4,
+     5,
+     -9
+    ]
    },
    "24": {
     "pos": [
      -54,
      0,
-     -10.39
+     -31.17
     ],
     "uid": "24",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "43",
+     "44",
+     "45",
+     "25",
+     "10"
+    ],
+    "cpos": [
+     3,
+     0,
+     -3
+    ]
    },
    "240": {
-    "pos": [
-     -72,
-     0,
-     -145.46
-    ],
-    "uid": "240",
-    "type": "mountain",
-    "onTile": null
-   },
-   "241": {
     "pos": [
      -54,
      0,
      -155.85
     ],
-    "uid": "241",
+    "uid": "240",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "239",
+     "296",
+     "297",
+     "241",
+     "190"
+    ],
+    "cpos": [
+     3,
+     6,
+     -9
+    ]
    },
-   "242": {
+   "241": {
     "pos": [
      -36,
      0,
      -166.24
     ],
-    "uid": "242",
+    "uid": "241",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "240",
+     "297",
+     "298",
+     "242",
+     "191"
+    ],
+    "cpos": [
+     2,
+     7,
+     -9
+    ]
    },
-   "243": {
+   "242": {
     "pos": [
      -18,
      0,
      -176.63
     ],
-    "uid": "243",
+    "uid": "242",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "241",
+     "298",
+     "299",
+     "243",
+     "192"
+    ],
+    "cpos": [
+     1,
+     8,
+     -9
+    ]
    },
-   "244": {
+   "243": {
     "pos": [
      0,
      0,
      -187.02
     ],
-    "uid": "244",
-    "type": "mountain",
-    "onTile": null
+    "uid": "243",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "242",
+     "299",
+     "300",
+     "301",
+     "244"
+    ],
+    "cpos": [
+     0,
+     9,
+     -9
+    ]
    },
-   "245": {
+   "244": {
     "pos": [
      18,
      0,
      -176.63
     ],
-    "uid": "245",
+    "uid": "244",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "192",
+     "243",
+     "301",
+     "302",
+     "245"
+    ],
+    "cpos": [
+     -1,
+     9,
+     -8
+    ]
    },
-   "246": {
+   "245": {
     "pos": [
      36,
      0,
      -166.24
     ],
-    "uid": "246",
-    "type": "mountain",
-    "onTile": null
+    "uid": "245",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "193",
+     "244",
+     "302",
+     "303",
+     "246"
+    ],
+    "cpos": [
+     -2,
+     9,
+     -7
+    ]
    },
-   "247": {
+   "246": {
     "pos": [
      54,
      0,
      -155.85
     ],
-    "uid": "247",
-    "type": "mountain",
-    "onTile": null
+    "uid": "246",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "194",
+     "245",
+     "303",
+     "304",
+     "247"
+    ],
+    "cpos": [
+     -3,
+     9,
+     -6
+    ]
    },
-   "248": {
+   "247": {
     "pos": [
      72,
      0,
      -145.46
     ],
-    "uid": "248",
+    "uid": "247",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "195",
+     "246",
+     "304",
+     "305",
+     "248"
+    ],
+    "cpos": [
+     -4,
+     9,
+     -5
+    ]
    },
-   "249": {
+   "248": {
     "pos": [
      90,
      0,
      -135.07
     ],
-    "uid": "249",
-    "type": "plain",
-    "onTile": null
-   },
-   "25": {
-    "pos": [
-     -54,
-     0,
-     -31.17
+    "uid": "248",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "196",
+     "247",
+     "305",
+     "306",
+     "249"
     ],
-    "uid": "25",
-    "type": "plain",
-    "onTile": null
+    "cpos": [
+     -5,
+     9,
+     -4
+    ]
    },
-   "250": {
+   "249": {
     "pos": [
      108,
      0,
      -124.68
     ],
-    "uid": "250",
-    "type": "plain",
-    "onTile": null
+    "uid": "249",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "197",
+     "248",
+     "306",
+     "307",
+     "250"
+    ],
+    "cpos": [
+     -6,
+     9,
+     -3
+    ]
    },
-   "251": {
+   "25": {
+    "pos": [
+     -36,
+     0,
+     -41.56
+    ],
+    "uid": "25",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "24",
+     "45",
+     "46",
+     "26",
+     "11"
+    ],
+    "cpos": [
+     2,
+     1,
+     -3
+    ]
+   },
+   "250": {
     "pos": [
      126,
      0,
      -114.29
     ],
-    "uid": "251",
-    "type": "mountain",
-    "onTile": null
+    "uid": "250",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "198",
+     "249",
+     "307",
+     "308",
+     "251"
+    ],
+    "cpos": [
+     -7,
+     9,
+     -2
+    ]
    },
-   "252": {
+   "251": {
     "pos": [
      144,
      0,
      -103.9
     ],
-    "uid": "252",
+    "uid": "251",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "199",
+     "250",
+     "308",
+     "309",
+     "252"
+    ],
+    "cpos": [
+     -8,
+     9,
+     -1
+    ]
+   },
+   "252": {
+    "pos": [
+     162,
+     0,
+     -93.51
+    ],
+    "uid": "252",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "200",
+     "251",
+     "309",
+     "310",
+     "311"
+    ],
+    "cpos": [
+     -9,
+     9,
+     0
+    ]
    },
    "253": {
     "pos": [
      162,
      0,
-     -93.51
+     -72.73
     ],
     "uid": "253",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "201",
+     "200",
+     "252",
+     "311",
+     "312"
+    ],
+    "cpos": [
+     -9,
+     8,
+     1
+    ]
    },
    "254": {
     "pos": [
      162,
      0,
-     -72.73
+     -51.95
     ],
     "uid": "254",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "202",
+     "201",
+     "253",
+     "312",
+     "313"
+    ],
+    "cpos": [
+     -9,
+     7,
+     2
+    ]
    },
    "255": {
     "pos": [
      162,
      0,
-     -51.95
+     -31.17
     ],
     "uid": "255",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "203",
+     "202",
+     "254",
+     "313",
+     "314"
+    ],
+    "cpos": [
+     -9,
+     6,
+     3
+    ]
    },
    "256": {
     "pos": [
      162,
      0,
-     -31.17
+     -10.39
     ],
     "uid": "256",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "204",
+     "203",
+     "255",
+     "314",
+     "315"
+    ],
+    "cpos": [
+     -9,
+     5,
+     4
+    ]
    },
    "257": {
     "pos": [
      162,
      0,
-     -10.39
+     10.39
     ],
     "uid": "257",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "205",
+     "204",
+     "256",
+     "315",
+     "316"
+    ],
+    "cpos": [
+     -9,
+     4,
+     5
+    ]
    },
    "258": {
     "pos": [
      162,
      0,
-     10.39
+     31.17
     ],
     "uid": "258",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "206",
+     "205",
+     "257",
+     "316",
+     "317"
+    ],
+    "cpos": [
+     -9,
+     3,
+     6
+    ]
    },
    "259": {
     "pos": [
      162,
      0,
-     31.17
+     51.95
     ],
     "uid": "259",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "207",
+     "206",
+     "258",
+     "317",
+     "318"
+    ],
+    "cpos": [
+     -9,
+     2,
+     7
+    ]
    },
    "26": {
     "pos": [
-     -36,
+     -18,
      0,
-     -41.56
+     -51.95
     ],
     "uid": "26",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "25",
+     "46",
+     "47",
+     "27",
+     "12"
+    ],
+    "cpos": [
+     1,
+     2,
+     -3
+    ]
    },
    "260": {
     "pos": [
      162,
      0,
-     51.95
+     72.73
     ],
     "uid": "260",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "208",
+     "207",
+     "259",
+     "318",
+     "319"
+    ],
+    "cpos": [
+     -9,
+     1,
+     8
+    ]
    },
    "261": {
     "pos": [
      162,
      0,
-     72.73
+     93.51
     ],
     "uid": "261",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "262",
+     "208",
+     "260",
+     "319",
+     "320"
+    ],
+    "cpos": [
+     -9,
+     0,
+     9
+    ]
    },
    "262": {
-    "pos": [
-     162,
-     0,
-     93.51
-    ],
-    "uid": "262",
-    "type": "plain",
-    "onTile": null
-   },
-   "263": {
     "pos": [
      144,
      0,
      103.9
     ],
-    "uid": "263",
-    "type": "plain",
-    "onTile": null
+    "uid": "262",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "263",
+     "209",
+     "208",
+     "261",
+     "321"
+    ],
+    "cpos": [
+     -8,
+     -1,
+     9
+    ]
    },
-   "264": {
+   "263": {
     "pos": [
      126,
      0,
      114.29
     ],
-    "uid": "264",
-    "type": "plain",
-    "onTile": null
+    "uid": "263",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "264",
+     "210",
+     "209",
+     "262",
+     "322"
+    ],
+    "cpos": [
+     -7,
+     -2,
+     9
+    ]
    },
-   "265": {
+   "264": {
     "pos": [
      108,
      0,
      124.68
     ],
-    "uid": "265",
+    "uid": "264",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "265",
+     "211",
+     "210",
+     "263",
+     "323"
+    ],
+    "cpos": [
+     -6,
+     -3,
+     9
+    ]
    },
-   "266": {
+   "265": {
     "pos": [
      90,
      0,
      135.07
     ],
-    "uid": "266",
-    "type": "mountain",
-    "onTile": null
+    "uid": "265",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "266",
+     "212",
+     "211",
+     "264",
+     "324"
+    ],
+    "cpos": [
+     -5,
+     -4,
+     9
+    ]
    },
-   "267": {
+   "266": {
     "pos": [
      72,
      0,
      145.46
     ],
-    "uid": "267",
+    "uid": "266",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "267",
+     "213",
+     "212",
+     "265",
+     "325"
+    ],
+    "cpos": [
+     -4,
+     -5,
+     9
+    ]
    },
-   "268": {
+   "267": {
     "pos": [
      54,
      0,
      155.85
     ],
-    "uid": "268",
+    "uid": "267",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "268",
+     "214",
+     "213",
+     "266",
+     "326"
+    ],
+    "cpos": [
+     -3,
+     -6,
+     9
+    ]
    },
-   "269": {
+   "268": {
     "pos": [
      36,
      0,
      166.24
     ],
-    "uid": "269",
+    "uid": "268",
     "type": "plain",
-    "onTile": null
-   },
-   "27": {
-    "pos": [
-     -18,
-     0,
-     -51.95
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "269",
+     "215",
+     "214",
+     "267",
+     "327"
     ],
-    "uid": "27",
-    "type": "plain",
-    "onTile": null
+    "cpos": [
+     -2,
+     -7,
+     9
+    ]
    },
-   "270": {
+   "269": {
     "pos": [
      18,
      0,
      176.63
     ],
-    "uid": "270",
-    "type": "mountain",
-    "onTile": null
-   },
-   "271": {
-    "pos": [
-     0,
-     0,
-     187.02
-    ],
-    "uid": "271",
+    "uid": "269",
     "type": "plain",
-    "onTile": null
-   },
-   "272": {
-    "pos": [
-     -18,
-     0,
-     197.41
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "270",
+     "216",
+     "215",
+     "268",
+     "328"
     ],
-    "uid": "272",
-    "type": "plain",
-    "onTile": null
+    "cpos": [
+     -1,
+     -8,
+     9
+    ]
    },
-   "273": {
-    "pos": [
-     -36,
-     0,
-     187.02
-    ],
-    "uid": "273",
-    "type": "mountain",
-    "onTile": null
-   },
-   "274": {
-    "pos": [
-     -54,
-     0,
-     176.63
-    ],
-    "uid": "274",
-    "type": "plain",
-    "onTile": null
-   },
-   "275": {
-    "pos": [
-     -72,
-     0,
-     166.24
-    ],
-    "uid": "275",
-    "type": "plain",
-    "onTile": null
-   },
-   "276": {
-    "pos": [
-     -90,
-     0,
-     155.85
-    ],
-    "uid": "276",
-    "type": "plain",
-    "onTile": null
-   },
-   "277": {
-    "pos": [
-     -108,
-     0,
-     145.46
-    ],
-    "uid": "277",
-    "type": "mountain",
-    "onTile": null
-   },
-   "278": {
-    "pos": [
-     -126,
-     0,
-     135.07
-    ],
-    "uid": "278",
-    "type": "plain",
-    "onTile": null
-   },
-   "279": {
-    "pos": [
-     -144,
-     0,
-     124.68
-    ],
-    "uid": "279",
-    "type": "mountain",
-    "onTile": null
-   },
-   "28": {
+   "27": {
     "pos": [
      0,
      0,
      -62.34
     ],
-    "uid": "28",
-    "type": "plain",
-    "onTile": null
+    "uid": "27",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "26",
+     "47",
+     "48",
+     "49",
+     "28"
+    ],
+    "cpos": [
+     0,
+     3,
+     -3
+    ]
    },
-   "280": {
+   "270": {
+    "pos": [
+     0,
+     0,
+     187.02
+    ],
+    "uid": "270",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "271",
+     "217",
+     "216",
+     "269",
+     "329"
+    ],
+    "cpos": [
+     0,
+     -9,
+     9
+    ]
+   },
+   "271": {
+    "pos": [
+     -18,
+     0,
+     197.41
+    ],
+    "uid": "271",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "272",
+     "217",
+     "270",
+     "330"
+    ],
+    "cpos": [
+     1,
+     -10,
+     9
+    ]
+   },
+   "272": {
+    "pos": [
+     -36,
+     0,
+     187.02
+    ],
+    "uid": "272",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "273",
+     "218",
+     "217",
+     "271"
+    ],
+    "cpos": [
+     2,
+     -10,
+     8
+    ]
+   },
+   "273": {
+    "pos": [
+     -54,
+     0,
+     176.63
+    ],
+    "uid": "273",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "274",
+     "219",
+     "218",
+     "272"
+    ],
+    "cpos": [
+     3,
+     -10,
+     7
+    ]
+   },
+   "274": {
+    "pos": [
+     -72,
+     0,
+     166.24
+    ],
+    "uid": "274",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "275",
+     "220",
+     "219",
+     "273"
+    ],
+    "cpos": [
+     4,
+     -10,
+     6
+    ]
+   },
+   "275": {
+    "pos": [
+     -90,
+     0,
+     155.85
+    ],
+    "uid": "275",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "276",
+     "221",
+     "220",
+     "274"
+    ],
+    "cpos": [
+     5,
+     -10,
+     5
+    ]
+   },
+   "276": {
+    "pos": [
+     -108,
+     0,
+     145.46
+    ],
+    "uid": "276",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "277",
+     "222",
+     "221",
+     "275"
+    ],
+    "cpos": [
+     6,
+     -10,
+     4
+    ]
+   },
+   "277": {
+    "pos": [
+     -126,
+     0,
+     135.07
+    ],
+    "uid": "277",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "278",
+     "223",
+     "222",
+     "276"
+    ],
+    "cpos": [
+     7,
+     -10,
+     3
+    ]
+   },
+   "278": {
+    "pos": [
+     -144,
+     0,
+     124.68
+    ],
+    "uid": "278",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "279",
+     "224",
+     "223",
+     "277"
+    ],
+    "cpos": [
+     8,
+     -10,
+     2
+    ]
+   },
+   "279": {
     "pos": [
      -162,
      0,
      114.29
     ],
-    "uid": "280",
+    "uid": "279",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "280",
+     "225",
+     "224",
+     "278"
+    ],
+    "cpos": [
+     9,
+     -10,
+     1
+    ]
+   },
+   "28": {
+    "pos": [
+     18,
+     0,
+     -51.95
+    ],
+    "uid": "28",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "12",
+     "27",
+     "49",
+     "50",
+     "29"
+    ],
+    "cpos": [
+     -1,
+     3,
+     -2
+    ]
+   },
+   "280": {
+    "pos": [
+     -180,
+     0,
+     103.9
+    ],
+    "uid": "280",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "281",
+     "225",
+     "279"
+    ],
+    "cpos": [
+     10,
+     -10,
+     0
+    ]
    },
    "281": {
     "pos": [
      -180,
      0,
-     103.9
+     83.12
     ],
     "uid": "281",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "282",
+     "226",
+     "225"
+    ],
+    "cpos": [
+     10,
+     -9,
+     -1
+    ]
    },
    "282": {
     "pos": [
      -180,
      0,
-     83.12
+     62.34
     ],
     "uid": "282",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "283",
+     "227",
+     "226"
+    ],
+    "cpos": [
+     10,
+     -8,
+     -2
+    ]
    },
    "283": {
     "pos": [
      -180,
      0,
-     62.34
+     41.56
     ],
     "uid": "283",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "284",
+     "228",
+     "227"
+    ],
+    "cpos": [
+     10,
+     -7,
+     -3
+    ]
    },
    "284": {
     "pos": [
      -180,
      0,
-     41.56
+     20.78
     ],
     "uid": "284",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "285",
+     "229",
+     "228"
+    ],
+    "cpos": [
+     10,
+     -6,
+     -4
+    ]
    },
    "285": {
     "pos": [
      -180,
      0,
-     20.78
+     -1.4210855e-14
     ],
     "uid": "285",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "284",
+     "null",
+     "null",
+     "286",
+     "230",
+     "229"
+    ],
+    "cpos": [
+     10,
+     -5,
+     -5
+    ]
    },
    "286": {
     "pos": [
      -180,
      0,
-     -1.4210855e-14
+     -20.78
     ],
     "uid": "286",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "287",
+     "231",
+     "230"
+    ],
+    "cpos": [
+     10,
+     -4,
+     -6
+    ]
    },
    "287": {
     "pos": [
      -180,
      0,
-     -20.78
+     -41.56
     ],
     "uid": "287",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "288",
+     "232",
+     "231"
+    ],
+    "cpos": [
+     10,
+     -3,
+     -7
+    ]
    },
    "288": {
     "pos": [
      -180,
      0,
-     -41.56
+     -62.34
     ],
     "uid": "288",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "289",
+     "233",
+     "232"
+    ],
+    "cpos": [
+     10,
+     -2,
+     -8
+    ]
    },
    "289": {
     "pos": [
      -180,
      0,
-     -62.34
+     -83.12
     ],
     "uid": "289",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "290",
+     "234",
+     "233"
+    ],
+    "cpos": [
+     10,
+     -1,
+     -9
+    ]
    },
    "29": {
     "pos": [
-     18,
+     36,
      0,
-     -51.95
+     -41.56
     ],
     "uid": "29",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "13",
+     "28",
+     "50",
+     "51",
+     "30"
+    ],
+    "cpos": [
+     -2,
+     3,
+     -1
+    ]
    },
    "290": {
     "pos": [
      -180,
      0,
-     -83.12
-    ],
-    "uid": "290",
-    "type": "plain",
-    "onTile": null
-   },
-   "291": {
-    "pos": [
-     -180,
-     0,
      -103.9
     ],
-    "uid": "291",
+    "uid": "290",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "null",
+     "null",
+     "291",
+     "234"
+    ],
+    "cpos": [
+     10,
+     0,
+     -10
+    ]
    },
-   "292": {
+   "291": {
     "pos": [
      -162,
      0,
      -114.29
     ],
-    "uid": "292",
-    "type": "mountain",
-    "onTile": null
+    "uid": "291",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "290",
+     "null",
+     "null",
+     "292",
+     "235"
+    ],
+    "cpos": [
+     9,
+     1,
+     -10
+    ]
    },
-   "293": {
+   "292": {
     "pos": [
      -144,
      0,
      -124.68
     ],
-    "uid": "293",
+    "uid": "292",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "291",
+     "null",
+     "null",
+     "293",
+     "236"
+    ],
+    "cpos": [
+     8,
+     2,
+     -10
+    ]
    },
-   "294": {
+   "293": {
     "pos": [
      -126,
      0,
      -135.07
     ],
-    "uid": "294",
+    "uid": "293",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "292",
+     "null",
+     "null",
+     "294",
+     "237"
+    ],
+    "cpos": [
+     7,
+     3,
+     -10
+    ]
    },
-   "295": {
+   "294": {
     "pos": [
      -108,
      0,
      -145.46
     ],
-    "uid": "295",
+    "uid": "294",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "293",
+     "null",
+     "null",
+     "295",
+     "238"
+    ],
+    "cpos": [
+     6,
+     4,
+     -10
+    ]
    },
-   "296": {
+   "295": {
     "pos": [
      -90,
      0,
      -155.85
     ],
-    "uid": "296",
-    "type": "mountain",
-    "onTile": null
+    "uid": "295",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "294",
+     "null",
+     "null",
+     "296",
+     "239"
+    ],
+    "cpos": [
+     5,
+     5,
+     -10
+    ]
    },
-   "297": {
+   "296": {
     "pos": [
      -72,
      0,
      -166.24
     ],
-    "uid": "297",
-    "type": "plain",
-    "onTile": null
+    "uid": "296",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "295",
+     "null",
+     "null",
+     "297",
+     "240"
+    ],
+    "cpos": [
+     4,
+     6,
+     -10
+    ]
    },
-   "298": {
+   "297": {
     "pos": [
      -54,
      0,
      -176.63
     ],
-    "uid": "298",
+    "uid": "297",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "296",
+     "null",
+     "null",
+     "298",
+     "241"
+    ],
+    "cpos": [
+     3,
+     7,
+     -10
+    ]
    },
-   "299": {
+   "298": {
     "pos": [
      -36,
      0,
      -187.02
     ],
-    "uid": "299",
-    "type": "plain",
-    "onTile": null
-   },
-   "3": {
-    "pos": [
-     -18,
-     0,
-     -10.39
+    "uid": "298",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "297",
+     "null",
+     "null",
+     "299",
+     "242"
     ],
-    "uid": "3",
-    "type": "plain",
-    "onTile": null
+    "cpos": [
+     2,
+     8,
+     -10
+    ]
    },
-   "30": {
-    "pos": [
-     36,
-     0,
-     -41.56
-    ],
-    "uid": "30",
-    "type": "plain",
-    "onTile": null
-   },
-   "300": {
+   "299": {
     "pos": [
      -18,
      0,
      -197.41
     ],
-    "uid": "300",
+    "uid": "299",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "298",
+     "null",
+     "null",
+     "300",
+     "243"
+    ],
+    "cpos": [
+     1,
+     9,
+     -10
+    ]
    },
-   "301": {
+   "3": {
+    "pos": [
+     0,
+     0,
+     -20.78
+    ],
+    "uid": "3",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "2",
+     "11",
+     "12",
+     "13",
+     "4"
+    ],
+    "cpos": [
+     0,
+     1,
+     -1
+    ]
+   },
+   "30": {
+    "pos": [
+     54,
+     0,
+     -31.17
+    ],
+    "uid": "30",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "14",
+     "29",
+     "51",
+     "52",
+     "53"
+    ],
+    "cpos": [
+     -3,
+     3,
+     0
+    ]
+   },
+   "300": {
     "pos": [
      0,
      0,
      -207.8
     ],
-    "uid": "301",
-    "type": "plain",
-    "onTile": null
+    "uid": "300",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "299",
+     "null",
+     "null",
+     "null",
+     "301"
+    ],
+    "cpos": [
+     0,
+     10,
+     -10
+    ]
    },
-   "302": {
+   "301": {
     "pos": [
      18,
      0,
      -197.41
     ],
-    "uid": "302",
-    "type": "plain",
-    "onTile": null
+    "uid": "301",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "243",
+     "300",
+     "null",
+     "null",
+     "302"
+    ],
+    "cpos": [
+     -1,
+     10,
+     -9
+    ]
    },
-   "303": {
+   "302": {
     "pos": [
      36,
      0,
      -187.02
     ],
-    "uid": "303",
-    "type": "plain",
-    "onTile": null
+    "uid": "302",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "244",
+     "301",
+     "null",
+     "null",
+     "303"
+    ],
+    "cpos": [
+     -2,
+     10,
+     -8
+    ]
    },
-   "304": {
+   "303": {
     "pos": [
      54,
      0,
      -176.63
     ],
-    "uid": "304",
-    "type": "plain",
-    "onTile": null
+    "uid": "303",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "245",
+     "302",
+     "null",
+     "null",
+     "304"
+    ],
+    "cpos": [
+     -3,
+     10,
+     -7
+    ]
    },
-   "305": {
+   "304": {
     "pos": [
      72,
      0,
      -166.24
     ],
-    "uid": "305",
+    "uid": "304",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "246",
+     "303",
+     "null",
+     "null",
+     "305"
+    ],
+    "cpos": [
+     -4,
+     10,
+     -6
+    ]
    },
-   "306": {
+   "305": {
     "pos": [
      90,
      0,
      -155.85
     ],
-    "uid": "306",
-    "type": "mountain",
-    "onTile": null
+    "uid": "305",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "247",
+     "304",
+     "null",
+     "null",
+     "306"
+    ],
+    "cpos": [
+     -5,
+     10,
+     -5
+    ]
    },
-   "307": {
+   "306": {
     "pos": [
      108,
      0,
      -145.46
     ],
-    "uid": "307",
-    "type": "mountain",
-    "onTile": null
+    "uid": "306",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "248",
+     "305",
+     "null",
+     "null",
+     "307"
+    ],
+    "cpos": [
+     -6,
+     10,
+     -4
+    ]
    },
-   "308": {
+   "307": {
     "pos": [
      126,
      0,
      -135.07
     ],
-    "uid": "308",
-    "type": "mountain",
-    "onTile": null
+    "uid": "307",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "249",
+     "306",
+     "null",
+     "null",
+     "308"
+    ],
+    "cpos": [
+     -7,
+     10,
+     -3
+    ]
    },
-   "309": {
+   "308": {
     "pos": [
      144,
      0,
      -124.68
     ],
-    "uid": "309",
-    "type": "mountain",
-    "onTile": null
-   },
-   "31": {
-    "pos": [
-     54,
-     0,
-     -31.17
-    ],
-    "uid": "31",
+    "uid": "308",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "250",
+     "307",
+     "null",
+     "null",
+     "309"
+    ],
+    "cpos": [
+     -8,
+     10,
+     -2
+    ]
    },
-   "310": {
+   "309": {
     "pos": [
      162,
      0,
      -114.29
     ],
+    "uid": "309",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "251",
+     "308",
+     "null",
+     "null",
+     "310"
+    ],
+    "cpos": [
+     -9,
+     10,
+     -1
+    ]
+   },
+   "31": {
+    "pos": [
+     54,
+     0,
+     -10.39
+    ],
+    "uid": "31",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "15",
+     "14",
+     "30",
+     "53",
+     "54"
+    ],
+    "cpos": [
+     -3,
+     2,
+     1
+    ]
+   },
+   "310": {
+    "pos": [
+     180,
+     0,
+     -103.9
+    ],
     "uid": "310",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "252",
+     "309",
+     "null",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     10,
+     0
+    ]
    },
    "311": {
     "pos": [
      180,
      0,
-     -103.9
+     -83.12
     ],
     "uid": "311",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "253",
+     "252",
+     "310",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     9,
+     1
+    ]
    },
    "312": {
     "pos": [
      180,
      0,
-     -83.12
+     -62.34
     ],
     "uid": "312",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "254",
+     "253",
+     "311",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     8,
+     2
+    ]
    },
    "313": {
     "pos": [
      180,
      0,
-     -62.34
+     -41.56
     ],
     "uid": "313",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "255",
+     "254",
+     "312",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     7,
+     3
+    ]
    },
    "314": {
     "pos": [
      180,
      0,
-     -41.56
+     -20.78
     ],
     "uid": "314",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "256",
+     "255",
+     "313",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     6,
+     4
+    ]
    },
    "315": {
     "pos": [
      180,
      0,
-     -20.78
+     -4.2632564e-14
     ],
     "uid": "315",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "316",
+     "257",
+     "256",
+     "314",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     5,
+     5
+    ]
    },
    "316": {
     "pos": [
      180,
      0,
-     -4.2632564e-14
+     20.78
     ],
     "uid": "316",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "258",
+     "257",
+     "315",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     4,
+     6
+    ]
    },
    "317": {
     "pos": [
      180,
      0,
-     20.78
+     41.56
     ],
     "uid": "317",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "259",
+     "258",
+     "316",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     3,
+     7
+    ]
    },
    "318": {
     "pos": [
      180,
      0,
-     41.56
+     62.34
     ],
     "uid": "318",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "260",
+     "259",
+     "317",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     2,
+     8
+    ]
    },
    "319": {
     "pos": [
      180,
      0,
-     62.34
+     83.12
     ],
     "uid": "319",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "261",
+     "260",
+     "318",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     1,
+     9
+    ]
    },
    "32": {
     "pos": [
      54,
      0,
-     -10.39
+     10.39
     ],
     "uid": "32",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "16",
+     "15",
+     "31",
+     "54",
+     "55"
+    ],
+    "cpos": [
+     -3,
+     1,
+     2
+    ]
    },
    "320": {
     "pos": [
      180,
      0,
-     83.12
+     103.9
     ],
     "uid": "320",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "321",
+     "261",
+     "319",
+     "null",
+     "null"
+    ],
+    "cpos": [
+     -10,
+     0,
+     10
+    ]
    },
    "321": {
-    "pos": [
-     180,
-     0,
-     103.9
-    ],
-    "uid": "321",
-    "type": "mountain",
-    "onTile": null
-   },
-   "322": {
     "pos": [
      162,
      0,
      114.29
     ],
-    "uid": "322",
+    "uid": "321",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "322",
+     "262",
+     "261",
+     "320",
+     "null"
+    ],
+    "cpos": [
+     -9,
+     -1,
+     10
+    ]
    },
-   "323": {
+   "322": {
     "pos": [
      144,
      0,
      124.68
     ],
-    "uid": "323",
+    "uid": "322",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "323",
+     "263",
+     "262",
+     "321",
+     "null"
+    ],
+    "cpos": [
+     -8,
+     -2,
+     10
+    ]
    },
-   "324": {
+   "323": {
     "pos": [
      126,
      0,
      135.07
     ],
-    "uid": "324",
+    "uid": "323",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "324",
+     "264",
+     "263",
+     "322",
+     "null"
+    ],
+    "cpos": [
+     -7,
+     -3,
+     10
+    ]
    },
-   "325": {
+   "324": {
     "pos": [
      108,
      0,
      145.46
     ],
-    "uid": "325",
-    "type": "plain",
-    "onTile": null
+    "uid": "324",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "325",
+     "265",
+     "264",
+     "323",
+     "null"
+    ],
+    "cpos": [
+     -6,
+     -4,
+     10
+    ]
    },
-   "326": {
+   "325": {
     "pos": [
      90,
      0,
      155.85
     ],
-    "uid": "326",
-    "type": "mountain",
-    "onTile": null
+    "uid": "325",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "326",
+     "266",
+     "265",
+     "324",
+     "null"
+    ],
+    "cpos": [
+     -5,
+     -5,
+     10
+    ]
    },
-   "327": {
+   "326": {
     "pos": [
      72,
      0,
      166.24
     ],
-    "uid": "327",
-    "type": "plain",
-    "onTile": null
+    "uid": "326",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "327",
+     "267",
+     "266",
+     "325",
+     "null"
+    ],
+    "cpos": [
+     -4,
+     -6,
+     10
+    ]
    },
-   "328": {
+   "327": {
     "pos": [
      54,
      0,
      176.63
     ],
-    "uid": "328",
-    "type": "mountain",
-    "onTile": null
+    "uid": "327",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "328",
+     "268",
+     "267",
+     "326",
+     "null"
+    ],
+    "cpos": [
+     -3,
+     -7,
+     10
+    ]
    },
-   "329": {
+   "328": {
     "pos": [
      36,
      0,
      187.02
     ],
-    "uid": "329",
+    "uid": "328",
     "type": "mountain",
-    "onTile": null
-   },
-   "33": {
-    "pos": [
-     54,
-     0,
-     10.39
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "329",
+     "269",
+     "268",
+     "327",
+     "null"
     ],
-    "uid": "33",
-    "type": "mountain",
-    "onTile": null
+    "cpos": [
+     -2,
+     -8,
+     10
+    ]
    },
-   "330": {
+   "329": {
     "pos": [
      18,
      0,
      197.41
     ],
-    "uid": "330",
-    "type": "plain",
-    "onTile": null
+    "uid": "329",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "330",
+     "270",
+     "269",
+     "328",
+     "null"
+    ],
+    "cpos": [
+     -1,
+     -9,
+     10
+    ]
    },
-   "331": {
+   "33": {
+    "pos": [
+     54,
+     0,
+     31.17
+    ],
+    "uid": "33",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "34",
+     "16",
+     "32",
+     "55",
+     "56"
+    ],
+    "cpos": [
+     -3,
+     0,
+     3
+    ]
+   },
+   "330": {
     "pos": [
      0,
      0,
      207.8
     ],
-    "uid": "331",
+    "uid": "330",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "null",
+     "271",
+     "270",
+     "329",
+     "null"
+    ],
+    "cpos": [
+     0,
+     -10,
+     10
+    ]
    },
    "34": {
-    "pos": [
-     54,
-     0,
-     31.17
-    ],
-    "uid": "34",
-    "type": "plain",
-    "onTile": null
-   },
-   "35": {
     "pos": [
      36,
      0,
      41.56
     ],
-    "uid": "35",
-    "type": "plain",
-    "onTile": null
+    "uid": "34",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "35",
+     "17",
+     "16",
+     "33",
+     "57"
+    ],
+    "cpos": [
+     -2,
+     -1,
+     3
+    ]
    },
-   "36": {
+   "35": {
     "pos": [
      18,
      0,
      51.95
     ],
-    "uid": "36",
-    "type": "plain",
-    "onTile": null
+    "uid": "35",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "36",
+     "18",
+     "17",
+     "34",
+     "58"
+    ],
+    "cpos": [
+     -1,
+     -2,
+     3
+    ]
    },
-   "37": {
+   "36": {
     "pos": [
      0,
      0,
      62.34
     ],
-    "uid": "37",
-    "type": "mountain",
-    "onTile": null
+    "uid": "36",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "37",
+     "19",
+     "18",
+     "35",
+     "59"
+    ],
+    "cpos": [
+     0,
+     -3,
+     3
+    ]
    },
-   "38": {
+   "37": {
     "pos": [
      -18,
      0,
      72.73
     ],
-    "uid": "38",
+    "uid": "37",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "62",
+     "38",
+     "19",
+     "36",
+     "60"
+    ],
+    "cpos": [
+     1,
+     -4,
+     3
+    ]
    },
-   "39": {
+   "38": {
     "pos": [
      -36,
      0,
      62.34
     ],
-    "uid": "39",
-    "type": "plain",
-    "onTile": null
-   },
-   "4": {
-    "pos": [
-     0,
-     0,
-     -20.78
-    ],
-    "uid": "4",
+    "uid": "38",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "63",
+     "39",
+     "20",
+     "19",
+     "37"
+    ],
+    "cpos": [
+     2,
+     -4,
+     2
+    ]
    },
-   "40": {
+   "39": {
     "pos": [
      -54,
      0,
      51.95
     ],
+    "uid": "39",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "64",
+     "40",
+     "21",
+     "20",
+     "38"
+    ],
+    "cpos": [
+     3,
+     -4,
+     1
+    ]
+   },
+   "4": {
+    "pos": [
+     18,
+     0,
+     -10.39
+    ],
+    "uid": "4",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "0",
+     "3",
+     "13",
+     "14",
+     "15"
+    ],
+    "cpos": [
+     -1,
+     1,
+     0
+    ]
+   },
+   "40": {
+    "pos": [
+     -72,
+     0,
+     41.56
+    ],
     "uid": "40",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "65",
+     "66",
+     "41",
+     "21",
+     "39"
+    ],
+    "cpos": [
+     4,
+     -4,
+     0
+    ]
    },
    "41": {
     "pos": [
      -72,
      0,
-     41.56
+     20.78
     ],
     "uid": "41",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "66",
+     "67",
+     "42",
+     "22",
+     "21"
+    ],
+    "cpos": [
+     4,
+     -3,
+     -1
+    ]
    },
    "42": {
     "pos": [
      -72,
      0,
-     20.78
+     0
     ],
     "uid": "42",
-    "type": "mountain",
-    "onTile": null
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "41",
+     "67",
+     "68",
+     "43",
+     "23",
+     "22"
+    ],
+    "cpos": [
+     4,
+     -2,
+     -2
+    ]
    },
    "43": {
     "pos": [
      -72,
      0,
-     0
+     -20.78
     ],
     "uid": "43",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "68",
+     "69",
+     "44",
+     "24",
+     "23"
+    ],
+    "cpos": [
+     4,
+     -1,
+     -3
+    ]
    },
    "44": {
     "pos": [
      -72,
      0,
-     -20.78
+     -41.56
     ],
     "uid": "44",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "69",
+     "70",
+     "71",
+     "45",
+     "24"
+    ],
+    "cpos": [
+     4,
+     0,
+     -4
+    ]
    },
    "45": {
-    "pos": [
-     -72,
-     0,
-     -41.56
-    ],
-    "uid": "45",
-    "type": "mountain",
-    "onTile": null
-   },
-   "46": {
     "pos": [
      -54,
      0,
      -51.95
     ],
-    "uid": "46",
-    "type": "plain",
-    "onTile": null
+    "uid": "45",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "44",
+     "71",
+     "72",
+     "46",
+     "25"
+    ],
+    "cpos": [
+     3,
+     1,
+     -4
+    ]
    },
-   "47": {
+   "46": {
     "pos": [
      -36,
      0,
      -62.34
     ],
-    "uid": "47",
-    "type": "mountain",
-    "onTile": null
+    "uid": "46",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "45",
+     "72",
+     "73",
+     "47",
+     "26"
+    ],
+    "cpos": [
+     2,
+     2,
+     -4
+    ]
    },
-   "48": {
+   "47": {
     "pos": [
      -18,
      0,
      -72.73
     ],
-    "uid": "48",
-    "type": "mountain",
-    "onTile": null
+    "uid": "47",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "46",
+     "73",
+     "74",
+     "48",
+     "27"
+    ],
+    "cpos": [
+     1,
+     3,
+     -4
+    ]
    },
-   "49": {
+   "48": {
     "pos": [
      0,
      0,
      -83.12
     ],
+    "uid": "48",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "47",
+     "74",
+     "75",
+     "76",
+     "49"
+    ],
+    "cpos": [
+     0,
+     4,
+     -4
+    ]
+   },
+   "49": {
+    "pos": [
+     18,
+     0,
+     -72.73
+    ],
     "uid": "49",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "27",
+     "48",
+     "76",
+     "77",
+     "50"
+    ],
+    "cpos": [
+     -1,
+     4,
+     -3
+    ]
    },
    "5": {
     "pos": [
      18,
      0,
-     -10.39
+     10.39
     ],
     "uid": "5",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "6",
+     "0",
+     "4",
+     "15",
+     "16"
+    ],
+    "cpos": [
+     -1,
+     0,
+     1
+    ]
    },
    "50": {
-    "pos": [
-     18,
-     0,
-     -72.73
-    ],
-    "uid": "50",
-    "type": "plain",
-    "onTile": null
-   },
-   "51": {
     "pos": [
      36,
      0,
      -62.34
     ],
-    "uid": "51",
-    "type": "plain",
-    "onTile": null
+    "uid": "50",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "28",
+     "49",
+     "77",
+     "78",
+     "51"
+    ],
+    "cpos": [
+     -2,
+     4,
+     -2
+    ]
    },
-   "52": {
+   "51": {
     "pos": [
      54,
      0,
      -51.95
     ],
-    "uid": "52",
+    "uid": "51",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "29",
+     "50",
+     "78",
+     "79",
+     "52"
+    ],
+    "cpos": [
+     -3,
+     4,
+     -1
+    ]
    },
-   "53": {
+   "52": {
     "pos": [
      72,
      0,
      -41.56
     ],
-    "uid": "53",
-    "type": "mountain",
-    "onTile": null
+    "uid": "52",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "30",
+     "51",
+     "79",
+     "80",
+     "81"
+    ],
+    "cpos": [
+     -4,
+     4,
+     0
+    ]
    },
-   "54": {
+   "53": {
     "pos": [
      72,
      0,
      -20.78
     ],
-    "uid": "54",
-    "type": "plain",
-    "onTile": null
+    "uid": "53",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "31",
+     "30",
+     "52",
+     "81",
+     "82"
+    ],
+    "cpos": [
+     -4,
+     3,
+     1
+    ]
    },
-   "55": {
+   "54": {
     "pos": [
      72,
      0,
      0
     ],
+    "uid": "54",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "55",
+     "32",
+     "31",
+     "53",
+     "82",
+     "83"
+    ],
+    "cpos": [
+     -4,
+     2,
+     2
+    ]
+   },
+   "55": {
+    "pos": [
+     72,
+     0,
+     20.78
+    ],
     "uid": "55",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "33",
+     "32",
+     "54",
+     "83",
+     "84"
+    ],
+    "cpos": [
+     -4,
+     1,
+     3
+    ]
    },
    "56": {
     "pos": [
      72,
      0,
-     20.78
-    ],
-    "uid": "56",
-    "type": "plain",
-    "onTile": null
-   },
-   "57": {
-    "pos": [
-     72,
-     0,
      41.56
     ],
-    "uid": "57",
-    "type": "plain",
-    "onTile": null
+    "uid": "56",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "57",
+     "33",
+     "55",
+     "84",
+     "85"
+    ],
+    "cpos": [
+     -4,
+     0,
+     4
+    ]
    },
-   "58": {
+   "57": {
     "pos": [
      54,
      0,
      51.95
     ],
-    "uid": "58",
+    "uid": "57",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "58",
+     "34",
+     "33",
+     "56",
+     "86"
+    ],
+    "cpos": [
+     -3,
+     -1,
+     4
+    ]
    },
-   "59": {
+   "58": {
     "pos": [
      36,
      0,
      62.34
     ],
-    "uid": "59",
+    "uid": "58",
     "type": "plain",
-    "onTile": null
-   },
-   "6": {
-    "pos": [
-     18,
-     0,
-     10.39
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "59",
+     "35",
+     "34",
+     "57",
+     "87"
     ],
-    "uid": "6",
-    "type": "plain",
-    "onTile": null
+    "cpos": [
+     -2,
+     -2,
+     4
+    ]
    },
-   "60": {
+   "59": {
     "pos": [
      18,
      0,
      72.73
     ],
-    "uid": "60",
-    "type": "plain",
-    "onTile": null
+    "uid": "59",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "60",
+     "36",
+     "35",
+     "58",
+     "88"
+    ],
+    "cpos": [
+     -1,
+     -3,
+     4
+    ]
    },
-   "61": {
+   "6": {
+    "pos": [
+     0,
+     0,
+     20.78
+    ],
+    "uid": "6",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "7",
+     "1",
+     "0",
+     "5",
+     "17"
+    ],
+    "cpos": [
+     0,
+     -1,
+     1
+    ]
+   },
+   "60": {
     "pos": [
      0,
      0,
      83.12
     ],
-    "uid": "61",
+    "uid": "60",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "61",
+     "37",
+     "36",
+     "59",
+     "89"
+    ],
+    "cpos": [
+     0,
+     -4,
+     4
+    ]
    },
-   "62": {
+   "61": {
     "pos": [
      -18,
      0,
      93.51
     ],
-    "uid": "62",
-    "type": "mountain",
-    "onTile": null
+    "uid": "61",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "92",
+     "62",
+     "37",
+     "60",
+     "90"
+    ],
+    "cpos": [
+     1,
+     -5,
+     4
+    ]
    },
-   "63": {
+   "62": {
     "pos": [
      -36,
      0,
      83.12
     ],
-    "uid": "63",
-    "type": "mountain",
-    "onTile": null
+    "uid": "62",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "93",
+     "63",
+     "38",
+     "37",
+     "61"
+    ],
+    "cpos": [
+     2,
+     -5,
+     3
+    ]
    },
-   "64": {
+   "63": {
     "pos": [
      -54,
      0,
      72.73
     ],
-    "uid": "64",
+    "uid": "63",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "94",
+     "64",
+     "39",
+     "38",
+     "62"
+    ],
+    "cpos": [
+     3,
+     -5,
+     2
+    ]
    },
-   "65": {
+   "64": {
     "pos": [
      -72,
      0,
      62.34
     ],
+    "uid": "64",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "95",
+     "65",
+     "40",
+     "39",
+     "63"
+    ],
+    "cpos": [
+     4,
+     -5,
+     1
+    ]
+   },
+   "65": {
+    "pos": [
+     -90,
+     0,
+     51.95
+    ],
     "uid": "65",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "96",
+     "97",
+     "66",
+     "40",
+     "64"
+    ],
+    "cpos": [
+     5,
+     -5,
+     0
+    ]
    },
    "66": {
     "pos": [
      -90,
      0,
-     51.95
+     31.17
     ],
     "uid": "66",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "97",
+     "98",
+     "67",
+     "41",
+     "40"
+    ],
+    "cpos": [
+     5,
+     -4,
+     -1
+    ]
    },
    "67": {
     "pos": [
      -90,
      0,
-     31.17
+     10.39
     ],
     "uid": "67",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "98",
+     "99",
+     "68",
+     "42",
+     "41"
+    ],
+    "cpos": [
+     5,
+     -3,
+     -2
+    ]
    },
    "68": {
     "pos": [
      -90,
      0,
-     10.39
+     -10.39
     ],
     "uid": "68",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "99",
+     "100",
+     "69",
+     "43",
+     "42"
+    ],
+    "cpos": [
+     5,
+     -2,
+     -3
+    ]
    },
    "69": {
     "pos": [
      -90,
      0,
-     -10.39
+     -31.17
     ],
     "uid": "69",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "100",
+     "101",
+     "70",
+     "44",
+     "43"
+    ],
+    "cpos": [
+     5,
+     -1,
+     -4
+    ]
    },
    "7": {
     "pos": [
+     -18,
      0,
-     0,
-     20.78
+     31.17
     ],
     "uid": "7",
-    "type": "plain",
-    "onTile": null
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "20",
+     "8",
+     "1",
+     "6",
+     "18"
+    ],
+    "cpos": [
+     1,
+     -2,
+     1
+    ]
    },
    "70": {
     "pos": [
      -90,
      0,
-     -31.17
-    ],
-    "uid": "70",
-    "type": "plain",
-    "onTile": null
-   },
-   "71": {
-    "pos": [
-     -90,
-     0,
      -51.95
     ],
-    "uid": "71",
-    "type": "plain",
-    "onTile": null
+    "uid": "70",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "101",
+     "102",
+     "103",
+     "71",
+     "44"
+    ],
+    "cpos": [
+     5,
+     0,
+     -5
+    ]
    },
-   "72": {
+   "71": {
     "pos": [
      -72,
      0,
      -62.34
     ],
-    "uid": "72",
+    "uid": "71",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "70",
+     "103",
+     "104",
+     "72",
+     "45"
+    ],
+    "cpos": [
+     4,
+     1,
+     -5
+    ]
    },
-   "73": {
+   "72": {
     "pos": [
      -54,
      0,
      -72.73
     ],
-    "uid": "73",
-    "type": "mountain",
-    "onTile": null
+    "uid": "72",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "71",
+     "104",
+     "105",
+     "73",
+     "46"
+    ],
+    "cpos": [
+     3,
+     2,
+     -5
+    ]
    },
-   "74": {
+   "73": {
     "pos": [
      -36,
      0,
      -83.12
     ],
-    "uid": "74",
-    "type": "plain",
-    "onTile": null
+    "uid": "73",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "72",
+     "105",
+     "106",
+     "74",
+     "47"
+    ],
+    "cpos": [
+     2,
+     3,
+     -5
+    ]
    },
-   "75": {
+   "74": {
     "pos": [
      -18,
      0,
      -93.51
     ],
-    "uid": "75",
-    "type": "plain",
-    "onTile": null
+    "uid": "74",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "73",
+     "106",
+     "107",
+     "75",
+     "48"
+    ],
+    "cpos": [
+     1,
+     4,
+     -5
+    ]
    },
-   "76": {
+   "75": {
     "pos": [
      0,
      0,
      -103.9
     ],
-    "uid": "76",
+    "uid": "75",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "74",
+     "107",
+     "108",
+     "109",
+     "76"
+    ],
+    "cpos": [
+     0,
+     5,
+     -5
+    ]
    },
-   "77": {
+   "76": {
     "pos": [
      18,
      0,
      -93.51
     ],
-    "uid": "77",
-    "type": "mountain",
-    "onTile": null
+    "uid": "76",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "48",
+     "75",
+     "109",
+     "110",
+     "77"
+    ],
+    "cpos": [
+     -1,
+     5,
+     -4
+    ]
    },
-   "78": {
+   "77": {
     "pos": [
      36,
      0,
      -83.12
     ],
-    "uid": "78",
-    "type": "mountain",
-    "onTile": null
+    "uid": "77",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "49",
+     "76",
+     "110",
+     "111",
+     "78"
+    ],
+    "cpos": [
+     -2,
+     5,
+     -3
+    ]
    },
-   "79": {
+   "78": {
     "pos": [
      54,
      0,
      -72.73
     ],
-    "uid": "79",
+    "uid": "78",
     "type": "plain",
-    "onTile": null
-   },
-   "8": {
-    "pos": [
-     -18,
-     0,
-     31.17
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "50",
+     "77",
+     "111",
+     "112",
+     "79"
     ],
-    "uid": "8",
-    "type": "plain",
-    "onTile": null
+    "cpos": [
+     -3,
+     5,
+     -2
+    ]
    },
-   "80": {
+   "79": {
     "pos": [
      72,
      0,
      -62.34
     ],
-    "uid": "80",
+    "uid": "79",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "51",
+     "78",
+     "112",
+     "113",
+     "80"
+    ],
+    "cpos": [
+     -4,
+     5,
+     -1
+    ]
    },
-   "81": {
+   "8": {
+    "pos": [
+     -36,
+     0,
+     20.78
+    ],
+    "uid": "8",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "21",
+     "22",
+     "9",
+     "1",
+     "7"
+    ],
+    "cpos": [
+     2,
+     -2,
+     0
+    ]
+   },
+   "80": {
     "pos": [
      90,
      0,
      -51.95
     ],
-    "uid": "81",
-    "type": "plain",
-    "onTile": null
+    "uid": "80",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "52",
+     "79",
+     "113",
+     "114",
+     "115"
+    ],
+    "cpos": [
+     -5,
+     5,
+     0
+    ]
    },
-   "82": {
+   "81": {
     "pos": [
      90,
      0,
      -31.17
     ],
-    "uid": "82",
+    "uid": "81",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "53",
+     "52",
+     "80",
+     "115",
+     "116"
+    ],
+    "cpos": [
+     -5,
+     4,
+     1
+    ]
    },
-   "83": {
+   "82": {
     "pos": [
      90,
      0,
      -10.39
     ],
-    "uid": "83",
+    "uid": "82",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "54",
+     "53",
+     "81",
+     "116",
+     "117"
+    ],
+    "cpos": [
+     -5,
+     3,
+     2
+    ]
    },
-   "84": {
+   "83": {
     "pos": [
      90,
      0,
      10.39
     ],
-    "uid": "84",
-    "type": "plain",
-    "onTile": null
+    "uid": "83",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "55",
+     "54",
+     "82",
+     "117",
+     "118"
+    ],
+    "cpos": [
+     -5,
+     2,
+     3
+    ]
    },
-   "85": {
+   "84": {
     "pos": [
      90,
      0,
      31.17
     ],
-    "uid": "85",
+    "uid": "84",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "56",
+     "55",
+     "83",
+     "118",
+     "119"
+    ],
+    "cpos": [
+     -5,
+     1,
+     4
+    ]
    },
-   "86": {
+   "85": {
     "pos": [
      90,
      0,
      51.95
     ],
-    "uid": "86",
+    "uid": "85",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "86",
+     "56",
+     "84",
+     "119",
+     "120"
+    ],
+    "cpos": [
+     -5,
+     0,
+     5
+    ]
    },
-   "87": {
+   "86": {
     "pos": [
      72,
      0,
      62.34
     ],
-    "uid": "87",
-    "type": "plain",
-    "onTile": null
+    "uid": "86",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "87",
+     "57",
+     "56",
+     "85",
+     "121"
+    ],
+    "cpos": [
+     -4,
+     -1,
+     5
+    ]
    },
-   "88": {
+   "87": {
     "pos": [
      54,
      0,
      72.73
     ],
-    "uid": "88",
+    "uid": "87",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "88",
+     "58",
+     "57",
+     "86",
+     "122"
+    ],
+    "cpos": [
+     -3,
+     -2,
+     5
+    ]
    },
-   "89": {
+   "88": {
     "pos": [
      36,
      0,
      83.12
     ],
-    "uid": "89",
+    "uid": "88",
     "type": "mountain",
-    "onTile": null
-   },
-   "9": {
-    "pos": [
-     -36,
-     0,
-     20.78
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "89",
+     "59",
+     "58",
+     "87",
+     "123"
     ],
-    "uid": "9",
-    "type": "mountain",
-    "onTile": null
+    "cpos": [
+     -2,
+     -3,
+     5
+    ]
    },
-   "90": {
+   "89": {
     "pos": [
      18,
      0,
      93.51
     ],
-    "uid": "90",
+    "uid": "89",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "90",
+     "60",
+     "59",
+     "88",
+     "124"
+    ],
+    "cpos": [
+     -1,
+     -4,
+     5
+    ]
    },
-   "91": {
+   "9": {
+    "pos": [
+     -36,
+     0,
+     0
+    ],
+    "uid": "9",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "8",
+     "22",
+     "23",
+     "10",
+     "2",
+     "1"
+    ],
+    "cpos": [
+     2,
+     -1,
+     -1
+    ]
+   },
+   "90": {
     "pos": [
      0,
      0,
      103.9
     ],
-    "uid": "91",
-    "type": "plain",
-    "onTile": null
+    "uid": "90",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "91",
+     "61",
+     "60",
+     "89",
+     "125"
+    ],
+    "cpos": [
+     0,
+     -5,
+     5
+    ]
    },
-   "92": {
+   "91": {
     "pos": [
      -18,
      0,
      114.29
     ],
-    "uid": "92",
+    "uid": "91",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "128",
+     "92",
+     "61",
+     "90",
+     "126"
+    ],
+    "cpos": [
+     1,
+     -6,
+     5
+    ]
    },
-   "93": {
+   "92": {
     "pos": [
      -36,
      0,
      103.9
     ],
-    "uid": "93",
-    "type": "mountain",
-    "onTile": null
+    "uid": "92",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "129",
+     "93",
+     "62",
+     "61",
+     "91"
+    ],
+    "cpos": [
+     2,
+     -6,
+     4
+    ]
    },
-   "94": {
+   "93": {
     "pos": [
      -54,
      0,
      93.51
     ],
-    "uid": "94",
-    "type": "mountain",
-    "onTile": null
+    "uid": "93",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "130",
+     "94",
+     "63",
+     "62",
+     "92"
+    ],
+    "cpos": [
+     3,
+     -6,
+     3
+    ]
    },
-   "95": {
+   "94": {
     "pos": [
      -72,
      0,
      83.12
     ],
-    "uid": "95",
-    "type": "plain",
-    "onTile": null
+    "uid": "94",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "131",
+     "95",
+     "64",
+     "63",
+     "93"
+    ],
+    "cpos": [
+     4,
+     -6,
+     2
+    ]
    },
-   "96": {
+   "95": {
     "pos": [
      -90,
      0,
      72.73
     ],
-    "uid": "96",
-    "type": "plain",
-    "onTile": null
+    "uid": "95",
+    "type": "mountain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "132",
+     "96",
+     "65",
+     "64",
+     "94"
+    ],
+    "cpos": [
+     5,
+     -6,
+     1
+    ]
    },
-   "97": {
+   "96": {
     "pos": [
      -108,
      0,
      62.34
     ],
-    "uid": "97",
+    "uid": "96",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "133",
+     "134",
+     "97",
+     "65",
+     "95"
+    ],
+    "cpos": [
+     6,
+     -6,
+     0
+    ]
    },
-   "98": {
+   "97": {
     "pos": [
      -108,
      0,
      41.56
     ],
-    "uid": "98",
+    "uid": "97",
     "type": "plain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "134",
+     "135",
+     "98",
+     "66",
+     "65"
+    ],
+    "cpos": [
+     6,
+     -5,
+     -1
+    ]
    },
-   "99": {
+   "98": {
     "pos": [
      -108,
      0,
      20.78
     ],
+    "uid": "98",
+    "type": "plain",
+    "onTile": null,
+    "neighbours": [
+     "null",
+     "135",
+     "136",
+     "99",
+     "67",
+     "66"
+    ],
+    "cpos": [
+     6,
+     -4,
+     -2
+    ]
+   },
+   "99": {
+    "pos": [
+     -108,
+     0,
+     0
+    ],
     "uid": "99",
     "type": "mountain",
-    "onTile": null
+    "onTile": null,
+    "neighbours": [
+     "98",
+     "136",
+     "137",
+     "100",
+     "68",
+     "67"
+    ],
+    "cpos": [
+     6,
+     -3,
+     -3
+    ]
    }
   }
  }

@@ -3,27 +3,27 @@
  "structures": {
   "1": {
    "pos": [
-    -72,
+    18,
     2.6,
-    62.34
+    10.39
    ],
    "uid": "1",
-   "pid": "65",
+   "pid": "5",
    "type": "structure",
-   "visionRadius": 3
+   "visionRadius": 2
   }
  },
  "units": {
   "1": {
    "pos": [
-    54,
+    0,
     2.6,
-    93.51
+    -62.34
    ],
    "uid": "1",
-   "pid": "124",
+   "pid": "27",
    "type": "unit",
-   "visionRadius": 5
+   "visionRadius": 1
   }
  },
  "resource": 69

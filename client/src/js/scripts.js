@@ -6,33 +6,29 @@ import Queue from './queue'
 import PriorityQueue from './priorityqueue'
 import axios from 'axios'
 
-class CCVector {
-    constructor(q, r, s) {
-        this.q = q,
-        this.r = r,
-        this.s = s
-    }
+function distance(a, b) {
+    let q = a[0] - b[0]
+    let r = a[1] - b[1]
+    let s = a[2] - b[2]
 
-    distance = function(v){
-        let vec = new CCVector(this.q - v.q, this.r - v.r, this.s - v.s)
-        return (Math.abs(vec.q) + Math.abs(vec.r) + Math.abs(vec.s)) / 2
-    }
-
-    toKey = function (q, r, s){
-        if(!q && !r && !s){
-            q = this.q.toString()
-            r = this.r.toString()
-            s = this.r.toString()
-        } else if (q && r && s) {
-            q = q.toString()
-            r = r.toString()
-            s = r.toString()
-        }
-
-        return q+r+s
-    }
+    return (Math.abs(q) + Math.abs(r) + Math.abs(s)) / 2
 }
 
+function toKey (c){
+    let q = c[0].toString()
+    let r = c[1].toString()
+    let s = c[2].toString()
+    return q+r+s
+}
+
+
+
+let mapStore = {
+    gameData: {
+        stateID: 5,
+        tiles: new Map()
+    }
+}
 function sendState(state){
 
     state.gameData.tiles = JSON.stringify(Object.fromEntries(state.gameData.tiles))
@@ -40,7 +36,7 @@ function sendState(state){
         headers: {
            //'Content-Type': 'application/json',
            'Content-Type': 'application/x-www-form-urlencoded'
-        } 
+        }
    }
     axios.post("http://localhost:8080/api/gamestate",  JSON.stringify(state), config)
     .catch((err) => {
@@ -66,18 +62,6 @@ const FINDABLE = "findable"
 let origin = null
 let destinationTotal = 2
 let destinations = []
-let homeTile = null
-let unitTile = null
-let resourceTile = null
-
-let mapStore = {
-    gameData: {
-        stateID: 5,
-        tiles: new Map()
-    }
-}
-
-const SHOWSPIRAL = false
 
 
 const shadowPerformanceFactor = 5
@@ -109,6 +93,7 @@ const interactionManager = new InteractionManager(
 //Tiles
 let hexCount = 0
 hexSpiral(10)
+addTileNeighbours()
 populateScene(sceneArray)
 sendState(mapStore)
 //Lights
@@ -172,93 +157,85 @@ function hexSpiral(radius) {
     }
 }
 
-function getViableNeighbours(vector) {
-    let neighbours = {}
+function getViableNeighbours(c) {
+    let neighbours = []
 
-    let tKey = new CCVector(vector.q, vector.r-1, vector.s+1).toKey()
-    neighbours.top = tileMap.get(tKey)
-    //neighbours.top = scene.getObjectByName(tileMap.get(tKey))
+    let tKey = toKey([c[0], c[1]-1, c[1]+1])
+    neighbours.push(tileMap.get(tKey).uid)
 
-    let tRKey = new CCVector(vector.q+1, vector.r-1, vector.s).toKey()
-    neighbours.topRight = tileMap.get(tRKey)
-    //neighbours.topRight = scene.getObjectByName(tileMap.get(tRKey))
+    let tRKey = toKey([c[0]+1, c[1]-1, c[2]])
+    neighbours.push(tileMap.get(tRKey).uid)
 
-    let bRKey = new CCVector(vector.q+1, vector.r, vector.s-1).toKey()
-    neighbours.bottomRight = tileMap.get(bRKey)
-    //neighbours.bottomRight = scene.getObjectByName(tileMap.get(bRKey))
+    let bRKey = toKey([c[0]+1, c[1], c[2]-1])
+    neighbours.push(tileMap.get(bRKey).uid)
 
-    let bKey = new CCVector(vector.q, vector.r+1, vector.s-1).toKey()
-    neighbours.bottom = tileMap.get(bKey)
-    //neighbours.bottom = scene.getObjectByName(tileMap.get(bKey))
+    let bKey = toKey([c[0], c[1]+1, c[2]-1])
+    neighbours.push(tileMap.get(bKey).uid)
 
-    let bLKey = new CCVector(vector.q-1, vector.r+1, vector.s).toKey()
-    neighbours.bottomLeft = tileMap.get(bLKey)
-    //neighbours.bottomLeft = scene.getObjectByName(tileMap.get(bLKey))
+    let bLKey = toKey([c[0]-1, c[1]+1, c[2]])
+    neighbours.push(tileMap.get(bLKey).uid)
 
-    let tLKey = new CCVector(vector.q-1, vector.r, vector.s+1).toKey()
-    neighbours.topLeft = tileMap.get(tLKey)
-    //neighbours.topLeft = scene.getObjectByName(tileMap.get(tLKey))
+    let tLKey = toKey([c[0]-1, c[1], c[2]+1])
+    neighbours.push(tileMap.get(tLKey).uid)
 
-    let paths = []
-    neighbours = Object.values(neighbours)
-    for(let i = 0; i < neighbours.length; i++) {
-        if(!neighbours[i]){
-            //console.log("Neighbour was out of bounds.")
-            continue
-        }
-        if(neighbours[i].pathStatus === IMPASSABLE){
-            //console.log("Neighbour was impassable.")
-            continue
-        }
-
-        //console.log("Neighbour viable!")
-        paths.push(neighbours[i])
-    }
-
-    return paths
-}
-
-
-function getAllNeighbours(vector) {
-    let neighbours = {}
-
-    let tKey = new CCVector(vector.q, vector.r-1, vector.s+1).toKey()
-    neighbours.top = tileMap.get(tKey)
-    //neighbours.top = scene.getObjectByName(tileMap.get(tKey))
-
-    let tRKey = new CCVector(vector.q+1, vector.r-1, vector.s).toKey()
-    neighbours.topRight = tileMap.get(tRKey)
-    //neighbours.topRight = scene.getObjectByName(tileMap.get(tRKey))
-
-    let bRKey = new CCVector(vector.q+1, vector.r, vector.s-1).toKey()
-    neighbours.bottomRight = tileMap.get(bRKey)
-    //neighbours.bottomRight = scene.getObjectByName(tileMap.get(bRKey))
-
-    let bKey = new CCVector(vector.q, vector.r+1, vector.s-1).toKey()
-    neighbours.bottom = tileMap.get(bKey)
-    //neighbours.bottom = scene.getObjectByName(tileMap.get(bKey))
-
-    let bLKey = new CCVector(vector.q-1, vector.r+1, vector.s).toKey()
-    neighbours.bottomLeft = tileMap.get(bLKey)
-    //neighbours.bottomLeft = scene.getObjectByName(tileMap.get(bLKey))
-
-    let tLKey = new CCVector(vector.q-1, vector.r, vector.s+1).toKey()
-    neighbours.topLeft = tileMap.get(tLKey)
-    //neighbours.topLeft = scene.getObjectByName(tileMap.get(tLKey))
-
-    let paths = []
-    neighbours = Object.values(neighbours)
     for(let i = 0; i < neighbours.length; i++) {
         if(!neighbours[i]){
             //console.log("Position is out of bounds.")
             continue
         }
-
         //console.log("Neighbour viable!")
-        paths.push(neighbours[i])
     }
 
-    return paths
+    return neighbours
+}
+
+
+function getAllNeighbours(c) {
+    let neighbours = []
+
+    let tKey = toKey([c[0], c[1]-1, c[1]+1])
+    if(!tileMap.get(tKey)) {
+        neighbours.push("null")
+    } else {
+        neighbours.push(tileMap.get(tKey).uid.toString())
+    }
+
+    let tRKey = toKey([c[0]+1, c[1]-1, c[2]])
+    if(!tileMap.get(tRKey)) {
+        neighbours.push("null")
+    } else {
+        neighbours.push(tileMap.get(tRKey).uid.toString())
+    }
+
+    let bRKey = toKey([c[0]+1, c[1], c[2]-1])
+    if(!tileMap.get(bRKey)) {
+        neighbours.push("null")
+    } else {
+        neighbours.push(tileMap.get(bRKey).uid.toString())
+    }
+
+    let bKey = toKey([c[0], c[1]+1, c[2]-1])
+    if(!tileMap.get(bKey)) {
+        neighbours.push("null")
+    } else {
+        neighbours.push(tileMap.get(bKey).uid.toString())
+    }
+
+    let bLKey = toKey([c[0]-1, c[1]+1, c[2]])
+    if(!tileMap.get(bLKey)) {
+        neighbours.push("null")
+    } else {
+        neighbours.push(tileMap.get(bLKey).uid.toString())
+    }
+
+    let tLKey = toKey([c[0]-1, c[1], c[2]+1])
+    if(!tileMap.get(tLKey)) {
+        neighbours.push("null")
+    } else {
+        neighbours.push(tileMap.get(tLKey).uid.toString())
+    }
+
+    return neighbours
 }
 
 let reached = new Map()
@@ -436,10 +413,12 @@ function breadthFirstAsSearch(origin, radius) {
     while(!frontier.isEmpty()){
         iterations++
         let current = frontier.dequeue().element
-        let neighbours = getViableNeighbours(current.cubeCoords, reached)
+        let neighbours = getViableNeighbours(current.cubeCoords)
 
         for(let i = 0; i < neighbours.length; i++) {
-            if(reached.get(neighbours[i].name)){
+            let nb = tileMap[neighbours[i]]
+
+            if(reached.get(nb.name)){
                 //console.log("Neighbour has already been visited.")
                 continue
             }
@@ -467,7 +446,7 @@ function breadthFirstAsSearch(origin, radius) {
             break
         }
     }
-    
+
 
  
 }
@@ -615,7 +594,7 @@ function weightedAStar(origin, destinations) {
     }
     let pathBroken = false
     let path = []
-
+    let found = false
 
     for(let d = 0;d  < destinations.length; d++) {
 
@@ -634,50 +613,54 @@ function weightedAStar(origin, destinations) {
         let cameFrom = new Map()
         reached.set(origin.name, origin.name)
     
-        let found = false
+
         let iterations = 0;
         while(!frontier.isEmpty()){
             iterations++
             let current = frontier.dequeue().element
-            let neighbours = getViableNeighbours(current.cubeCoords, reached)
-    
-            for(let i = 0; i < neighbours.length; i++) {
-                if(cameFrom.get(neighbours[i].name)){
-                    //console.log("Neighbour has already been visited.")
-                    continue
-                }
-    
-                let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords) 
-                newCost = newCost * neighbours[i].cost
+            console.log(current.neighbours)
+            let neighbours = current.neighbours//getViableNeighbours(current.cubeCoords, reached)
 
-    
-                if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
-                    costSoFar.set(neighbours[i].name, newCost)
-                    let priority = newCost + destinations[d].cubeCoords.distance(neighbours[i].cubeCoords)
-    
-    
-                    reached.set(neighbours[i].name, neighbours[i].name)
-                    cameFrom.set(neighbours[i].name, current.name)
-    
-    
-    
-                    frontier.enqueue(neighbours[i], priority)
-                    if(!neighbours[i].pathStatus) {
-                        neighbours[i].material.color.set(aStarColour)
+            if(neighbours.length) {
+                for(let i = 0; i < neighbours.length; i++) {
+                    if(cameFrom.get(neighbours[i].name)){
+                        console.log("Neighbour has already been visited.")
+                        continue
                     }
-    
-    
+
+                    let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords)
+                    newCost = newCost * neighbours[i].cost
+
+
+                    if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
+                        costSoFar.set(neighbours[i].name, newCost)
+                        let priority = newCost + destinations[d].cubeCoords.distance(neighbours[i].cubeCoords)
+
+
+                        reached.set(neighbours[i].name, neighbours[i].name)
+                        cameFrom.set(neighbours[i].name, current.name)
+
+
+
+                        frontier.enqueue(neighbours[i], priority)
+                        if(!neighbours[i].pathStatus) {
+                            neighbours[i].material.color.set(aStarColour)
+                        }
+
+
+                    }
+
+
+                    if(neighbours[i].name === destinations[d].name){
+                        console.log("aStar (yellow) Found the destination after ",iterations, "iterations.")
+                        found = true;
+                        frontier.flush()
+                        break
+                    }
+
                 }
-    
-    
-                if(neighbours[i].name === destinations[d].name){
-                    console.log("aStar (yellow) Found the destination after ",iterations, "iterations.")
-                    found = true;
-                    frontier.flush()
-                    break
-                }
-    
             }
+
     
             if(frontier.isEmpty() && found === false) {
                 console.log("No Path Found!")
@@ -686,19 +669,25 @@ function weightedAStar(origin, destinations) {
     
 
         }
-    
-        let check = cameFrom.get(destinations[d].name)
+
+        if(found) {
+            let check = cameFrom.get(destinations[d].name)
             while(check !== origin.name) {
                 path.push(check)
                 check = cameFrom.get(check)
             }
+        }
+
 
     }
-    
-    for(let i = 0; i < path.length; i++){
-        let pathObject = scene.getObjectByName(path[i])
-        pathObject.material.color.set(pathObject.clickColour)
+
+    if(found){
+        for(let i = 0; i < path.length; i++){
+            let pathObject = scene.getObjectByName(path[i])
+            pathObject.material.color.set(pathObject.clickColour)
+        }
     }
+
 
 }
 
@@ -708,9 +697,7 @@ function hexMesh(parent, dir, isDummy) {
     let z = 0
 
     let color = 0x00ff00
-    if (SHOWSPIRAL) {
-        color = "#"+colorLightener(0x00ff00, hexCount)
-    }
+
     const hoverColour = '#eb6363'
     const clickColour = '#a87c39'
     const realRadius =  12
@@ -718,64 +705,65 @@ function hexMesh(parent, dir, isDummy) {
     const mat = new THREE.MeshStandardMaterial({color: color})
     const hex = new THREE.Mesh(geo, mat)
     let name = hex.id
+    hex.uid = hexCount
     hex.name = name
-    hex.cubeCoords = new CCVector(0,0,0, name)
+    hex.cpos = [0,0,0]
 
     if(parent && dir){
         let r = parent.realRadius
         let q = round(Math.sqrt(Math.pow(r,2) - Math.pow((r/2),2))); //y midway to origin of tessellated hexagon on same x
         let p = round(Math.sqrt(Math.pow(r/2, 2))); //x of the origin of a tessellated hexagon on same y
-        let c = parent.cubeCoords
-        let cc = new CCVector(0,0,0, name)
-        hex.cubeCoords = cc
+        let c = parent.cpos
+        hex.cpos = [0,0,0]
 
         if (dir === DIR_TOP) {
             x = parent.position.x
             y = parent.position.y
             z = parent.position.z + q*2
-            hex.cubeCoords = new CCVector(c.q, c.r-1, c.s+1, name)
+            hex.cpos = [c[0], c[1]-1, c[2]+1]
         }
 
         if (dir === DIR_TOPRIGHT) {
             x = parent.position.x - p - r
             y = parent.position.y
             z = parent.position.z + q
-            hex.cubeCoords = new CCVector(c.q+1, c.r-1, c.s, name)
+            hex.cpos = [c[0]+1, c[1]-1, c[2]]
         }
 
         if (dir === DIR_BOTTOMRIGHT) {
             x = parent.position.x - p - r
             y = parent.position.y
             z = parent.position.z - q
-            hex.cubeCoords = new CCVector(c.q+1, c.r, c.s-1, name)
+            hex.cpos = [c[0]+1, c[1], c[2]-1]
         }
 
         if (dir === DIR_BOTTOM) {
             x = parent.position.x
             y = parent.position.y
             z = parent.position.z - q*2
-            hex.cubeCoords = new CCVector(c.q, c.r+1, c.s-1, name)
+            hex.cpos = [c[0], c[1]+1, c[2]-1]
         }
 
         if (dir === DIR_BOTTOMLEFT) {
             x = parent.position.x + p + r
             y = parent.position.y
             z = parent.position.z - q
-            hex.cubeCoords = new CCVector(c.q-1, c.r+1, c.s, name)
+            hex.cpos = [c[0]-1, c[1]+1, c[2]]
         }
 
         if (dir === DIR_TOPLEFT) {
             x = parent.position.x + p + r
             y = parent.position.y
             z = parent.position.z + q
-            hex.cubeCoords = new CCVector(c.q-1, c.r, c.s+1, name)
+            hex.cpos = [c[0]-1, c[1], c[2]+1]
         }
     } else {
         hex.parentHex = true
     }
 
-    tileMap.set(hex.cubeCoords.toKey(), hex)
-    //tileMap.set(hex.cubeCoords.toKey(), hex.name)
+    if(!isDummy) {
+        tileMap.set(toKey(hex.cpos), hex)
+    }
 
     hex.rotation.set(0, degToRad(30),0)
     hex.position.set(x, y, z)
@@ -800,7 +788,6 @@ function hexMesh(parent, dir, isDummy) {
     hex.name = hex.id
     hex.clickable = true;
     addMouseEvents(hex, interactionManager)
-    
 
     let rng = Math.floor(Math.random() * 100);
     if(rng > 50) {
@@ -812,20 +799,32 @@ function hexMesh(parent, dir, isDummy) {
     }
 
     if(!isDummy) {
-        hexCount++
+
         let tile = {
             pos: [x,y,z],
             type: (hex.pathStatus === IMPASSABLE ? "mountain" : "plain"),
-            uid: hexCount.toString()
+            uid: hexCount.toString(),
+            cpos: hex.cpos,
         }
 
-        console.log(tile.pos.toString())
-        console.log(JSON.stringify(tile.pos))
         mapStore.gameData.tiles.set(tile.uid, tile)
+        hexCount++
     }
-   
-
     return hex
+}
+
+function addTileNeighbours() {
+    let tiles = mapStore.gameData.tiles
+    console.log("Tile Array: ", tiles.size)
+
+    for (let[k,v] of tiles ) {
+        console.log("Looking for Neighbours of: ",k)
+        console.log("Using: ", v.cpos)
+
+        let neighbours = getAllNeighbours(v.cpos)
+        console.log("Found: ", neighbours)
+        v.neighbours = neighbours
+    }
 }
 
 function addMouseEvents(object, interactionManager){
@@ -834,17 +833,18 @@ function addMouseEvents(object, interactionManager){
     object.addEventListener('click', function(e) {
         e.stopPropagation()
 
-        clickHandler(object)
-        if(origin && destinations.length === destinationTotal) {
+        console.log(object.uid)
+        console.log(object.position)
 
-            console.log(performance)
-
-            let t1 = performance.now()
-            weightedAStar(origin,destinations)
-            let t2 = performance.now()
-            console.log("Time To Run: ", round(t2-t1),"ms, total memory usage: ", round(performance.memory.usedJSHeapSize/1000000), "Mb")
-
-        }
+        // clickHandler(object)
+        // if(origin && destinations.length === destinationTotal) {
+        //
+        //     // let t1 = performance.now()
+        //     // weightedAStar(origin,destinations)
+        //     // let t2 = performance.now()
+        //     // console.log("Time To Run: ", round(t2-t1),"ms, total memory usage: ", round(performance.memory.usedJSHeapSize/1000000), "Mb")
+        //
+        // }
 
     })
 }

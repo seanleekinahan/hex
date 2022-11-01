@@ -8,48 +8,82 @@ import (
 	"math"
 )
 
-// BreadthFirstAsSearch
-// The tileMap uses stringified cubic co-ordinates as keys
-func BreadthFirstAsSearch(tileMap map[string]Tile, origin Tile, radius int32, searchTerm string) []*Tile {
+type SearchTile struct {
+	TileID       string
+	CubePosition []float32
+	Neighbours   []string
+	Type         string
+}
 
+type SearchMap struct { //Stores Tile information by TileID
+	Tiles map[string]*SearchTile
+}
+
+func NewSearchMap(tileMap map[string]Tile) SearchMap {
+
+	s := SearchMap{Tiles: make(map[string]*SearchTile)}
+
+	for _, tile := range tileMap {
+		t := &SearchTile{
+			TileID:       tile.ID,
+			CubePosition: tile.CubePosition,
+			Neighbours:   tile.Neighbours,
+			Type:         tile.Type,
+		}
+
+		s.Tiles[t.TileID] = t
+	}
+
+	return s
+}
+
+func (m *SearchMap) BreadthFirstAsSearch(origin string, radius int32, searchTerm string) []string { // BreadthFirstAsSearch
+
+	oT := m.Tiles[origin]
+	fmt.Println("BreadthFirst Search Starting At: ", oT.CubePosition, " with radius of ", radius)
 	//Frontier queue - priority functionality ignored
 	frontier := make(PriorityQueue, 0)
 	heap.Init(&frontier)
 	tile := &Item{
-		Value:    origin.ID,
+		Value:    origin,
 		Priority: 0,
 	}
 	heap.Push(&frontier, tile)
 
 	reachedTiles := make(map[string]bool)
-	reachedTiles[origin.ID] = true
+	reachedTiles[origin] = true
 
-	var found []*Tile
+	var found []string
 
 	for frontier.Len() > 0 {
 
 		current := heap.Pop(&frontier).(*Item)
-		neighbours := GetViableNeighbours(tileMap, current.Value)
+		neighbours := m.Tiles[current.Value].Neighbours
 
 		for _, nb := range neighbours {
-			if reachedTiles[nb.ID] {
-				fmt.Println("Neighbour already visited: ", nb.ID)
+			if nb == "null" {
+				//fmt.Println("Neighbour is out of bounds.")
 				continue
 			}
 
-			t := tileMap[nb.ID]
-			if GetCubeDistance(origin.CubePosition, t.CubePosition) > float32(radius) {
-				fmt.Println("Neighbour is out of reach: ", nb.ID)
+			if reachedTiles[nb] {
+				//fmt.Println("Neighbour already visited: ", nb)
 				continue
 			}
 
-			if nb.Type == searchTerm {
-				found = append(found, nb)
+			t := m.Tiles[nb]
+			if GetCubeDistance(oT.CubePosition, t.CubePosition) > float32(radius) {
+				//fmt.Println("Neighbour is out of reach: ", nb)
+				continue
 			}
 
-			reachedTiles[nb.ID] = true
+			if t.Type == searchTerm || t.Type == "mountain" {
+				found = append(found, t.TileID)
+			}
+
+			reachedTiles[nb] = true
 			tile = &Item{
-				Value:    nb.ID,
+				Value:    nb,
 				Priority: 0,
 			}
 			heap.Push(&frontier, tile)

@@ -1,16 +1,15 @@
 package main
 
 import (
-	"container/heap"
 	"encoding/json"
 	"fmt"
+	"gameserver/internal/navigator"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"os"
 
 	. "gameserver"
-	. "gameserver/internal/queuer"
 )
 
 type OutboundGameData struct {
@@ -61,7 +60,13 @@ func CORSMiddleware() gin.HandlerFunc {
 
 func main() {
 
-	err := defaultPlayerStart()
+	mapData, err := loadMapStore()
+	if err != nil {
+		log.Fatal("failed to loadMapStore")
+		return
+	}
+
+	err = defaultPlayerStart(mapData.Tiles["5"], mapData.Tiles["27"])
 	if err != nil {
 		log.Fatal("failed to generate default player information")
 	}
@@ -73,43 +78,7 @@ func main() {
 	e.POST("api/gamestate", PostGameState)
 
 	go func() {
-		// Some items and their priorities.
-		items := map[string]int{
-			"banana": 3, "apple": 2, "pear": 4,
-		}
 
-		// Create a priority queue, put the items in it, and
-		// establish the priority queue (heap) invariants.
-		pq := make(PriorityQueue, len(items))
-		i := 0
-		for value, priority := range items {
-			pq[i] = &Item{
-				Value:    value,
-				Priority: priority,
-				Index:    i,
-			}
-			i++
-		}
-		heap.Init(&pq)
-
-		// Insert a new item and then modify its priority.
-		item := &Item{
-			Value:    "orange",
-			Priority: 1,
-		}
-		item2 := &Item{
-			Value:    "blorange",
-			Priority: 19,
-		}
-		heap.Push(&pq, item)
-		heap.Push(&pq, item2)
-		pq.Update(item, item.Value, 5)
-
-		// Take the items out; they arrive in decreasing priority order.
-		for pq.Len() > 0 {
-			item := heap.Pop(&pq).(*Item)
-			fmt.Printf("%.2d:%s ", item.Priority, item.Value)
-		}
 	}()
 
 	err = e.Run()
@@ -136,22 +105,47 @@ func GetGameState(c *gin.Context) {
 		return
 	}
 
+	searchMap := navigator.NewSearchMap(mapData.Tiles)
 	tileMap := make(map[string]*Tile)
 	for _, unit := range playerData.Units {
+		fmt.Println("Finding Tiles Around Unit: ", unit.ID)
 		if tileMap[unit.ParentID] == nil {
 			parentTile := mapData.Tiles[unit.ParentID]
 			parentTile.OnTile = append(parentTile.OnTile, unit)
 			tileMap[unit.ParentID] = &parentTile
 			out.Tiles = append(out.Tiles, &parentTile)
+		} else {
+			tileMap[unit.ParentID].OnTile = append(tileMap[unit.ParentID].OnTile, unit)
+		}
+
+		found := searchMap.BreadthFirstAsSearch(unit.ParentID, unit.VisionRadius, "plain")
+		for _, f := range found {
+			if tileMap[f] == nil {
+				foundTile := mapData.Tiles[f]
+				tileMap[f] = &foundTile
+				out.Tiles = append(out.Tiles, &foundTile)
+			}
 		}
 	}
 
 	for _, structure := range playerData.Structures {
+		fmt.Println("Finding Tiles Around Structure: ", structure.ID)
 		if tileMap[structure.ParentID] == nil {
 			parentTile := mapData.Tiles[structure.ParentID]
 			parentTile.OnTile = append(parentTile.OnTile, structure)
 			tileMap[structure.ParentID] = &parentTile
 			out.Tiles = append(out.Tiles, &parentTile)
+		} else {
+			tileMap[structure.ParentID].OnTile = append(tileMap[structure.ParentID].OnTile, structure)
+		}
+
+		found := searchMap.BreadthFirstAsSearch(structure.ParentID, structure.VisionRadius, "plain")
+		for _, f := range found {
+			if tileMap[f] == nil {
+				foundTile := mapData.Tiles[f]
+				tileMap[f] = &foundTile
+				out.Tiles = append(out.Tiles, &foundTile)
+			}
 		}
 	}
 
@@ -187,8 +181,6 @@ func PostGameState(c *gin.Context) {
 		return
 	}
 
-	fmt.Println("Tiles: ", len(tileMap))
-
 	var s Store
 	s.StateID = data.ReceiveGameData.StateID
 	s.Tiles = tileMap
@@ -202,7 +194,7 @@ func PostGameState(c *gin.Context) {
 	c.Status(http.StatusCreated)
 }
 
-func defaultPlayerStart() error {
+func defaultPlayerStart(loc1 Tile, loc2 Tile) error {
 	data := PlayerData{
 		UserID:     "testUser",
 		Structures: make(map[string]*TileChild),
@@ -211,25 +203,25 @@ func defaultPlayerStart() error {
 	}
 
 	structure := TileChild{
-		Position: []float32{
-			-72,
+		RenderPosition: []float32{
+			loc1.RenderPosition[0],
 			2.6,
-			62.34},
+			loc1.RenderPosition[2]},
 		ID:           "1",
-		ParentID:     "65",
+		ParentID:     loc1.ID,
 		Type:         "structure",
-		VisionRadius: 3,
+		VisionRadius: 2,
 	}
 
 	unit := TileChild{
-		Position: []float32{
-			54,
+		RenderPosition: []float32{
+			loc2.RenderPosition[0],
 			2.6,
-			93.51},
+			loc2.RenderPosition[2]},
 		ID:           "1",
-		ParentID:     "124",
+		ParentID:     loc2.ID,
 		Type:         "unit",
-		VisionRadius: 5,
+		VisionRadius: 1,
 	}
 
 	data.Structures[structure.ID] = &structure
