@@ -1,0 +1,3317 @@
+{
+ "gameData": {
+  "stateID": 5,
+  "tiles": {
+   "1": {
+    "pos": [
+     0,
+     0,
+     0
+    ],
+    "uid": "1",
+    "type": "mountain",
+    "onTile": null
+   },
+   "10": {
+    "pos": [
+     -36,
+     0,
+     0
+    ],
+    "uid": "10",
+    "type": "plain",
+    "onTile": null
+   },
+   "100": {
+    "pos": [
+     -108,
+     0,
+     0
+    ],
+    "uid": "100",
+    "type": "plain",
+    "onTile": null
+   },
+   "101": {
+    "pos": [
+     -108,
+     0,
+     -20.78
+    ],
+    "uid": "101",
+    "type": "plain",
+    "onTile": null
+   },
+   "102": {
+    "pos": [
+     -108,
+     0,
+     -41.56
+    ],
+    "uid": "102",
+    "type": "plain",
+    "onTile": null
+   },
+   "103": {
+    "pos": [
+     -108,
+     0,
+     -62.34
+    ],
+    "uid": "103",
+    "type": "mountain",
+    "onTile": null
+   },
+   "104": {
+    "pos": [
+     -90,
+     0,
+     -72.73
+    ],
+    "uid": "104",
+    "type": "mountain",
+    "onTile": null
+   },
+   "105": {
+    "pos": [
+     -72,
+     0,
+     -83.12
+    ],
+    "uid": "105",
+    "type": "plain",
+    "onTile": null
+   },
+   "106": {
+    "pos": [
+     -54,
+     0,
+     -93.51
+    ],
+    "uid": "106",
+    "type": "plain",
+    "onTile": null
+   },
+   "107": {
+    "pos": [
+     -36,
+     0,
+     -103.9
+    ],
+    "uid": "107",
+    "type": "mountain",
+    "onTile": null
+   },
+   "108": {
+    "pos": [
+     -18,
+     0,
+     -114.29
+    ],
+    "uid": "108",
+    "type": "plain",
+    "onTile": null
+   },
+   "109": {
+    "pos": [
+     0,
+     0,
+     -124.68
+    ],
+    "uid": "109",
+    "type": "mountain",
+    "onTile": null
+   },
+   "11": {
+    "pos": [
+     -36,
+     0,
+     -20.78
+    ],
+    "uid": "11",
+    "type": "plain",
+    "onTile": null
+   },
+   "110": {
+    "pos": [
+     18,
+     0,
+     -114.29
+    ],
+    "uid": "110",
+    "type": "mountain",
+    "onTile": null
+   },
+   "111": {
+    "pos": [
+     36,
+     0,
+     -103.9
+    ],
+    "uid": "111",
+    "type": "mountain",
+    "onTile": null
+   },
+   "112": {
+    "pos": [
+     54,
+     0,
+     -93.51
+    ],
+    "uid": "112",
+    "type": "mountain",
+    "onTile": null
+   },
+   "113": {
+    "pos": [
+     72,
+     0,
+     -83.12
+    ],
+    "uid": "113",
+    "type": "mountain",
+    "onTile": null
+   },
+   "114": {
+    "pos": [
+     90,
+     0,
+     -72.73
+    ],
+    "uid": "114",
+    "type": "plain",
+    "onTile": null
+   },
+   "115": {
+    "pos": [
+     108,
+     0,
+     -62.34
+    ],
+    "uid": "115",
+    "type": "mountain",
+    "onTile": null
+   },
+   "116": {
+    "pos": [
+     108,
+     0,
+     -41.56
+    ],
+    "uid": "116",
+    "type": "plain",
+    "onTile": null
+   },
+   "117": {
+    "pos": [
+     108,
+     0,
+     -20.78
+    ],
+    "uid": "117",
+    "type": "mountain",
+    "onTile": null
+   },
+   "118": {
+    "pos": [
+     108,
+     0,
+     0
+    ],
+    "uid": "118",
+    "type": "plain",
+    "onTile": null
+   },
+   "119": {
+    "pos": [
+     108,
+     0,
+     20.78
+    ],
+    "uid": "119",
+    "type": "plain",
+    "onTile": null
+   },
+   "12": {
+    "pos": [
+     -18,
+     0,
+     -31.17
+    ],
+    "uid": "12",
+    "type": "mountain",
+    "onTile": null
+   },
+   "120": {
+    "pos": [
+     108,
+     0,
+     41.56
+    ],
+    "uid": "120",
+    "type": "plain",
+    "onTile": null
+   },
+   "121": {
+    "pos": [
+     108,
+     0,
+     62.34
+    ],
+    "uid": "121",
+    "type": "plain",
+    "onTile": null
+   },
+   "122": {
+    "pos": [
+     90,
+     0,
+     72.73
+    ],
+    "uid": "122",
+    "type": "mountain",
+    "onTile": null
+   },
+   "123": {
+    "pos": [
+     72,
+     0,
+     83.12
+    ],
+    "uid": "123",
+    "type": "plain",
+    "onTile": null
+   },
+   "124": {
+    "pos": [
+     54,
+     0,
+     93.51
+    ],
+    "uid": "124",
+    "type": "mountain",
+    "onTile": null
+   },
+   "125": {
+    "pos": [
+     36,
+     0,
+     103.9
+    ],
+    "uid": "125",
+    "type": "mountain",
+    "onTile": null
+   },
+   "126": {
+    "pos": [
+     18,
+     0,
+     114.29
+    ],
+    "uid": "126",
+    "type": "mountain",
+    "onTile": null
+   },
+   "127": {
+    "pos": [
+     0,
+     0,
+     124.68
+    ],
+    "uid": "127",
+    "type": "plain",
+    "onTile": null
+   },
+   "128": {
+    "pos": [
+     -18,
+     0,
+     135.07
+    ],
+    "uid": "128",
+    "type": "mountain",
+    "onTile": null
+   },
+   "129": {
+    "pos": [
+     -36,
+     0,
+     124.68
+    ],
+    "uid": "129",
+    "type": "mountain",
+    "onTile": null
+   },
+   "13": {
+    "pos": [
+     0,
+     0,
+     -41.56
+    ],
+    "uid": "13",
+    "type": "plain",
+    "onTile": null
+   },
+   "130": {
+    "pos": [
+     -54,
+     0,
+     114.29
+    ],
+    "uid": "130",
+    "type": "mountain",
+    "onTile": null
+   },
+   "131": {
+    "pos": [
+     -72,
+     0,
+     103.9
+    ],
+    "uid": "131",
+    "type": "plain",
+    "onTile": null
+   },
+   "132": {
+    "pos": [
+     -90,
+     0,
+     93.51
+    ],
+    "uid": "132",
+    "type": "mountain",
+    "onTile": null
+   },
+   "133": {
+    "pos": [
+     -108,
+     0,
+     83.12
+    ],
+    "uid": "133",
+    "type": "mountain",
+    "onTile": null
+   },
+   "134": {
+    "pos": [
+     -126,
+     0,
+     72.73
+    ],
+    "uid": "134",
+    "type": "plain",
+    "onTile": null
+   },
+   "135": {
+    "pos": [
+     -126,
+     0,
+     51.95
+    ],
+    "uid": "135",
+    "type": "plain",
+    "onTile": null
+   },
+   "136": {
+    "pos": [
+     -126,
+     0,
+     31.17
+    ],
+    "uid": "136",
+    "type": "mountain",
+    "onTile": null
+   },
+   "137": {
+    "pos": [
+     -126,
+     0,
+     10.39
+    ],
+    "uid": "137",
+    "type": "mountain",
+    "onTile": null
+   },
+   "138": {
+    "pos": [
+     -126,
+     0,
+     -10.39
+    ],
+    "uid": "138",
+    "type": "mountain",
+    "onTile": null
+   },
+   "139": {
+    "pos": [
+     -126,
+     0,
+     -31.17
+    ],
+    "uid": "139",
+    "type": "plain",
+    "onTile": null
+   },
+   "14": {
+    "pos": [
+     18,
+     0,
+     -31.17
+    ],
+    "uid": "14",
+    "type": "plain",
+    "onTile": null
+   },
+   "140": {
+    "pos": [
+     -126,
+     0,
+     -51.95
+    ],
+    "uid": "140",
+    "type": "plain",
+    "onTile": null
+   },
+   "141": {
+    "pos": [
+     -126,
+     0,
+     -72.73
+    ],
+    "uid": "141",
+    "type": "mountain",
+    "onTile": null
+   },
+   "142": {
+    "pos": [
+     -108,
+     0,
+     -83.12
+    ],
+    "uid": "142",
+    "type": "plain",
+    "onTile": null
+   },
+   "143": {
+    "pos": [
+     -90,
+     0,
+     -93.51
+    ],
+    "uid": "143",
+    "type": "mountain",
+    "onTile": null
+   },
+   "144": {
+    "pos": [
+     -72,
+     0,
+     -103.9
+    ],
+    "uid": "144",
+    "type": "plain",
+    "onTile": null
+   },
+   "145": {
+    "pos": [
+     -54,
+     0,
+     -114.29
+    ],
+    "uid": "145",
+    "type": "plain",
+    "onTile": null
+   },
+   "146": {
+    "pos": [
+     -36,
+     0,
+     -124.68
+    ],
+    "uid": "146",
+    "type": "mountain",
+    "onTile": null
+   },
+   "147": {
+    "pos": [
+     -18,
+     0,
+     -135.07
+    ],
+    "uid": "147",
+    "type": "plain",
+    "onTile": null
+   },
+   "148": {
+    "pos": [
+     0,
+     0,
+     -145.46
+    ],
+    "uid": "148",
+    "type": "mountain",
+    "onTile": null
+   },
+   "149": {
+    "pos": [
+     18,
+     0,
+     -135.07
+    ],
+    "uid": "149",
+    "type": "mountain",
+    "onTile": null
+   },
+   "15": {
+    "pos": [
+     36,
+     0,
+     -20.78
+    ],
+    "uid": "15",
+    "type": "mountain",
+    "onTile": null
+   },
+   "150": {
+    "pos": [
+     36,
+     0,
+     -124.68
+    ],
+    "uid": "150",
+    "type": "plain",
+    "onTile": null
+   },
+   "151": {
+    "pos": [
+     54,
+     0,
+     -114.29
+    ],
+    "uid": "151",
+    "type": "plain",
+    "onTile": null
+   },
+   "152": {
+    "pos": [
+     72,
+     0,
+     -103.9
+    ],
+    "uid": "152",
+    "type": "mountain",
+    "onTile": null
+   },
+   "153": {
+    "pos": [
+     90,
+     0,
+     -93.51
+    ],
+    "uid": "153",
+    "type": "mountain",
+    "onTile": null
+   },
+   "154": {
+    "pos": [
+     108,
+     0,
+     -83.12
+    ],
+    "uid": "154",
+    "type": "mountain",
+    "onTile": null
+   },
+   "155": {
+    "pos": [
+     126,
+     0,
+     -72.73
+    ],
+    "uid": "155",
+    "type": "plain",
+    "onTile": null
+   },
+   "156": {
+    "pos": [
+     126,
+     0,
+     -51.95
+    ],
+    "uid": "156",
+    "type": "plain",
+    "onTile": null
+   },
+   "157": {
+    "pos": [
+     126,
+     0,
+     -31.17
+    ],
+    "uid": "157",
+    "type": "mountain",
+    "onTile": null
+   },
+   "158": {
+    "pos": [
+     126,
+     0,
+     -10.39
+    ],
+    "uid": "158",
+    "type": "mountain",
+    "onTile": null
+   },
+   "159": {
+    "pos": [
+     126,
+     0,
+     10.39
+    ],
+    "uid": "159",
+    "type": "mountain",
+    "onTile": null
+   },
+   "16": {
+    "pos": [
+     36,
+     0,
+     0
+    ],
+    "uid": "16",
+    "type": "plain",
+    "onTile": null
+   },
+   "160": {
+    "pos": [
+     126,
+     0,
+     31.17
+    ],
+    "uid": "160",
+    "type": "plain",
+    "onTile": null
+   },
+   "161": {
+    "pos": [
+     126,
+     0,
+     51.95
+    ],
+    "uid": "161",
+    "type": "mountain",
+    "onTile": null
+   },
+   "162": {
+    "pos": [
+     126,
+     0,
+     72.73
+    ],
+    "uid": "162",
+    "type": "mountain",
+    "onTile": null
+   },
+   "163": {
+    "pos": [
+     108,
+     0,
+     83.12
+    ],
+    "uid": "163",
+    "type": "plain",
+    "onTile": null
+   },
+   "164": {
+    "pos": [
+     90,
+     0,
+     93.51
+    ],
+    "uid": "164",
+    "type": "mountain",
+    "onTile": null
+   },
+   "165": {
+    "pos": [
+     72,
+     0,
+     103.9
+    ],
+    "uid": "165",
+    "type": "plain",
+    "onTile": null
+   },
+   "166": {
+    "pos": [
+     54,
+     0,
+     114.29
+    ],
+    "uid": "166",
+    "type": "mountain",
+    "onTile": null
+   },
+   "167": {
+    "pos": [
+     36,
+     0,
+     124.68
+    ],
+    "uid": "167",
+    "type": "mountain",
+    "onTile": null
+   },
+   "168": {
+    "pos": [
+     18,
+     0,
+     135.07
+    ],
+    "uid": "168",
+    "type": "plain",
+    "onTile": null
+   },
+   "169": {
+    "pos": [
+     0,
+     0,
+     145.46
+    ],
+    "uid": "169",
+    "type": "mountain",
+    "onTile": null
+   },
+   "17": {
+    "pos": [
+     36,
+     0,
+     20.78
+    ],
+    "uid": "17",
+    "type": "mountain",
+    "onTile": null
+   },
+   "170": {
+    "pos": [
+     -18,
+     0,
+     155.85
+    ],
+    "uid": "170",
+    "type": "plain",
+    "onTile": null
+   },
+   "171": {
+    "pos": [
+     -36,
+     0,
+     145.46
+    ],
+    "uid": "171",
+    "type": "plain",
+    "onTile": null
+   },
+   "172": {
+    "pos": [
+     -54,
+     0,
+     135.07
+    ],
+    "uid": "172",
+    "type": "plain",
+    "onTile": null
+   },
+   "173": {
+    "pos": [
+     -72,
+     0,
+     124.68
+    ],
+    "uid": "173",
+    "type": "plain",
+    "onTile": null
+   },
+   "174": {
+    "pos": [
+     -90,
+     0,
+     114.29
+    ],
+    "uid": "174",
+    "type": "mountain",
+    "onTile": null
+   },
+   "175": {
+    "pos": [
+     -108,
+     0,
+     103.9
+    ],
+    "uid": "175",
+    "type": "mountain",
+    "onTile": null
+   },
+   "176": {
+    "pos": [
+     -126,
+     0,
+     93.51
+    ],
+    "uid": "176",
+    "type": "mountain",
+    "onTile": null
+   },
+   "177": {
+    "pos": [
+     -144,
+     0,
+     83.12
+    ],
+    "uid": "177",
+    "type": "mountain",
+    "onTile": null
+   },
+   "178": {
+    "pos": [
+     -144,
+     0,
+     62.34
+    ],
+    "uid": "178",
+    "type": "plain",
+    "onTile": null
+   },
+   "179": {
+    "pos": [
+     -144,
+     0,
+     41.56
+    ],
+    "uid": "179",
+    "type": "plain",
+    "onTile": null
+   },
+   "18": {
+    "pos": [
+     18,
+     0,
+     31.17
+    ],
+    "uid": "18",
+    "type": "plain",
+    "onTile": null
+   },
+   "180": {
+    "pos": [
+     -144,
+     0,
+     20.78
+    ],
+    "uid": "180",
+    "type": "mountain",
+    "onTile": null
+   },
+   "181": {
+    "pos": [
+     -144,
+     0,
+     -1.4210855e-14
+    ],
+    "uid": "181",
+    "type": "mountain",
+    "onTile": null
+   },
+   "182": {
+    "pos": [
+     -144,
+     0,
+     -20.78
+    ],
+    "uid": "182",
+    "type": "mountain",
+    "onTile": null
+   },
+   "183": {
+    "pos": [
+     -144,
+     0,
+     -41.56
+    ],
+    "uid": "183",
+    "type": "plain",
+    "onTile": null
+   },
+   "184": {
+    "pos": [
+     -144,
+     0,
+     -62.34
+    ],
+    "uid": "184",
+    "type": "plain",
+    "onTile": null
+   },
+   "185": {
+    "pos": [
+     -144,
+     0,
+     -83.12
+    ],
+    "uid": "185",
+    "type": "plain",
+    "onTile": null
+   },
+   "186": {
+    "pos": [
+     -126,
+     0,
+     -93.51
+    ],
+    "uid": "186",
+    "type": "plain",
+    "onTile": null
+   },
+   "187": {
+    "pos": [
+     -108,
+     0,
+     -103.9
+    ],
+    "uid": "187",
+    "type": "mountain",
+    "onTile": null
+   },
+   "188": {
+    "pos": [
+     -90,
+     0,
+     -114.29
+    ],
+    "uid": "188",
+    "type": "plain",
+    "onTile": null
+   },
+   "189": {
+    "pos": [
+     -72,
+     0,
+     -124.68
+    ],
+    "uid": "189",
+    "type": "plain",
+    "onTile": null
+   },
+   "19": {
+    "pos": [
+     0,
+     0,
+     41.56
+    ],
+    "uid": "19",
+    "type": "mountain",
+    "onTile": null
+   },
+   "190": {
+    "pos": [
+     -54,
+     0,
+     -135.07
+    ],
+    "uid": "190",
+    "type": "plain",
+    "onTile": null
+   },
+   "191": {
+    "pos": [
+     -36,
+     0,
+     -145.46
+    ],
+    "uid": "191",
+    "type": "mountain",
+    "onTile": null
+   },
+   "192": {
+    "pos": [
+     -18,
+     0,
+     -155.85
+    ],
+    "uid": "192",
+    "type": "plain",
+    "onTile": null
+   },
+   "193": {
+    "pos": [
+     0,
+     0,
+     -166.24
+    ],
+    "uid": "193",
+    "type": "mountain",
+    "onTile": null
+   },
+   "194": {
+    "pos": [
+     18,
+     0,
+     -155.85
+    ],
+    "uid": "194",
+    "type": "mountain",
+    "onTile": null
+   },
+   "195": {
+    "pos": [
+     36,
+     0,
+     -145.46
+    ],
+    "uid": "195",
+    "type": "mountain",
+    "onTile": null
+   },
+   "196": {
+    "pos": [
+     54,
+     0,
+     -135.07
+    ],
+    "uid": "196",
+    "type": "mountain",
+    "onTile": null
+   },
+   "197": {
+    "pos": [
+     72,
+     0,
+     -124.68
+    ],
+    "uid": "197",
+    "type": "mountain",
+    "onTile": null
+   },
+   "198": {
+    "pos": [
+     90,
+     0,
+     -114.29
+    ],
+    "uid": "198",
+    "type": "plain",
+    "onTile": null
+   },
+   "199": {
+    "pos": [
+     108,
+     0,
+     -103.9
+    ],
+    "uid": "199",
+    "type": "plain",
+    "onTile": null
+   },
+   "2": {
+    "pos": [
+     -18,
+     0,
+     10.39
+    ],
+    "uid": "2",
+    "type": "plain",
+    "onTile": null
+   },
+   "20": {
+    "pos": [
+     -18,
+     0,
+     51.95
+    ],
+    "uid": "20",
+    "type": "plain",
+    "onTile": null
+   },
+   "200": {
+    "pos": [
+     126,
+     0,
+     -93.51
+    ],
+    "uid": "200",
+    "type": "mountain",
+    "onTile": null
+   },
+   "201": {
+    "pos": [
+     144,
+     0,
+     -83.12
+    ],
+    "uid": "201",
+    "type": "mountain",
+    "onTile": null
+   },
+   "202": {
+    "pos": [
+     144,
+     0,
+     -62.34
+    ],
+    "uid": "202",
+    "type": "mountain",
+    "onTile": null
+   },
+   "203": {
+    "pos": [
+     144,
+     0,
+     -41.56
+    ],
+    "uid": "203",
+    "type": "plain",
+    "onTile": null
+   },
+   "204": {
+    "pos": [
+     144,
+     0,
+     -20.78
+    ],
+    "uid": "204",
+    "type": "plain",
+    "onTile": null
+   },
+   "205": {
+    "pos": [
+     144,
+     0,
+     -4.2632564e-14
+    ],
+    "uid": "205",
+    "type": "mountain",
+    "onTile": null
+   },
+   "206": {
+    "pos": [
+     144,
+     0,
+     20.78
+    ],
+    "uid": "206",
+    "type": "mountain",
+    "onTile": null
+   },
+   "207": {
+    "pos": [
+     144,
+     0,
+     41.56
+    ],
+    "uid": "207",
+    "type": "mountain",
+    "onTile": null
+   },
+   "208": {
+    "pos": [
+     144,
+     0,
+     62.34
+    ],
+    "uid": "208",
+    "type": "plain",
+    "onTile": null
+   },
+   "209": {
+    "pos": [
+     144,
+     0,
+     83.12
+    ],
+    "uid": "209",
+    "type": "plain",
+    "onTile": null
+   },
+   "21": {
+    "pos": [
+     -36,
+     0,
+     41.56
+    ],
+    "uid": "21",
+    "type": "plain",
+    "onTile": null
+   },
+   "210": {
+    "pos": [
+     126,
+     0,
+     93.51
+    ],
+    "uid": "210",
+    "type": "plain",
+    "onTile": null
+   },
+   "211": {
+    "pos": [
+     108,
+     0,
+     103.9
+    ],
+    "uid": "211",
+    "type": "mountain",
+    "onTile": null
+   },
+   "212": {
+    "pos": [
+     90,
+     0,
+     114.29
+    ],
+    "uid": "212",
+    "type": "plain",
+    "onTile": null
+   },
+   "213": {
+    "pos": [
+     72,
+     0,
+     124.68
+    ],
+    "uid": "213",
+    "type": "plain",
+    "onTile": null
+   },
+   "214": {
+    "pos": [
+     54,
+     0,
+     135.07
+    ],
+    "uid": "214",
+    "type": "mountain",
+    "onTile": null
+   },
+   "215": {
+    "pos": [
+     36,
+     0,
+     145.46
+    ],
+    "uid": "215",
+    "type": "plain",
+    "onTile": null
+   },
+   "216": {
+    "pos": [
+     18,
+     0,
+     155.85
+    ],
+    "uid": "216",
+    "type": "mountain",
+    "onTile": null
+   },
+   "217": {
+    "pos": [
+     0,
+     0,
+     166.24
+    ],
+    "uid": "217",
+    "type": "plain",
+    "onTile": null
+   },
+   "218": {
+    "pos": [
+     -18,
+     0,
+     176.63
+    ],
+    "uid": "218",
+    "type": "plain",
+    "onTile": null
+   },
+   "219": {
+    "pos": [
+     -36,
+     0,
+     166.24
+    ],
+    "uid": "219",
+    "type": "mountain",
+    "onTile": null
+   },
+   "22": {
+    "pos": [
+     -54,
+     0,
+     31.17
+    ],
+    "uid": "22",
+    "type": "plain",
+    "onTile": null
+   },
+   "220": {
+    "pos": [
+     -54,
+     0,
+     155.85
+    ],
+    "uid": "220",
+    "type": "plain",
+    "onTile": null
+   },
+   "221": {
+    "pos": [
+     -72,
+     0,
+     145.46
+    ],
+    "uid": "221",
+    "type": "plain",
+    "onTile": null
+   },
+   "222": {
+    "pos": [
+     -90,
+     0,
+     135.07
+    ],
+    "uid": "222",
+    "type": "plain",
+    "onTile": null
+   },
+   "223": {
+    "pos": [
+     -108,
+     0,
+     124.68
+    ],
+    "uid": "223",
+    "type": "plain",
+    "onTile": null
+   },
+   "224": {
+    "pos": [
+     -126,
+     0,
+     114.29
+    ],
+    "uid": "224",
+    "type": "plain",
+    "onTile": null
+   },
+   "225": {
+    "pos": [
+     -144,
+     0,
+     103.9
+    ],
+    "uid": "225",
+    "type": "mountain",
+    "onTile": null
+   },
+   "226": {
+    "pos": [
+     -162,
+     0,
+     93.51
+    ],
+    "uid": "226",
+    "type": "mountain",
+    "onTile": null
+   },
+   "227": {
+    "pos": [
+     -162,
+     0,
+     72.73
+    ],
+    "uid": "227",
+    "type": "plain",
+    "onTile": null
+   },
+   "228": {
+    "pos": [
+     -162,
+     0,
+     51.95
+    ],
+    "uid": "228",
+    "type": "plain",
+    "onTile": null
+   },
+   "229": {
+    "pos": [
+     -162,
+     0,
+     31.17
+    ],
+    "uid": "229",
+    "type": "plain",
+    "onTile": null
+   },
+   "23": {
+    "pos": [
+     -54,
+     0,
+     10.39
+    ],
+    "uid": "23",
+    "type": "plain",
+    "onTile": null
+   },
+   "230": {
+    "pos": [
+     -162,
+     0,
+     10.39
+    ],
+    "uid": "230",
+    "type": "plain",
+    "onTile": null
+   },
+   "231": {
+    "pos": [
+     -162,
+     0,
+     -10.39
+    ],
+    "uid": "231",
+    "type": "plain",
+    "onTile": null
+   },
+   "232": {
+    "pos": [
+     -162,
+     0,
+     -31.17
+    ],
+    "uid": "232",
+    "type": "mountain",
+    "onTile": null
+   },
+   "233": {
+    "pos": [
+     -162,
+     0,
+     -51.95
+    ],
+    "uid": "233",
+    "type": "plain",
+    "onTile": null
+   },
+   "234": {
+    "pos": [
+     -162,
+     0,
+     -72.73
+    ],
+    "uid": "234",
+    "type": "mountain",
+    "onTile": null
+   },
+   "235": {
+    "pos": [
+     -162,
+     0,
+     -93.51
+    ],
+    "uid": "235",
+    "type": "plain",
+    "onTile": null
+   },
+   "236": {
+    "pos": [
+     -144,
+     0,
+     -103.9
+    ],
+    "uid": "236",
+    "type": "mountain",
+    "onTile": null
+   },
+   "237": {
+    "pos": [
+     -126,
+     0,
+     -114.29
+    ],
+    "uid": "237",
+    "type": "plain",
+    "onTile": null
+   },
+   "238": {
+    "pos": [
+     -108,
+     0,
+     -124.68
+    ],
+    "uid": "238",
+    "type": "plain",
+    "onTile": null
+   },
+   "239": {
+    "pos": [
+     -90,
+     0,
+     -135.07
+    ],
+    "uid": "239",
+    "type": "mountain",
+    "onTile": null
+   },
+   "24": {
+    "pos": [
+     -54,
+     0,
+     -10.39
+    ],
+    "uid": "24",
+    "type": "mountain",
+    "onTile": null
+   },
+   "240": {
+    "pos": [
+     -72,
+     0,
+     -145.46
+    ],
+    "uid": "240",
+    "type": "mountain",
+    "onTile": null
+   },
+   "241": {
+    "pos": [
+     -54,
+     0,
+     -155.85
+    ],
+    "uid": "241",
+    "type": "mountain",
+    "onTile": null
+   },
+   "242": {
+    "pos": [
+     -36,
+     0,
+     -166.24
+    ],
+    "uid": "242",
+    "type": "mountain",
+    "onTile": null
+   },
+   "243": {
+    "pos": [
+     -18,
+     0,
+     -176.63
+    ],
+    "uid": "243",
+    "type": "mountain",
+    "onTile": null
+   },
+   "244": {
+    "pos": [
+     0,
+     0,
+     -187.02
+    ],
+    "uid": "244",
+    "type": "mountain",
+    "onTile": null
+   },
+   "245": {
+    "pos": [
+     18,
+     0,
+     -176.63
+    ],
+    "uid": "245",
+    "type": "plain",
+    "onTile": null
+   },
+   "246": {
+    "pos": [
+     36,
+     0,
+     -166.24
+    ],
+    "uid": "246",
+    "type": "mountain",
+    "onTile": null
+   },
+   "247": {
+    "pos": [
+     54,
+     0,
+     -155.85
+    ],
+    "uid": "247",
+    "type": "mountain",
+    "onTile": null
+   },
+   "248": {
+    "pos": [
+     72,
+     0,
+     -145.46
+    ],
+    "uid": "248",
+    "type": "plain",
+    "onTile": null
+   },
+   "249": {
+    "pos": [
+     90,
+     0,
+     -135.07
+    ],
+    "uid": "249",
+    "type": "plain",
+    "onTile": null
+   },
+   "25": {
+    "pos": [
+     -54,
+     0,
+     -31.17
+    ],
+    "uid": "25",
+    "type": "plain",
+    "onTile": null
+   },
+   "250": {
+    "pos": [
+     108,
+     0,
+     -124.68
+    ],
+    "uid": "250",
+    "type": "plain",
+    "onTile": null
+   },
+   "251": {
+    "pos": [
+     126,
+     0,
+     -114.29
+    ],
+    "uid": "251",
+    "type": "mountain",
+    "onTile": null
+   },
+   "252": {
+    "pos": [
+     144,
+     0,
+     -103.9
+    ],
+    "uid": "252",
+    "type": "mountain",
+    "onTile": null
+   },
+   "253": {
+    "pos": [
+     162,
+     0,
+     -93.51
+    ],
+    "uid": "253",
+    "type": "mountain",
+    "onTile": null
+   },
+   "254": {
+    "pos": [
+     162,
+     0,
+     -72.73
+    ],
+    "uid": "254",
+    "type": "plain",
+    "onTile": null
+   },
+   "255": {
+    "pos": [
+     162,
+     0,
+     -51.95
+    ],
+    "uid": "255",
+    "type": "mountain",
+    "onTile": null
+   },
+   "256": {
+    "pos": [
+     162,
+     0,
+     -31.17
+    ],
+    "uid": "256",
+    "type": "plain",
+    "onTile": null
+   },
+   "257": {
+    "pos": [
+     162,
+     0,
+     -10.39
+    ],
+    "uid": "257",
+    "type": "plain",
+    "onTile": null
+   },
+   "258": {
+    "pos": [
+     162,
+     0,
+     10.39
+    ],
+    "uid": "258",
+    "type": "mountain",
+    "onTile": null
+   },
+   "259": {
+    "pos": [
+     162,
+     0,
+     31.17
+    ],
+    "uid": "259",
+    "type": "plain",
+    "onTile": null
+   },
+   "26": {
+    "pos": [
+     -36,
+     0,
+     -41.56
+    ],
+    "uid": "26",
+    "type": "mountain",
+    "onTile": null
+   },
+   "260": {
+    "pos": [
+     162,
+     0,
+     51.95
+    ],
+    "uid": "260",
+    "type": "mountain",
+    "onTile": null
+   },
+   "261": {
+    "pos": [
+     162,
+     0,
+     72.73
+    ],
+    "uid": "261",
+    "type": "mountain",
+    "onTile": null
+   },
+   "262": {
+    "pos": [
+     162,
+     0,
+     93.51
+    ],
+    "uid": "262",
+    "type": "plain",
+    "onTile": null
+   },
+   "263": {
+    "pos": [
+     144,
+     0,
+     103.9
+    ],
+    "uid": "263",
+    "type": "plain",
+    "onTile": null
+   },
+   "264": {
+    "pos": [
+     126,
+     0,
+     114.29
+    ],
+    "uid": "264",
+    "type": "plain",
+    "onTile": null
+   },
+   "265": {
+    "pos": [
+     108,
+     0,
+     124.68
+    ],
+    "uid": "265",
+    "type": "plain",
+    "onTile": null
+   },
+   "266": {
+    "pos": [
+     90,
+     0,
+     135.07
+    ],
+    "uid": "266",
+    "type": "mountain",
+    "onTile": null
+   },
+   "267": {
+    "pos": [
+     72,
+     0,
+     145.46
+    ],
+    "uid": "267",
+    "type": "plain",
+    "onTile": null
+   },
+   "268": {
+    "pos": [
+     54,
+     0,
+     155.85
+    ],
+    "uid": "268",
+    "type": "mountain",
+    "onTile": null
+   },
+   "269": {
+    "pos": [
+     36,
+     0,
+     166.24
+    ],
+    "uid": "269",
+    "type": "plain",
+    "onTile": null
+   },
+   "27": {
+    "pos": [
+     -18,
+     0,
+     -51.95
+    ],
+    "uid": "27",
+    "type": "plain",
+    "onTile": null
+   },
+   "270": {
+    "pos": [
+     18,
+     0,
+     176.63
+    ],
+    "uid": "270",
+    "type": "mountain",
+    "onTile": null
+   },
+   "271": {
+    "pos": [
+     0,
+     0,
+     187.02
+    ],
+    "uid": "271",
+    "type": "plain",
+    "onTile": null
+   },
+   "272": {
+    "pos": [
+     -18,
+     0,
+     197.41
+    ],
+    "uid": "272",
+    "type": "plain",
+    "onTile": null
+   },
+   "273": {
+    "pos": [
+     -36,
+     0,
+     187.02
+    ],
+    "uid": "273",
+    "type": "mountain",
+    "onTile": null
+   },
+   "274": {
+    "pos": [
+     -54,
+     0,
+     176.63
+    ],
+    "uid": "274",
+    "type": "plain",
+    "onTile": null
+   },
+   "275": {
+    "pos": [
+     -72,
+     0,
+     166.24
+    ],
+    "uid": "275",
+    "type": "plain",
+    "onTile": null
+   },
+   "276": {
+    "pos": [
+     -90,
+     0,
+     155.85
+    ],
+    "uid": "276",
+    "type": "plain",
+    "onTile": null
+   },
+   "277": {
+    "pos": [
+     -108,
+     0,
+     145.46
+    ],
+    "uid": "277",
+    "type": "mountain",
+    "onTile": null
+   },
+   "278": {
+    "pos": [
+     -126,
+     0,
+     135.07
+    ],
+    "uid": "278",
+    "type": "plain",
+    "onTile": null
+   },
+   "279": {
+    "pos": [
+     -144,
+     0,
+     124.68
+    ],
+    "uid": "279",
+    "type": "mountain",
+    "onTile": null
+   },
+   "28": {
+    "pos": [
+     0,
+     0,
+     -62.34
+    ],
+    "uid": "28",
+    "type": "plain",
+    "onTile": null
+   },
+   "280": {
+    "pos": [
+     -162,
+     0,
+     114.29
+    ],
+    "uid": "280",
+    "type": "plain",
+    "onTile": null
+   },
+   "281": {
+    "pos": [
+     -180,
+     0,
+     103.9
+    ],
+    "uid": "281",
+    "type": "mountain",
+    "onTile": null
+   },
+   "282": {
+    "pos": [
+     -180,
+     0,
+     83.12
+    ],
+    "uid": "282",
+    "type": "plain",
+    "onTile": null
+   },
+   "283": {
+    "pos": [
+     -180,
+     0,
+     62.34
+    ],
+    "uid": "283",
+    "type": "plain",
+    "onTile": null
+   },
+   "284": {
+    "pos": [
+     -180,
+     0,
+     41.56
+    ],
+    "uid": "284",
+    "type": "mountain",
+    "onTile": null
+   },
+   "285": {
+    "pos": [
+     -180,
+     0,
+     20.78
+    ],
+    "uid": "285",
+    "type": "plain",
+    "onTile": null
+   },
+   "286": {
+    "pos": [
+     -180,
+     0,
+     -1.4210855e-14
+    ],
+    "uid": "286",
+    "type": "plain",
+    "onTile": null
+   },
+   "287": {
+    "pos": [
+     -180,
+     0,
+     -20.78
+    ],
+    "uid": "287",
+    "type": "mountain",
+    "onTile": null
+   },
+   "288": {
+    "pos": [
+     -180,
+     0,
+     -41.56
+    ],
+    "uid": "288",
+    "type": "plain",
+    "onTile": null
+   },
+   "289": {
+    "pos": [
+     -180,
+     0,
+     -62.34
+    ],
+    "uid": "289",
+    "type": "plain",
+    "onTile": null
+   },
+   "29": {
+    "pos": [
+     18,
+     0,
+     -51.95
+    ],
+    "uid": "29",
+    "type": "mountain",
+    "onTile": null
+   },
+   "290": {
+    "pos": [
+     -180,
+     0,
+     -83.12
+    ],
+    "uid": "290",
+    "type": "plain",
+    "onTile": null
+   },
+   "291": {
+    "pos": [
+     -180,
+     0,
+     -103.9
+    ],
+    "uid": "291",
+    "type": "mountain",
+    "onTile": null
+   },
+   "292": {
+    "pos": [
+     -162,
+     0,
+     -114.29
+    ],
+    "uid": "292",
+    "type": "mountain",
+    "onTile": null
+   },
+   "293": {
+    "pos": [
+     -144,
+     0,
+     -124.68
+    ],
+    "uid": "293",
+    "type": "plain",
+    "onTile": null
+   },
+   "294": {
+    "pos": [
+     -126,
+     0,
+     -135.07
+    ],
+    "uid": "294",
+    "type": "mountain",
+    "onTile": null
+   },
+   "295": {
+    "pos": [
+     -108,
+     0,
+     -145.46
+    ],
+    "uid": "295",
+    "type": "mountain",
+    "onTile": null
+   },
+   "296": {
+    "pos": [
+     -90,
+     0,
+     -155.85
+    ],
+    "uid": "296",
+    "type": "mountain",
+    "onTile": null
+   },
+   "297": {
+    "pos": [
+     -72,
+     0,
+     -166.24
+    ],
+    "uid": "297",
+    "type": "plain",
+    "onTile": null
+   },
+   "298": {
+    "pos": [
+     -54,
+     0,
+     -176.63
+    ],
+    "uid": "298",
+    "type": "plain",
+    "onTile": null
+   },
+   "299": {
+    "pos": [
+     -36,
+     0,
+     -187.02
+    ],
+    "uid": "299",
+    "type": "plain",
+    "onTile": null
+   },
+   "3": {
+    "pos": [
+     -18,
+     0,
+     -10.39
+    ],
+    "uid": "3",
+    "type": "plain",
+    "onTile": null
+   },
+   "30": {
+    "pos": [
+     36,
+     0,
+     -41.56
+    ],
+    "uid": "30",
+    "type": "plain",
+    "onTile": null
+   },
+   "300": {
+    "pos": [
+     -18,
+     0,
+     -197.41
+    ],
+    "uid": "300",
+    "type": "plain",
+    "onTile": null
+   },
+   "301": {
+    "pos": [
+     0,
+     0,
+     -207.8
+    ],
+    "uid": "301",
+    "type": "plain",
+    "onTile": null
+   },
+   "302": {
+    "pos": [
+     18,
+     0,
+     -197.41
+    ],
+    "uid": "302",
+    "type": "plain",
+    "onTile": null
+   },
+   "303": {
+    "pos": [
+     36,
+     0,
+     -187.02
+    ],
+    "uid": "303",
+    "type": "plain",
+    "onTile": null
+   },
+   "304": {
+    "pos": [
+     54,
+     0,
+     -176.63
+    ],
+    "uid": "304",
+    "type": "plain",
+    "onTile": null
+   },
+   "305": {
+    "pos": [
+     72,
+     0,
+     -166.24
+    ],
+    "uid": "305",
+    "type": "plain",
+    "onTile": null
+   },
+   "306": {
+    "pos": [
+     90,
+     0,
+     -155.85
+    ],
+    "uid": "306",
+    "type": "mountain",
+    "onTile": null
+   },
+   "307": {
+    "pos": [
+     108,
+     0,
+     -145.46
+    ],
+    "uid": "307",
+    "type": "mountain",
+    "onTile": null
+   },
+   "308": {
+    "pos": [
+     126,
+     0,
+     -135.07
+    ],
+    "uid": "308",
+    "type": "mountain",
+    "onTile": null
+   },
+   "309": {
+    "pos": [
+     144,
+     0,
+     -124.68
+    ],
+    "uid": "309",
+    "type": "mountain",
+    "onTile": null
+   },
+   "31": {
+    "pos": [
+     54,
+     0,
+     -31.17
+    ],
+    "uid": "31",
+    "type": "plain",
+    "onTile": null
+   },
+   "310": {
+    "pos": [
+     162,
+     0,
+     -114.29
+    ],
+    "uid": "310",
+    "type": "mountain",
+    "onTile": null
+   },
+   "311": {
+    "pos": [
+     180,
+     0,
+     -103.9
+    ],
+    "uid": "311",
+    "type": "mountain",
+    "onTile": null
+   },
+   "312": {
+    "pos": [
+     180,
+     0,
+     -83.12
+    ],
+    "uid": "312",
+    "type": "mountain",
+    "onTile": null
+   },
+   "313": {
+    "pos": [
+     180,
+     0,
+     -62.34
+    ],
+    "uid": "313",
+    "type": "plain",
+    "onTile": null
+   },
+   "314": {
+    "pos": [
+     180,
+     0,
+     -41.56
+    ],
+    "uid": "314",
+    "type": "plain",
+    "onTile": null
+   },
+   "315": {
+    "pos": [
+     180,
+     0,
+     -20.78
+    ],
+    "uid": "315",
+    "type": "plain",
+    "onTile": null
+   },
+   "316": {
+    "pos": [
+     180,
+     0,
+     -4.2632564e-14
+    ],
+    "uid": "316",
+    "type": "mountain",
+    "onTile": null
+   },
+   "317": {
+    "pos": [
+     180,
+     0,
+     20.78
+    ],
+    "uid": "317",
+    "type": "mountain",
+    "onTile": null
+   },
+   "318": {
+    "pos": [
+     180,
+     0,
+     41.56
+    ],
+    "uid": "318",
+    "type": "mountain",
+    "onTile": null
+   },
+   "319": {
+    "pos": [
+     180,
+     0,
+     62.34
+    ],
+    "uid": "319",
+    "type": "plain",
+    "onTile": null
+   },
+   "32": {
+    "pos": [
+     54,
+     0,
+     -10.39
+    ],
+    "uid": "32",
+    "type": "plain",
+    "onTile": null
+   },
+   "320": {
+    "pos": [
+     180,
+     0,
+     83.12
+    ],
+    "uid": "320",
+    "type": "mountain",
+    "onTile": null
+   },
+   "321": {
+    "pos": [
+     180,
+     0,
+     103.9
+    ],
+    "uid": "321",
+    "type": "mountain",
+    "onTile": null
+   },
+   "322": {
+    "pos": [
+     162,
+     0,
+     114.29
+    ],
+    "uid": "322",
+    "type": "mountain",
+    "onTile": null
+   },
+   "323": {
+    "pos": [
+     144,
+     0,
+     124.68
+    ],
+    "uid": "323",
+    "type": "plain",
+    "onTile": null
+   },
+   "324": {
+    "pos": [
+     126,
+     0,
+     135.07
+    ],
+    "uid": "324",
+    "type": "mountain",
+    "onTile": null
+   },
+   "325": {
+    "pos": [
+     108,
+     0,
+     145.46
+    ],
+    "uid": "325",
+    "type": "plain",
+    "onTile": null
+   },
+   "326": {
+    "pos": [
+     90,
+     0,
+     155.85
+    ],
+    "uid": "326",
+    "type": "mountain",
+    "onTile": null
+   },
+   "327": {
+    "pos": [
+     72,
+     0,
+     166.24
+    ],
+    "uid": "327",
+    "type": "plain",
+    "onTile": null
+   },
+   "328": {
+    "pos": [
+     54,
+     0,
+     176.63
+    ],
+    "uid": "328",
+    "type": "mountain",
+    "onTile": null
+   },
+   "329": {
+    "pos": [
+     36,
+     0,
+     187.02
+    ],
+    "uid": "329",
+    "type": "mountain",
+    "onTile": null
+   },
+   "33": {
+    "pos": [
+     54,
+     0,
+     10.39
+    ],
+    "uid": "33",
+    "type": "mountain",
+    "onTile": null
+   },
+   "330": {
+    "pos": [
+     18,
+     0,
+     197.41
+    ],
+    "uid": "330",
+    "type": "plain",
+    "onTile": null
+   },
+   "331": {
+    "pos": [
+     0,
+     0,
+     207.8
+    ],
+    "uid": "331",
+    "type": "plain",
+    "onTile": null
+   },
+   "34": {
+    "pos": [
+     54,
+     0,
+     31.17
+    ],
+    "uid": "34",
+    "type": "plain",
+    "onTile": null
+   },
+   "35": {
+    "pos": [
+     36,
+     0,
+     41.56
+    ],
+    "uid": "35",
+    "type": "plain",
+    "onTile": null
+   },
+   "36": {
+    "pos": [
+     18,
+     0,
+     51.95
+    ],
+    "uid": "36",
+    "type": "plain",
+    "onTile": null
+   },
+   "37": {
+    "pos": [
+     0,
+     0,
+     62.34
+    ],
+    "uid": "37",
+    "type": "mountain",
+    "onTile": null
+   },
+   "38": {
+    "pos": [
+     -18,
+     0,
+     72.73
+    ],
+    "uid": "38",
+    "type": "plain",
+    "onTile": null
+   },
+   "39": {
+    "pos": [
+     -36,
+     0,
+     62.34
+    ],
+    "uid": "39",
+    "type": "plain",
+    "onTile": null
+   },
+   "4": {
+    "pos": [
+     0,
+     0,
+     -20.78
+    ],
+    "uid": "4",
+    "type": "mountain",
+    "onTile": null
+   },
+   "40": {
+    "pos": [
+     -54,
+     0,
+     51.95
+    ],
+    "uid": "40",
+    "type": "mountain",
+    "onTile": null
+   },
+   "41": {
+    "pos": [
+     -72,
+     0,
+     41.56
+    ],
+    "uid": "41",
+    "type": "plain",
+    "onTile": null
+   },
+   "42": {
+    "pos": [
+     -72,
+     0,
+     20.78
+    ],
+    "uid": "42",
+    "type": "mountain",
+    "onTile": null
+   },
+   "43": {
+    "pos": [
+     -72,
+     0,
+     0
+    ],
+    "uid": "43",
+    "type": "plain",
+    "onTile": null
+   },
+   "44": {
+    "pos": [
+     -72,
+     0,
+     -20.78
+    ],
+    "uid": "44",
+    "type": "mountain",
+    "onTile": null
+   },
+   "45": {
+    "pos": [
+     -72,
+     0,
+     -41.56
+    ],
+    "uid": "45",
+    "type": "mountain",
+    "onTile": null
+   },
+   "46": {
+    "pos": [
+     -54,
+     0,
+     -51.95
+    ],
+    "uid": "46",
+    "type": "plain",
+    "onTile": null
+   },
+   "47": {
+    "pos": [
+     -36,
+     0,
+     -62.34
+    ],
+    "uid": "47",
+    "type": "mountain",
+    "onTile": null
+   },
+   "48": {
+    "pos": [
+     -18,
+     0,
+     -72.73
+    ],
+    "uid": "48",
+    "type": "mountain",
+    "onTile": null
+   },
+   "49": {
+    "pos": [
+     0,
+     0,
+     -83.12
+    ],
+    "uid": "49",
+    "type": "plain",
+    "onTile": null
+   },
+   "5": {
+    "pos": [
+     18,
+     0,
+     -10.39
+    ],
+    "uid": "5",
+    "type": "plain",
+    "onTile": null
+   },
+   "50": {
+    "pos": [
+     18,
+     0,
+     -72.73
+    ],
+    "uid": "50",
+    "type": "plain",
+    "onTile": null
+   },
+   "51": {
+    "pos": [
+     36,
+     0,
+     -62.34
+    ],
+    "uid": "51",
+    "type": "plain",
+    "onTile": null
+   },
+   "52": {
+    "pos": [
+     54,
+     0,
+     -51.95
+    ],
+    "uid": "52",
+    "type": "mountain",
+    "onTile": null
+   },
+   "53": {
+    "pos": [
+     72,
+     0,
+     -41.56
+    ],
+    "uid": "53",
+    "type": "mountain",
+    "onTile": null
+   },
+   "54": {
+    "pos": [
+     72,
+     0,
+     -20.78
+    ],
+    "uid": "54",
+    "type": "plain",
+    "onTile": null
+   },
+   "55": {
+    "pos": [
+     72,
+     0,
+     0
+    ],
+    "uid": "55",
+    "type": "mountain",
+    "onTile": null
+   },
+   "56": {
+    "pos": [
+     72,
+     0,
+     20.78
+    ],
+    "uid": "56",
+    "type": "plain",
+    "onTile": null
+   },
+   "57": {
+    "pos": [
+     72,
+     0,
+     41.56
+    ],
+    "uid": "57",
+    "type": "plain",
+    "onTile": null
+   },
+   "58": {
+    "pos": [
+     54,
+     0,
+     51.95
+    ],
+    "uid": "58",
+    "type": "plain",
+    "onTile": null
+   },
+   "59": {
+    "pos": [
+     36,
+     0,
+     62.34
+    ],
+    "uid": "59",
+    "type": "plain",
+    "onTile": null
+   },
+   "6": {
+    "pos": [
+     18,
+     0,
+     10.39
+    ],
+    "uid": "6",
+    "type": "plain",
+    "onTile": null
+   },
+   "60": {
+    "pos": [
+     18,
+     0,
+     72.73
+    ],
+    "uid": "60",
+    "type": "plain",
+    "onTile": null
+   },
+   "61": {
+    "pos": [
+     0,
+     0,
+     83.12
+    ],
+    "uid": "61",
+    "type": "mountain",
+    "onTile": null
+   },
+   "62": {
+    "pos": [
+     -18,
+     0,
+     93.51
+    ],
+    "uid": "62",
+    "type": "mountain",
+    "onTile": null
+   },
+   "63": {
+    "pos": [
+     -36,
+     0,
+     83.12
+    ],
+    "uid": "63",
+    "type": "mountain",
+    "onTile": null
+   },
+   "64": {
+    "pos": [
+     -54,
+     0,
+     72.73
+    ],
+    "uid": "64",
+    "type": "plain",
+    "onTile": null
+   },
+   "65": {
+    "pos": [
+     -72,
+     0,
+     62.34
+    ],
+    "uid": "65",
+    "type": "plain",
+    "onTile": null
+   },
+   "66": {
+    "pos": [
+     -90,
+     0,
+     51.95
+    ],
+    "uid": "66",
+    "type": "mountain",
+    "onTile": null
+   },
+   "67": {
+    "pos": [
+     -90,
+     0,
+     31.17
+    ],
+    "uid": "67",
+    "type": "mountain",
+    "onTile": null
+   },
+   "68": {
+    "pos": [
+     -90,
+     0,
+     10.39
+    ],
+    "uid": "68",
+    "type": "plain",
+    "onTile": null
+   },
+   "69": {
+    "pos": [
+     -90,
+     0,
+     -10.39
+    ],
+    "uid": "69",
+    "type": "plain",
+    "onTile": null
+   },
+   "7": {
+    "pos": [
+     0,
+     0,
+     20.78
+    ],
+    "uid": "7",
+    "type": "plain",
+    "onTile": null
+   },
+   "70": {
+    "pos": [
+     -90,
+     0,
+     -31.17
+    ],
+    "uid": "70",
+    "type": "plain",
+    "onTile": null
+   },
+   "71": {
+    "pos": [
+     -90,
+     0,
+     -51.95
+    ],
+    "uid": "71",
+    "type": "plain",
+    "onTile": null
+   },
+   "72": {
+    "pos": [
+     -72,
+     0,
+     -62.34
+    ],
+    "uid": "72",
+    "type": "plain",
+    "onTile": null
+   },
+   "73": {
+    "pos": [
+     -54,
+     0,
+     -72.73
+    ],
+    "uid": "73",
+    "type": "mountain",
+    "onTile": null
+   },
+   "74": {
+    "pos": [
+     -36,
+     0,
+     -83.12
+    ],
+    "uid": "74",
+    "type": "plain",
+    "onTile": null
+   },
+   "75": {
+    "pos": [
+     -18,
+     0,
+     -93.51
+    ],
+    "uid": "75",
+    "type": "plain",
+    "onTile": null
+   },
+   "76": {
+    "pos": [
+     0,
+     0,
+     -103.9
+    ],
+    "uid": "76",
+    "type": "plain",
+    "onTile": null
+   },
+   "77": {
+    "pos": [
+     18,
+     0,
+     -93.51
+    ],
+    "uid": "77",
+    "type": "mountain",
+    "onTile": null
+   },
+   "78": {
+    "pos": [
+     36,
+     0,
+     -83.12
+    ],
+    "uid": "78",
+    "type": "mountain",
+    "onTile": null
+   },
+   "79": {
+    "pos": [
+     54,
+     0,
+     -72.73
+    ],
+    "uid": "79",
+    "type": "plain",
+    "onTile": null
+   },
+   "8": {
+    "pos": [
+     -18,
+     0,
+     31.17
+    ],
+    "uid": "8",
+    "type": "plain",
+    "onTile": null
+   },
+   "80": {
+    "pos": [
+     72,
+     0,
+     -62.34
+    ],
+    "uid": "80",
+    "type": "mountain",
+    "onTile": null
+   },
+   "81": {
+    "pos": [
+     90,
+     0,
+     -51.95
+    ],
+    "uid": "81",
+    "type": "plain",
+    "onTile": null
+   },
+   "82": {
+    "pos": [
+     90,
+     0,
+     -31.17
+    ],
+    "uid": "82",
+    "type": "mountain",
+    "onTile": null
+   },
+   "83": {
+    "pos": [
+     90,
+     0,
+     -10.39
+    ],
+    "uid": "83",
+    "type": "mountain",
+    "onTile": null
+   },
+   "84": {
+    "pos": [
+     90,
+     0,
+     10.39
+    ],
+    "uid": "84",
+    "type": "plain",
+    "onTile": null
+   },
+   "85": {
+    "pos": [
+     90,
+     0,
+     31.17
+    ],
+    "uid": "85",
+    "type": "mountain",
+    "onTile": null
+   },
+   "86": {
+    "pos": [
+     90,
+     0,
+     51.95
+    ],
+    "uid": "86",
+    "type": "mountain",
+    "onTile": null
+   },
+   "87": {
+    "pos": [
+     72,
+     0,
+     62.34
+    ],
+    "uid": "87",
+    "type": "plain",
+    "onTile": null
+   },
+   "88": {
+    "pos": [
+     54,
+     0,
+     72.73
+    ],
+    "uid": "88",
+    "type": "plain",
+    "onTile": null
+   },
+   "89": {
+    "pos": [
+     36,
+     0,
+     83.12
+    ],
+    "uid": "89",
+    "type": "mountain",
+    "onTile": null
+   },
+   "9": {
+    "pos": [
+     -36,
+     0,
+     20.78
+    ],
+    "uid": "9",
+    "type": "mountain",
+    "onTile": null
+   },
+   "90": {
+    "pos": [
+     18,
+     0,
+     93.51
+    ],
+    "uid": "90",
+    "type": "mountain",
+    "onTile": null
+   },
+   "91": {
+    "pos": [
+     0,
+     0,
+     103.9
+    ],
+    "uid": "91",
+    "type": "plain",
+    "onTile": null
+   },
+   "92": {
+    "pos": [
+     -18,
+     0,
+     114.29
+    ],
+    "uid": "92",
+    "type": "plain",
+    "onTile": null
+   },
+   "93": {
+    "pos": [
+     -36,
+     0,
+     103.9
+    ],
+    "uid": "93",
+    "type": "mountain",
+    "onTile": null
+   },
+   "94": {
+    "pos": [
+     -54,
+     0,
+     93.51
+    ],
+    "uid": "94",
+    "type": "mountain",
+    "onTile": null
+   },
+   "95": {
+    "pos": [
+     -72,
+     0,
+     83.12
+    ],
+    "uid": "95",
+    "type": "plain",
+    "onTile": null
+   },
+   "96": {
+    "pos": [
+     -90,
+     0,
+     72.73
+    ],
+    "uid": "96",
+    "type": "plain",
+    "onTile": null
+   },
+   "97": {
+    "pos": [
+     -108,
+     0,
+     62.34
+    ],
+    "uid": "97",
+    "type": "plain",
+    "onTile": null
+   },
+   "98": {
+    "pos": [
+     -108,
+     0,
+     41.56
+    ],
+    "uid": "98",
+    "type": "plain",
+    "onTile": null
+   },
+   "99": {
+    "pos": [
+     -108,
+     0,
+     20.78
+    ],
+    "uid": "99",
+    "type": "mountain",
+    "onTile": null
+   }
+  }
+ }
+}

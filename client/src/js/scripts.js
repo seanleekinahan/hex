@@ -35,9 +35,7 @@ class CCVector {
 
 function sendState(state){
 
-
-    console.log("PAYLOAD: ",state)
-
+    state.gameData.tiles = JSON.stringify(Object.fromEntries(state.gameData.tiles))
     let config = {
         headers: {
            //'Content-Type': 'application/json',
@@ -68,16 +66,19 @@ const FINDABLE = "findable"
 let origin = null
 let destinationTotal = 2
 let destinations = []
+let homeTile = null
+let unitTile = null
+let resourceTile = null
 
 let mapStore = {
     gameData: {
-        tiles: []
+        stateID: 5,
+        tiles: new Map()
     }
 }
 
 const SHOWSPIRAL = false
 
-let hexCount = 0
 
 const shadowPerformanceFactor = 5
 
@@ -106,17 +107,14 @@ const interactionManager = new InteractionManager(
 )
 
 //Tiles
+let hexCount = 0
 hexSpiral(10)
 populateScene(sceneArray)
-console.log(mapStore)
 sendState(mapStore)
 //Lights
 let sLight = spotLight()
 scene.add(sLight.light)
 
-//let sLightShadow = new THREE.CameraHelper(sLight.light.shadow.camera)
-//scene.add(sLight.helper)
-//scene.add(sLightShadow)
 
 function animate() {
     renderer.render(scene, camera);
@@ -220,6 +218,49 @@ function getViableNeighbours(vector) {
     return paths
 }
 
+
+function getAllNeighbours(vector) {
+    let neighbours = {}
+
+    let tKey = new CCVector(vector.q, vector.r-1, vector.s+1).toKey()
+    neighbours.top = tileMap.get(tKey)
+    //neighbours.top = scene.getObjectByName(tileMap.get(tKey))
+
+    let tRKey = new CCVector(vector.q+1, vector.r-1, vector.s).toKey()
+    neighbours.topRight = tileMap.get(tRKey)
+    //neighbours.topRight = scene.getObjectByName(tileMap.get(tRKey))
+
+    let bRKey = new CCVector(vector.q+1, vector.r, vector.s-1).toKey()
+    neighbours.bottomRight = tileMap.get(bRKey)
+    //neighbours.bottomRight = scene.getObjectByName(tileMap.get(bRKey))
+
+    let bKey = new CCVector(vector.q, vector.r+1, vector.s-1).toKey()
+    neighbours.bottom = tileMap.get(bKey)
+    //neighbours.bottom = scene.getObjectByName(tileMap.get(bKey))
+
+    let bLKey = new CCVector(vector.q-1, vector.r+1, vector.s).toKey()
+    neighbours.bottomLeft = tileMap.get(bLKey)
+    //neighbours.bottomLeft = scene.getObjectByName(tileMap.get(bLKey))
+
+    let tLKey = new CCVector(vector.q-1, vector.r, vector.s+1).toKey()
+    neighbours.topLeft = tileMap.get(tLKey)
+    //neighbours.topLeft = scene.getObjectByName(tileMap.get(tLKey))
+
+    let paths = []
+    neighbours = Object.values(neighbours)
+    for(let i = 0; i < neighbours.length; i++) {
+        if(!neighbours[i]){
+            //console.log("Position is out of bounds.")
+            continue
+        }
+
+        //console.log("Neighbour viable!")
+        paths.push(neighbours[i])
+    }
+
+    return paths
+}
+
 let reached = new Map()
 let aStarColour = "#ffe600"
 let floodFillColour= "#e31010"
@@ -290,8 +331,6 @@ function breadthFirst(origin, destination) {
         }
 
     }
-
-
 
 }
 
@@ -663,10 +702,9 @@ function weightedAStar(origin, destinations) {
 
 }
 
-
 function hexMesh(parent, dir, isDummy) {
     let x = 0
-    let y = 3
+    let y = 0
     let z = 0
 
     let color = 0x00ff00
@@ -778,12 +816,12 @@ function hexMesh(parent, dir, isDummy) {
         let tile = {
             pos: [x,y,z],
             type: (hex.pathStatus === IMPASSABLE ? "mountain" : "plain"),
-            hexid: hexCount
+            uid: hexCount.toString()
         }
 
-        console.log("hexid",tile.hexid)
-    
-        mapStore.gameData.tiles.push(tile)
+        console.log(tile.pos.toString())
+        console.log(JSON.stringify(tile.pos))
+        mapStore.gameData.tiles.set(tile.uid, tile)
     }
    
 
