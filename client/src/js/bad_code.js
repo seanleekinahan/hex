@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import Queue from "./queue.js";
+import PriorityQueue from "./priorityqueue.js";
 
 function worldPlane() {
     const color = "#e0eeef"
@@ -128,4 +130,303 @@ function myPathfinder(origin, destination){
 
     console.log("myPathfinder PathLength: ", path.length)
 
+}
+
+function breadthFirst(origin, destination) {
+    let frontier = new Queue()
+    let cameFrom = new Map()
+    let queueable = origin.cubeCoords
+    queueable.name = origin.name
+    frontier.enqueue(queueable)
+    reached.set(origin.name, origin.name)
+    //console.log("Created Frontier Queue and Reached Map: ")
+
+
+    let found = false
+    let iterations = 0;
+    while(!frontier.isEmpty()){
+        iterations++
+        let current = frontier.dequeue()
+        let neighbours = getViableNeighbours(current, reached)
+
+        for(let i = 0; i < neighbours.length; i++) {
+            if(cameFrom.get(neighbours[i].name)){
+                //console.log("Neighbour has already been visited.")
+                continue
+            }
+
+
+            reached.set(neighbours[i].name, neighbours[i].name)
+            cameFrom.set(neighbours[i].name, current.name)
+
+            if(neighbours[i].name === destination.name){
+                console.log("breadthFirst (red, overshadowed by uniFormCost) Found the destination after ",iterations, "iterations.")
+                found = true
+                frontier.flush()
+                break
+            }
+
+
+            queueable = neighbours[i].cubeCoords
+            queueable.name = neighbours[i].name
+            frontier.enqueue(queueable)
+            if(neighbours[i].pathStatus !== ORIGIN && neighbours[i].pathStatus !== WAYPOINT) {
+                neighbours[i].material.color.set(colours.breadthFirst)
+            }
+        }
+
+        if(frontier.isEmpty() && found === false) {
+            console.log("No Path Found!")
+            break
+        }
+    }
+
+    if(found) {
+        let check = cameFrom.get(destination.name)
+        let path = []
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+
+
+        for(let i = 0; i < path.length; i++){
+            let pathObject = scene.getObjectByName(path[i])
+            pathObject.material.color.set(colours.path)
+        }
+
+    }
+
+}
+
+function uniformCost(origin, destinations) {
+
+    if(destinations && !destinations.length) {
+        destinations = [destinations]
+    }
+    let pathBroken = false
+    let path = []
+    for(let d = 0;d  < destinations.length; d++) {
+
+        if(pathBroken){
+            break
+        }
+
+        if(d !== 0) {
+            origin = destinations[d-1]
+        }
+
+        let cameFrom = new Map()
+        let frontier = new PriorityQueue()
+        frontier.enqueue(origin, 0)
+        let costSoFar = new Map()
+        costSoFar.set(origin.name, 0)
+
+        reached.set(origin.name, origin.name)
+
+
+        let found = false
+        let iterations = 0;
+        while(!frontier.isEmpty()){
+            iterations++
+            let current = frontier.dequeue().element
+            let neighbours = getViableNeighbours(current.cubeCoords, reached)
+
+            console.log
+
+            for(let i = 0; i < neighbours.length; i++) {
+                if(cameFrom.get(neighbours[i].name)){
+                    console.log("Neighbour has already been visited.")
+                    continue
+                }
+
+                let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords)
+
+                if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
+                    costSoFar.set(neighbours[i].name, newCost)
+                    let priority = newCost
+
+                    reached.set(neighbours[i].name, neighbours[i].name)
+                    cameFrom.set(neighbours[i].name, current.name)
+
+                    frontier.enqueue(neighbours[i], priority)
+                    if(!neighbours[i].pathStatus) {
+                        neighbours[i].material.color.set(colours.uniformCost)
+                    }
+
+                }
+
+
+                if(neighbours[i].name === destinations[d].name){
+                    console.log("uniformCost (blue) Found the destination after ",iterations, "iterations.")
+                    found = true;
+                    frontier.flush()
+                    break
+                }
+
+            }
+
+            if(frontier.isEmpty() && found === false) {
+                console.log("No Path Found!")
+                pathBroken = true
+                break
+            }
+        }
+
+        let check = cameFrom.get(destinations[d].name)
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+
+
+    }
+
+
+
+    for(let i = 0; i < path.length; i++){
+        let pathObject = scene.getObjectByName(path[i])
+        pathObject.material.color.set(colours.path)
+    }
+}
+
+function greedyDepthFirst(origin, destination) {
+    let frontier = new PriorityQueue()
+    frontier.enqueue(origin, 0)
+    let cameFrom = new Map()
+    reached.set(origin.name, origin.name)
+
+    let found = false
+    let iterations = 0;
+    while(!frontier.isEmpty()){
+        iterations++
+        let current = frontier.dequeue().element
+        let neighbours = getViableNeighbours(current.cubeCoords, reached)
+
+        for(let i = 0; i < neighbours.length; i++) {
+            if(cameFrom.get(neighbours[i].name)){
+                //console.log("Neighbour has already been visited.")
+                continue
+            }
+
+            let priority = destination.cubeCoords.distance(neighbours[i].cubeCoords)
+            reached.set(neighbours[i].name, neighbours[i].name)
+            cameFrom.set(neighbours[i].name, current.name)
+            frontier.enqueue(neighbours[i], priority)
+
+
+            if(neighbours[i].pathStatus !== ORIGIN && neighbours[i].pathStatus !== WAYPOINT) {
+                neighbours[i].material.color.set(colours.greedyDepthFirst)
+            }
+
+
+            if(neighbours[i].name === destination.name){
+                console.log("greedyDepthFirst (purple) Found the destination after ",iterations, "iterations.")
+                found = true;
+                frontier.flush()
+                break
+            }
+
+        }
+
+        if(frontier.isEmpty() && found === false) {
+            console.log("No Path Found!")
+            break
+        }
+    }
+
+    if(found) {
+        let check = cameFrom.get(destination.name)
+        let path = []
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+
+
+        for(let i = 0; i < path.length; i++){
+            let pathObject = scene.getObjectByName(path[i])
+            pathObject.material.color.set(colours.path)
+        }
+
+    }
+}
+
+function aStar(origin, destination) {
+    let frontier = new PriorityQueue()
+    frontier.enqueue(origin, 0)
+    let costSoFar = new Map()
+    costSoFar.set(origin.name, 0)
+    let cameFrom = new Map()
+    reached.set(origin.name, origin.name)
+
+    let found = false
+    let iterations = 0;
+    while(!frontier.isEmpty()){
+        iterations++
+        let current = frontier.dequeue().element
+        let neighbours = getViableNeighbours(current.cubeCoords, reached)
+
+        for(let i = 0; i < neighbours.length; i++) {
+            if(cameFrom.get(neighbours[i].name)){
+                //console.log("Neighbour has already been visited.")
+                continue
+            }
+
+            let newCost = costSoFar.get(current.name) + current.cubeCoords.distance(neighbours[i].cubeCoords)
+
+            if(!costSoFar.get(neighbours[i].name) || newCost < costSoFar.get(neighbours[i].name))  {
+                costSoFar.set(neighbours[i].name, newCost)
+                let priority = newCost + destination.cubeCoords.distance(neighbours[i].cubeCoords)
+
+
+                reached.set(neighbours[i].name, neighbours[i].name)
+                cameFrom.set(neighbours[i].name, current.name)
+
+
+
+                frontier.enqueue(neighbours[i], priority)
+                if(neighbours[i].pathStatus !== ORIGIN && neighbours[i].pathStatus !== WAYPOINT) {
+                    neighbours[i].material.color.set(colours.aStar)
+                }
+
+
+            }
+
+
+            if(neighbours[i].name === destination.name){
+                console.log("aStar (yellow) Found the destination after ",iterations, "iterations.")
+                found = true;
+                frontier.flush()
+                break
+            }
+
+        }
+
+        if(frontier.isEmpty() && found === false) {
+            console.log("No Path Found!")
+            break
+        }
+    }
+
+    if(found) {
+        let check = cameFrom.get(destination.name)
+        let path = []
+        while(check !== origin.name) {
+            path.push(check)
+            check = cameFrom.get(check)
+        }
+
+
+        for(let i = 0; i < path.length; i++){
+            let pathObject = scene.getObjectByName(path[i])
+            pathObject.material.color.set(colours.path)
+        }
+
+    }
+}
+
+function clearTileHandler(object) {
+    object.material.color.set(colours.plain)
+    object.pathStatus = null
 }
