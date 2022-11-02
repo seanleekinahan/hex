@@ -62,22 +62,22 @@ func (m *SearchMap) BreadthFirstAsSearch(origin string, radius int32, searchTerm
 
 		for _, nb := range neighbours {
 			if nb == "null" {
-				//fmt.Println("Neighbour is out of bounds.")
+				fmt.Println("Neighbour is out of bounds.")
 				continue
 			}
 
 			if reachedTiles[nb] {
-				//fmt.Println("Neighbour already visited: ", nb)
+				fmt.Println("Neighbour already visited: ", nb)
 				continue
 			}
 
 			t := m.Tiles[nb]
 			if GetCubeDistance(oT.CubePosition, t.CubePosition) > float32(radius) {
-				//fmt.Println("Neighbour is out of reach: ", nb)
+				fmt.Println("Neighbour is out of reach: ", nb)
 				continue
 			}
 
-			if t.Type == searchTerm || t.Type == "mountain" {
+			if t.Type == searchTerm || t.Type == "impassable" || t.Type == "forest" {
 				found = append(found, t.TileID)
 			}
 
@@ -97,6 +97,7 @@ func (m *SearchMap) BreadthFirstAsSearch(origin string, radius int32, searchTerm
 
 	}
 
+	fmt.Println("Found ", found, " IDs!")
 	return found
 }
 

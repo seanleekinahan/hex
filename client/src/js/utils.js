@@ -36,9 +36,10 @@ function Distance(a, b) {
 }
 
 function ToKey(c){
-    let q = c[0].toString()
-    let r = c[1].toString()
+    let q = c[0].toString()+"-"
+    let r = c[1].toString()+"-"
     let s = c[2].toString()
+
     return q+r+s
 }
 

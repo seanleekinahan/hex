@@ -1,29 +1,29 @@
 {
  "userID": "testUser",
  "structures": {
-  "1": {
+  "s1": {
    "pos": [
     18,
     2.6,
-    10.39
+    10.392304
    ],
-   "uid": "1",
+   "uid": "s1",
    "pid": "5",
    "type": "structure",
    "visionRadius": 2
   }
  },
  "units": {
-  "1": {
+  "u1": {
    "pos": [
     0,
     2.6,
-    -62.34
+    -62.35383
    ],
-   "uid": "1",
+   "uid": "u1",
    "pid": "27",
    "type": "unit",
-   "visionRadius": 1
+   "visionRadius": 5
   }
  },
  "resource": 69

@@ -25,7 +25,7 @@ function App() {
   //Load Full State
   useEffect(() => {
     const interval = setInterval(() => {
-      GetGamestate(setGameData)
+      GetGamestate(gameData, setGameData)
     }, SECOND_MS);
     return () => clearInterval(interval);
   }, []);

@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls.js";
 import { InteractionManager } from "three.interactive";
 import PriorityQueue from './priorityqueue'
 import SendState from "./api.js";
-import {DegToRad, ToKey, Round, Distance} from "./utils.js";
+import {DegToRad, ToKey, Round, Distance, ColorLightener, Sleep} from "./utils.js";
 
 //Direction Constants
 const DIR_TOP = 'top'
@@ -14,6 +14,8 @@ const DIR_BOTTOMRIGHT = 'bottomRight'
 const DIR_BOTTOMLEFT = 'bottomLeft'
 
 //Tile Path Status Constants
+const PLAIN = "plain"
+const FOREST = "forest"
 const IMPASSABLE = "impassable"
 const ORIGIN = "origin"
 const WAYPOINT = "waypoint"
@@ -22,8 +24,9 @@ const FINDABLE = "findable"
 //Tile Colour Constants
 const colours = {
     //tile generation colours
-    plain: "#00ff00",
+    plain: "#9ede9f",
     mountain: "#6b7574",
+    forest: "#498f7a",
 
     //mouse interaction colours
     waypoint: "#11f2f2",
@@ -40,21 +43,26 @@ const colours = {
 }
 
 
+//Rng Variables
+let seedGroupCounter = 0
+
 
 //Pathing Variables
 let origin = null
 let findableTotal = 2
 let findables = []
-let findRadius = 5
-let waypointTotal =3
+let findRadius = 50
+let waypointTotal = 4
 let waypoints = []
 
 //Mode Flags
-const MODE_FIND = true
+const MODE_DEBUG = false
+const MODE_FIND = false
 const MODE_WAYPOINTS = false
-const SHOW_SEARCH_AREA = true
+const SHOW_SEARCH_AREA = false
+const GENERATE_MESHES = true
 
-//Renderer and Scene init
+//Scene init
 const renderer = getRenderer()
 document.body.appendChild(renderer.domElement)
 const scene = new THREE.Scene()
@@ -87,17 +95,39 @@ let tileMapByCoord = new Map(); //Map of co-ord: tileMesh where co-ords are stri
 let tileMapByID = new Map(); //Map of ID: tileMesh
 let reached = new Map() //For tracking reached tiles while pathfinding and searching
 let tileCount = 0 //For generating unique Tile IDs
-hexSpiral(10) //Generates hexMeshes in spiral pattern from 0,0,0 up to given radius.
-populateScene(tileMapByCoord) //Calls scene.add for each mesh in tileMap
+hexSpiral(60) //Generates hexMeshes in spiral pattern from 0,0,0 up to given radius.
 
+if(GENERATE_MESHES) {
+    populateScene(tileMapByCoord) //Calls scene.add for each mesh in tileMap
+}
+
+postGenerationMeddling(tileMapByID)
+
+createTileInfoForSend()
 addTileNeighbours() //Checks each tile and adds Tile IDs or null to .neighbours string array
 SendState(mapStore) //Sends data to GameServer API
 
 //Update renderer and set animation loop for camera controls
 renderer.setAnimationLoop(() => {
+
     renderer.render(scene, camera);
     orbit.update();
 });
+
+function createTileInfoForSend(){
+    for(let t of tileMapByID){
+        let tile = t [1]
+        let send = {
+            pos: [tile.position.x,tile.position.y,tile.position.z],
+            type: tile.pathStatus,
+            uid: tile.uid,
+            cpos: tile.cpos,
+        }
+        mapStore.gameData.tiles.set(tile.uid, send)
+    }
+}
+
+
 
 function hexSpiral(radius) {
 
@@ -110,12 +140,10 @@ function hexSpiral(radius) {
         next = hexMesh(next, DIR_TOP, true)
         for(let j = 0; j < i; j++) {
             next = hexMesh(next, DIR_BOTTOMRIGHT)
-
         }
 
         for(let j = 0; j < i; j++) {
             next = hexMesh(next, DIR_BOTTOM)
-
         }
 
         for(let j = 0; j < i; j++) {
@@ -124,24 +152,15 @@ function hexSpiral(radius) {
 
         for(let j = 0; j < i; j++) {
             next = hexMesh(next, DIR_TOPLEFT)
-
         }
 
         for(let j = 0; j < i; j++) {
             next = hexMesh(next, DIR_TOP)
-
         }
 
         for(let j = 0; j < i; j++) {
             next = hexMesh(next, DIR_TOPRIGHT)
-
         }
-    }
-}
-
-function dummyTopHex(parent){
-    let hex = {
-
     }
 }
 
@@ -150,19 +169,19 @@ function hexMesh(parent, dir, isDummy) {
     let y = 0
     let z = 0
 
-
     const radius =  12
-    const geo = new THREE.CylinderGeometry(radius*0.9,radius*0.95,1,6,2)
+    const geo = new THREE.CylinderGeometry(radius*0.9,radius,1,6,2)
     const mat = new THREE.MeshStandardMaterial({color: colours.plain})
     const hex = new THREE.Mesh(geo, mat)
 
+    hex.pathStatus = PLAIN
     hex.uid = tileCount.toString()
     hex.cpos = [0,0,0]
 
     if(parent && dir){
         let r = parent.radius
-        let q = Round(Math.sqrt(Math.pow(r,2) - Math.pow((r/2),2))); //y midway to origin of tessellated hexagon on same x
-        let p = Round(Math.sqrt(Math.pow(r/2, 2))); //x of the origin of a tessellated hexagon on same y
+        let q = Math.sqrt(Math.pow(r,2) - Math.pow((r/2),2)); //y midway to origin of tessellated hexagon on same x
+        let p = Math.sqrt(Math.pow(r/2, 2)); //x of the origin of a tessellated hexagon on same y
         let c = parent.cpos
 
         if (dir === DIR_TOP) {
@@ -203,13 +222,18 @@ function hexMesh(parent, dir, isDummy) {
         if (dir === DIR_TOPLEFT) {
             x = parent.position.x + p + r
             y = parent.position.y
-            z = parent.position.z + q
+             z = parent.position.z + q
             hex.cpos = [c[0]-1, c[1], c[2]+1]
         }
     }
 
     if(!isDummy) {
-        tileMapByCoord.set(ToKey(hex.cpos), hex)
+        let potentialKey = ToKey(hex.cpos)
+        if(tileMapByCoord.get(potentialKey)){
+            console.error("Generation Error: Tile Key Duplicated")
+            return
+        }
+        tileMapByCoord.set(potentialKey, hex)
         tileMapByID.set(hex.uid, hex)
     }
 
@@ -226,24 +250,147 @@ function hexMesh(parent, dir, isDummy) {
     addMouseEvents(hex, interactionManager)
 
     //Creates Random Walls
-    let rng = Math.floor(Math.random() * 100);
-    if(rng > 50) {
-        impassableTileHandler(hex)
-    }
+    decideTerrainStatus(hex)
 
     if(!isDummy) {
-
-        let tile = {
-            pos: [x,y,z],
-            type: (hex.pathStatus === IMPASSABLE ? "mountain" : "plain"),
-            uid: hex.uid,
-            cpos: hex.cpos,
-        }
-
-        mapStore.gameData.tiles.set(tile.uid, tile)
         tileCount++
     }
     return hex
+}
+
+function decideTerrainStatus(hex) {
+    let rng = Math.floor(Math.random() * 100);
+    if(rng > 35 ) {
+        let neighbours = getNeighbourObjects(hex)
+        let seeds = 0
+        let firstSeed = null
+        for(let n of neighbours) {
+            if(n.seedGroup && n.seedGroup !== firstSeed){
+                firstSeed = n.seedGroup
+                seeds++
+            }
+        }
+
+        if(seeds <= 1) {
+            hex.seedGroup = firstSeed
+            impassableTileHandler(hex)
+        }
+
+    }
+}
+
+function postGenerationMeddling(tileMap) {
+    let passes = 10
+    while(--passes){
+        for(let t of tileMap){
+            let tile = t[1]
+
+
+            //Attempting to find voids and narrow spots
+            if(tile.pathStatus === PLAIN){
+                let impassCount = 0
+                let adj = getNeighbourObjects(tile)
+                for(let a of adj){
+                    if(a.pathStatus === IMPASSABLE) {
+                        impassCount++
+                    }
+                }
+
+                if(impassCount >= 4){
+                    //console.log("Found tile with at least four mountain neighbours.")
+                    let found = breadthFirstAsSearch(tile, 1, PLAIN, PLAIN)
+                    if(found.length <= 1){
+                        //console.log("Found free spaces: ", found.length)
+                        tile.pathStatus = IMPASSABLE
+                        tile.material.color.set(colours.mountain)
+
+                        for(let f of found){
+                            tile.pathStatus = IMPASSABLE
+                            tile.material.color.set(colours.mountain)
+                        }
+                    }
+                }
+            }
+
+
+            //Finding stupid spits of land and dots
+            if(tile.pathStatus === IMPASSABLE){
+                let impassCount = 0
+                let adj = getNeighbourObjects(tile)
+                for(let a of adj){
+                    if(a.pathStatus === IMPASSABLE) {
+                        impassCount++
+                    }
+                }
+
+                if(impassCount <= 2){
+
+                    tile.pathStatus = PLAIN
+                    tile.material.color.set(colours.plain)
+                }
+            }
+        }
+    }
+
+    //Try to turn small blobs of impassable into trees
+    passes = 2
+    while(--passes) {
+        for(let t of tileMap){
+            let tile = t[1]
+
+            if(tile.pathStatus === IMPASSABLE) {
+
+                let impassCount = 0
+                let adj = getNeighbourObjects(tile)
+                for(let a of adj){
+                    if(a.pathStatus === IMPASSABLE) {
+                        impassCount++
+                    }
+                }
+
+                if(impassCount <=4 ) {
+                    let found = breadthFirstAsSearch(tile, 10, IMPASSABLE, IMPASSABLE)
+                    if(found.length <= 15 && found.length > 0){
+                        //console.log("Found occupied spaces: ", found.length)
+                        tile.pathStatus = FOREST
+                        tile.material.color.set(colours.forest)
+
+                        for(let f of found){
+                            f.pathStatus = FOREST
+                            f.material.color.set(colours.forest)
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+
+    }
+
+
+
+    for(let t of tileMapByID){
+        let tile = t[1]
+        if(tile.pathStatus === "forest") {
+            console.log("sending forest")
+        }
+    }
+}
+
+
+function getNeighbourObjects(object) {
+    let neighbours = getAllNeighbours(object.cpos)
+    let objectArray = []
+    for(let i = 0; i < neighbours.length; i++) {
+        let nb = tileMapByID.get(neighbours[i])
+        if(nb){
+            objectArray.push(nb)
+        }
+    }
+
+    return objectArray
 }
 
 function getAllNeighbours(c) {
@@ -294,13 +441,19 @@ function getAllNeighbours(c) {
     return neighbours
 }
 
-function breadthFirstAsSearch(origin, radius) {
+function breadthFirstAsSearch(origin, radius, searchTerm, keepSearchInside) {
 
     let frontier = new PriorityQueue()
     frontier.enqueue(origin, 0)
     reached.set(origin.uid, origin.uid)
 
-    let findables = 0
+    let findables
+    if(searchTerm){
+        findables = []
+    } else {
+        findables = 0
+    }
+
     let iterations = 0;
     while(!frontier.isEmpty()){
         iterations++
@@ -314,22 +467,33 @@ function breadthFirstAsSearch(origin, radius) {
                 continue
             }
 
+            if(keepSearchInside !== nb.pathStatus){
+                continue
+            }
+
             if(reached.get(nb.uid)){
-                console.log("Neighbour has already been visited.")
+                //console.log("Neighbour has already been visited.")
                 continue
             }
 
             if(Distance(nb.cpos, origin.cpos) > radius){
-                console.log("Neighbour is out of reach.")
+                //console.log("Neighbour is out of reach.")
                 continue
             }
 
             reached.set(nb.uid, nb.id)
             frontier.enqueue(nb, 0)
 
-            if(nb.pathStatus === FINDABLE){
+            if(!searchTerm && nb.pathStatus === FINDABLE){
                 findables++
             }
+
+            if(searchTerm){
+                if(searchTerm === nb.pathStatus) {
+                    findables.push(nb)
+                }
+            }
+
 
             if(!nb.pathStatus) {
                 nb.material.color.set(colours.breadthFirst)
@@ -337,11 +501,14 @@ function breadthFirstAsSearch(origin, radius) {
 
         }
 
-        if(frontier.isEmpty()) {
-            console.log("breadthFirstAsSearch (red) found ", findables, " within radius ", radius)
+        if(frontier.isEmpty() && findables.length) {
+            //console.log("breadthFirstAsSearch (red) found ", findables, " within radius ", radius)
             break
         }
     }
+
+
+    return findables
 
 
 
@@ -453,7 +620,7 @@ function weightedAStar(origin, waypoints) {
         for(let i = 0; i < path.length; i++){
             let pathObject = tileMapByID.get(path[i])
 
-            if(!pathObject.pathStatus){
+            if(pathObject.pathStatus === PLAIN){
                 pathObject.material.color.set(colours.path)
             }
 
@@ -467,6 +634,7 @@ function addTileNeighbours() {
     let tiles = mapStore.gameData.tiles
     for (let[,v] of tiles ) {
         v.neighbours = getAllNeighbours(v.cpos)
+        console.log(v.neighbours)
     }
 }
 
@@ -477,52 +645,83 @@ function addMouseEvents(object, interactionManager){
         e.stopPropagation()
 
         clickHandler(object)
-        if(MODE_WAYPOINTS && origin && waypoints.length === waypointTotal) {
-            let t1 = performance.now()
-            weightedAStar(origin,waypoints)
-            let t2 = performance.now()
-            console.log("Time To Run: ", Round(t2-t1),"ms")
-        }
-
-        if(MODE_FIND && origin && findables.length === findableTotal) {
-            let t1 = performance.now()
-            breadthFirstAsSearch(origin, findRadius)
-            let t2 = performance.now()
-            console.log("Time To Run: ", Round(t2-t1),"ms")
-        }
-
     })
 }
 
 function clickHandler(object) {
+
+    console.log("Clicked Object ID: ",object.uid)
+    // console.log("Clicked Object: ")
+    // console.log("X:",  object.position.x/12)
+    // console.log("Z:",  object.position.z/12)
+
+    if(MODE_DEBUG){
+        let nb = getAllNeighbours(object.cpos)
+        for(let n of nb){
+            let tile = tileMapByID.get(n)
+            if(tile) {
+
+                // tile.material.color.set(colours.click)
+                // console.log("Object: ", tile.position)
+                // console.log("X:",  tile.position.x/12)
+                // console.log("Z:",  tile.position.z/12)
+
+            }
+        }
+        return
+    }
 
     if(object.pathStatus === IMPASSABLE) {
         clearMapHandler()
         return
     }
 
-    if(!object.pathStatus && !origin) {
+    if(object.pathStatus === PLAIN && !origin && (MODE_FIND || MODE_WAYPOINTS)) {
         originHandler(object)
         return
     }
 
-    if(MODE_WAYPOINTS){
-        if(!object.pathStatus && origin && waypoints.length < waypointTotal){
+    if(MODE_WAYPOINTS && object.pathStatus === PLAIN && origin){
+        if(waypoints.length < waypointTotal){
             waypointHandler(object)
+        }
+
+        if(waypoints.length === waypointTotal){
+            let t1 = performance.now()
+            weightedAStar(origin,waypoints)
+            let t2 = performance.now()
+            console.log("Time To Run: ", Round(t2-t1),"ms")
+            return
+        }
+
+    }
+
+    if(MODE_FIND && origin && !object.pathStatus){
+        if(findables.length < findableTotal){
+            findableTileHandler(object)
+        }
+
+        if(findables.length === findableTotal) {
+            let t1 = performance.now()
+            breadthFirstAsSearch(origin, findRadius)
+            let t2 = performance.now()
+            console.log("Time To Run: ", Round(t2-t1),"ms")
             return
         }
     }
 
-    if(MODE_FIND){
-        if(!object.pathStatus && origin && findables.length < findableTotal){
-            findableTileHandler(object)
-        }
-    }
 
 }
 
+
 function impassableTileHandler(object){
     object.pathStatus = IMPASSABLE
+
+    if(!object.seedGroup){
+        object.seedGroup = seedGroupCounter
+        seedGroupCounter++
+    }
+
     object.material.color.set(colours.mountain)
 }
 
@@ -535,7 +734,7 @@ function findableTileHandler(object){
 function clearMapHandler() {
 
     if(origin) {
-        origin.pathStatus = null
+        origin.pathStatus = PLAIN
         origin.material.color.set(colours.plain)
         origin = null
     }
@@ -563,17 +762,12 @@ function clearMapHandler() {
     for(let[k] of reached.entries()) {
         let obj = tileMapByID.get(k)
 
-        if(obj.pathStatus){
-            if(obj.pathStatus === FINDABLE) {
-                obj.material.color.set(colours.findable)
-            }
-
-          continue
+        if(obj.pathStatus === PLAIN){
+            obj.material.color.set(colours.plain)
         }
 
         reached.delete(k)
-        obj.material.color.set(colours.plain)
-        obj.pathStatus = null
+
     }
 
 }
@@ -597,7 +791,7 @@ function pointLight() {
 }
 
 function spotLight() {
-    const light = new THREE.SpotLight(0xFFFFFF, 0.15);
+    const light = new THREE.SpotLight(0xFFFFFF, 0.25);
     light.position.set(0, 1000, 0);
     light.rotation.set(DegToRad(180),0,0)
     light.castShadow = true;
@@ -616,7 +810,7 @@ function cameraSetup(){
         0.1,
         10000
     );
-    camera.position.set(350,350,10)
+    camera.position.set(1250,2250,10)
 
     return camera
 }

@@ -6,6 +6,7 @@ function Hex(props) {
     let divisions = 6
 
     let tileColours = {
+        forest: "#498f7a",
         water: "#4287f5",
         mountain: "#6b7574",
         plain: "#9be670"
@@ -21,6 +22,9 @@ function Hex(props) {
             break
         case "plain":
             colour = tileColours.plain
+            break
+        case "forest":
+            colour = tileColours.forest
             break
     }
 
