@@ -1,5 +1,4 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import './App.css';
 import Hex from './components/hex'
 import Box from './components/box'
@@ -7,28 +6,25 @@ import Lights from './components/lights'
 import Camera from './components/camera';
 import { useEffect, useState } from 'react';
 
+
 import GetGamestate from './api/gamestate';
-import GetStateUpdates from './api/updatestate';
 
 function App() {
-
   const [stateID, setStateID] = useState(0)
 
   const [gameData, setGameData] = useState({});
   const [tiles, setTiles] = useState([]);
   const [tileChildren, setTileChildren] = useState([]);
-  const [updateData, setUpdateData] = useState({});
 
-  const MINUTE_MS = 60000;
   const SECOND_MS = 1000;
 
   //Load Full State
   useEffect(() => {
     const interval = setInterval(() => {
-      GetGamestate(gameData, setGameData)
+      GetGamestate(stateID, setGameData)
     }, SECOND_MS);
     return () => clearInterval(interval);
-  }, []);
+  }, [stateID]);
 
   //Populate Meshes
   useEffect(() => {
@@ -38,7 +34,7 @@ function App() {
       return
     }
 
-    console.log("Got new State ID, generating new hexmap!")
+    console.log("Got new State ID: ", stateID," generating new hexmap!")
     if(gameData.tiles){
 
       let hexes = []
@@ -46,12 +42,12 @@ function App() {
       for(let tile of gameData.tiles) {
 
         if(tile.onTile) {
-          for(let child of tile.onTile) {
 
-            console.log("Created a tile child: ",child)
+          for(let c of Object.entries(tile.onTile)) {
+            let child = c[1]
             hexChildren.push(
                 < Box
-                    position={[child.pos[0], child.pos[1], child.pos[2]]}
+                    position={[child.pos[0], child.pos[1]+1, child.pos[2]]}
                     key={child.uid}
                     uid={child.uid}
                     type={child.type}
@@ -72,17 +68,21 @@ function App() {
       setTileChildren(hexChildren)
       setTiles(hexes)
     }
-  }, [gameData])
+  }, [gameData, stateID])
 
   return (
-    <Canvas>
-      < Lights />
-      < Camera />
-      
-      {tiles}
-      {tileChildren}
+      <>
+        <Canvas>
+          < Lights />
+          < Camera />
+          {tiles}
+          {tileChildren}
+        </Canvas>
+        <button>
+          TestText
+        </button>
+      </>
 
-    </Canvas>
   );
 }
 

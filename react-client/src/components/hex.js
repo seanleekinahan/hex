@@ -26,6 +26,9 @@ function Hex(props) {
         case "forest":
             colour = tileColours.forest
             break
+        default:
+            colour = '#ffffff'
+            break
     }
 
     return (
@@ -34,9 +37,14 @@ function Hex(props) {
         receiveShadow={true}
         scale={[12,12,12]} 
         rotation={[0,rad(30),0]}
+        onClick={(e) => {
+            e.stopPropagation()
+            console.log(props)
+        }}
         >
             <cylinderGeometry args={[topRadius, bottomRadius, height, divisions]}/>
             <meshLambertMaterial color={colour}/>
+
         </mesh>
     )
 }

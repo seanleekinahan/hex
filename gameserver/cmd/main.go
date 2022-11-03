@@ -1,6 +1,8 @@
 package main
 
 import (
+	"gameserver/internal/cache"
+	"gameserver/internal/manipulator"
 	"gameserver/internal/rest"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -26,7 +28,14 @@ func main() {
 	e := gin.New()
 	e.Use(CORSMiddleware())
 
-	_, err := rest.NewAPI(*e)
+	c, err := cache.NewCache()
+	if err != nil {
+		log.Fatal("failed to initiate cache")
+	}
+
+	m := manipulator.NewManipulator(c)
+
+	_, err = rest.NewAPI(e, c, &m)
 	if err != nil {
 		log.Fatal("failed to run rest api")
 	}

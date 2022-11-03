@@ -11,7 +11,7 @@ import (
 type SearchTile struct {
 	TileID       string
 	CubePosition []float32
-	Neighbours   []string
+	Neighbours   map[string]*Tile
 	Type         string
 }
 
@@ -19,7 +19,7 @@ type SearchMap struct { //Stores Tile information by TileID
 	Tiles map[string]*SearchTile
 }
 
-func NewSearchMap(tileMap map[string]Tile) SearchMap {
+func NewSearchMap(tileMap map[string]*Tile) SearchMap {
 
 	s := SearchMap{Tiles: make(map[string]*SearchTile)}
 
@@ -40,7 +40,7 @@ func NewSearchMap(tileMap map[string]Tile) SearchMap {
 func (m *SearchMap) BreadthFirstAsSearch(origin string, radius int32, searchTerm string) []string { // BreadthFirstAsSearch
 
 	oT := m.Tiles[origin]
-	fmt.Println("BreadthFirst Search Starting At: ", oT.CubePosition, " with radius of ", radius)
+	//fmt.Println("BreadthFirst Search Starting At: ", oT.CubePosition, " with radius of ", radius)
 	//Frontier queue - priority functionality ignored
 	frontier := make(PriorityQueue, 0)
 	heap.Init(&frontier)
@@ -61,29 +61,31 @@ func (m *SearchMap) BreadthFirstAsSearch(origin string, radius int32, searchTerm
 		neighbours := m.Tiles[current.Value].Neighbours
 
 		for _, nb := range neighbours {
-			if nb == "null" {
-				fmt.Println("Neighbour is out of bounds.")
+			if nb.ID == "null" {
+				//fmt.Println("Neighbour is out of bounds.")
 				continue
 			}
 
-			if reachedTiles[nb] {
-				fmt.Println("Neighbour already visited: ", nb)
+			if reachedTiles[nb.ID] {
+				//fmt.Println("Neighbour already visited: ", nb)
 				continue
 			}
 
-			t := m.Tiles[nb]
+			t := m.Tiles[nb.ID]
 			if GetCubeDistance(oT.CubePosition, t.CubePosition) > float32(radius) {
-				fmt.Println("Neighbour is out of reach: ", nb)
+				//fmt.Println("Neighbour is out of reach: ", nb)
 				continue
 			}
 
+			//handle actual searching later
 			if t.Type == searchTerm || t.Type == "impassable" || t.Type == "forest" {
-				found = append(found, t.TileID)
-			}
 
-			reachedTiles[nb] = true
+			}
+			found = append(found, t.TileID)
+
+			reachedTiles[nb.ID] = true
 			tile = &Item{
-				Value:    nb,
+				Value:    nb.ID,
 				Priority: 0,
 			}
 			heap.Push(&frontier, tile)
@@ -91,13 +93,13 @@ func (m *SearchMap) BreadthFirstAsSearch(origin string, radius int32, searchTerm
 		}
 
 		if frontier.Len() == 0 {
-			fmt.Println("BreadthFirstSearch finished!")
+			//fmt.Println("BreadthFirstSearch finished!")
 			break
 		}
 
 	}
 
-	fmt.Println("Found ", found, " IDs!")
+	//fmt.Println("Found ", found, " IDs!")
 	return found
 }
 

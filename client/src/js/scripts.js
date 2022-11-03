@@ -16,7 +16,9 @@ const DIR_BOTTOMLEFT = 'bottomLeft'
 //Tile Path Status Constants
 const PLAIN = "plain"
 const FOREST = "forest"
-const IMPASSABLE = "impassable"
+const MOUNTAIN = "mountain"
+const WATER = "water"
+
 const ORIGIN = "origin"
 const WAYPOINT = "waypoint"
 const FINDABLE = "findable"
@@ -27,6 +29,7 @@ const colours = {
     plain: "#9ede9f",
     mountain: "#6b7574",
     forest: "#498f7a",
+    water: "#10a0e3",
 
     //mouse interaction colours
     waypoint: "#11f2f2",
@@ -85,7 +88,6 @@ const interactionManager = new InteractionManager(
 //Object for returning data via GameServer API
 let mapStore = {
     gameData: {
-        stateID: 5,
         tiles: new Map()
     }
 }
@@ -95,8 +97,8 @@ let tileMapByCoord = new Map(); //Map of co-ord: tileMesh where co-ords are stri
 let tileMapByID = new Map(); //Map of ID: tileMesh
 let reached = new Map() //For tracking reached tiles while pathfinding and searching
 let tileCount = 0 //For generating unique Tile IDs
-hexSpiral(60) //Generates hexMeshes in spiral pattern from 0,0,0 up to given radius.
-
+hexSpiral(36) //Generates hexMeshes in spiral pattern from 0,0,0 up to given radius.
+addTileNeighbours()  //Checks each tile and adds Tile IDs or null to .neighbours string array
 if(GENERATE_MESHES) {
     populateScene(tileMapByCoord) //Calls scene.add for each mesh in tileMap
 }
@@ -104,8 +106,8 @@ if(GENERATE_MESHES) {
 postGenerationMeddling(tileMapByID)
 
 createTileInfoForSend()
-addTileNeighbours() //Checks each tile and adds Tile IDs or null to .neighbours string array
-SendState(mapStore) //Sends data to GameServer API
+
+
 
 //Update renderer and set animation loop for camera controls
 renderer.setAnimationLoop(() => {
@@ -122,9 +124,30 @@ function createTileInfoForSend(){
             type: tile.pathStatus,
             uid: tile.uid,
             cpos: tile.cpos,
+            neighbours: new Map()
+        }
+
+        let nbos = getNeighbourObjects(tile)
+        for(let n of nbos) {
+            let neighbour = {
+                pos: [n.position.x,n.position.y,n.position.z],
+                type: n.pathStatus,
+                uid: n.uid,
+                cpos: n.cpos,
+                neighbours: null
+            }
+            send.neighbours.set(n.uid, neighbour)
         }
         mapStore.gameData.tiles.set(tile.uid, send)
     }
+
+    for(let t of mapStore.gameData.tiles){
+        let tile = t[1]
+        tile.neighbours = JSON.stringify(Object.fromEntries(tile.neighbours))
+        console.log(tile.neighbours)
+    }
+
+    SendState(mapStore) //Sends data to GameServer API
 }
 
 
@@ -175,8 +198,9 @@ function hexMesh(parent, dir, isDummy) {
     const hex = new THREE.Mesh(geo, mat)
 
     hex.pathStatus = PLAIN
-    hex.uid = tileCount.toString()
+    hex.uid = "t-"+tileCount.toString()
     hex.cpos = [0,0,0]
+    hex.neighbours = new Map()
 
     if(parent && dir){
         let r = parent.radius
@@ -249,8 +273,6 @@ function hexMesh(parent, dir, isDummy) {
     hex.cost = 1
     addMouseEvents(hex, interactionManager)
 
-    //Creates Random Walls
-    decideTerrainStatus(hex)
 
     if(!isDummy) {
         tileCount++
@@ -273,13 +295,21 @@ function decideTerrainStatus(hex) {
 
         if(seeds <= 1) {
             hex.seedGroup = firstSeed
-            impassableTileHandler(hex)
+            mountainTileHandler(hex)
         }
 
     }
 }
 
 function postGenerationMeddling(tileMap) {
+    for(let t of tileMap){
+        let tile = t[1]
+        //Creates Random Walls
+        decideTerrainStatus(tile)
+
+    }
+
+
     let passes = 10
     while(--passes){
         for(let t of tileMap){
@@ -291,21 +321,22 @@ function postGenerationMeddling(tileMap) {
                 let impassCount = 0
                 let adj = getNeighbourObjects(tile)
                 for(let a of adj){
-                    if(a.pathStatus === IMPASSABLE) {
+                    if(a.pathStatus === MOUNTAIN) {
                         impassCount++
                     }
                 }
 
+                //Fills lots of stuff
                 if(impassCount >= 4){
                     //console.log("Found tile with at least four mountain neighbours.")
-                    let found = breadthFirstAsSearch(tile, 1, PLAIN, PLAIN)
+                    let found = breadthFirstAsSearch(tile, 2, PLAIN, PLAIN)
                     if(found.length <= 1){
                         //console.log("Found free spaces: ", found.length)
-                        tile.pathStatus = IMPASSABLE
+                        tile.pathStatus = MOUNTAIN
                         tile.material.color.set(colours.mountain)
 
                         for(let f of found){
-                            tile.pathStatus = IMPASSABLE
+                            tile.pathStatus = MOUNTAIN
                             tile.material.color.set(colours.mountain)
                         }
                     }
@@ -314,11 +345,11 @@ function postGenerationMeddling(tileMap) {
 
 
             //Finding stupid spits of land and dots
-            if(tile.pathStatus === IMPASSABLE){
+            if(tile.pathStatus === MOUNTAIN){
                 let impassCount = 0
                 let adj = getNeighbourObjects(tile)
                 for(let a of adj){
-                    if(a.pathStatus === IMPASSABLE) {
+                    if(a.pathStatus === MOUNTAIN) {
                         impassCount++
                     }
                 }
@@ -332,24 +363,24 @@ function postGenerationMeddling(tileMap) {
         }
     }
 
-    //Try to turn small blobs of impassable into trees
+    //Try to turn small blobs of mountain into trees
     passes = 2
     while(--passes) {
         for(let t of tileMap){
             let tile = t[1]
 
-            if(tile.pathStatus === IMPASSABLE) {
+            if(tile.pathStatus === MOUNTAIN) {
 
                 let impassCount = 0
                 let adj = getNeighbourObjects(tile)
                 for(let a of adj){
-                    if(a.pathStatus === IMPASSABLE) {
+                    if(a.pathStatus === MOUNTAIN) {
                         impassCount++
                     }
                 }
 
                 if(impassCount <=4 ) {
-                    let found = breadthFirstAsSearch(tile, 10, IMPASSABLE, IMPASSABLE)
+                    let found = breadthFirstAsSearch(tile, 10, MOUNTAIN, MOUNTAIN)
                     if(found.length <= 15 && found.length > 0){
                         //console.log("Found occupied spaces: ", found.length)
                         tile.pathStatus = FOREST
@@ -370,13 +401,129 @@ function postGenerationMeddling(tileMap) {
     }
 
 
+    //Try to add new forest areas into large gaps
+    passes = 2
+    while(--passes){
+        for(let t of tileMap){
+            let tile = t[1]
 
-    for(let t of tileMapByID){
-        let tile = t[1]
-        if(tile.pathStatus === "forest") {
-            console.log("sending forest")
+            if(tile.pathStatus === PLAIN) {
+
+                let found = breadthFirstAsSearch(tile, 4, PLAIN, PLAIN)
+                if(found.length > 20){
+                    //console.log("Found occupied spaces: ", found.length)
+                    tile.pathStatus = FOREST
+                    tile.material.color.set(colours.forest)
+
+                    for(let f of found){
+                        f.pathStatus = FOREST
+                        f.material.color.set(colours.forest)
+                    }
+                }
+
+
+            }
+
         }
     }
+
+    //Try to add rivers and lakes
+    passes =5
+    let sources = []
+    let lakes = []
+    let firstTile
+    while(--passes){
+        for(let t of tileMap){
+
+            let tile = t[1]
+
+
+            if(tile.pathStatus === PLAIN) {
+
+                //water sources
+                let rng = 1+(Math.sin(Math.floor(Math.random() * 1000)));
+                rng = rng*3
+                if(sources.length < 10 && rng > 5.9999) {
+                    tile.pathStatus = WATER
+                    tile.material.color.set(colours.water)
+                    sources.push(tile)
+                }
+
+                //edge pieces as destinations
+                let neighbours = getNeighbourObjects(tile)
+                if(neighbours.length === 4 && lakes.length < sources.length && rng > 5.999) {
+                    tile.pathStatus = WATER
+                    tile.material.color.set(colours.water)
+                    lakes.push(tile)
+                }
+
+            }
+
+        }
+    }
+
+    while(sources.length !== lakes.length){
+        if(sources.length > lakes.length){
+            sources.pop()
+        } else {
+            lakes.pop()
+        }
+    }
+
+    while(sources.length && sources.length === lakes.length){
+        let closest
+        let closestLake = {}
+        for(let l of lakes){
+            let distance = Distance(sources[sources.length-1].cpos, l.cpos)
+            if(!closest){
+                closest = distance
+                closestLake = l
+            }
+
+            if(distance < closest) {
+                closest = distance
+                closestLake = l
+            }
+        }
+
+
+        let path = weightedAStar(sources[sources.length-1], closestLake, "river")
+        for(let p of path){
+            p.pathStatus = WATER
+            p.material.color.set(colours.water)
+
+
+        }
+        sources.pop()
+        lakes.pop()
+    }
+
+    // passes = 2
+    // while(--passes){
+    //     for(let t of tileMap){
+    //
+    //         let tile = t[1]
+    //         if(tile.pathStatus === WATER) {
+    //
+    //             let rng = Math.floor(Math.random() * 100);
+    //             let neighbours = getNeighbourObjects(tile)
+    //             let nbCount = 0
+    //             for(let nb of neighbours){
+    //                 if(nb.pathStatus === WATER) {
+    //                     nbCount++
+    //                 }
+    //             }
+    //
+    //             if(nbCount>2){
+    //                 tile.material.color.set(colours.plain)
+    //             }
+    //
+    //         }
+    //
+    //     }
+    // }
+
+
 }
 
 
@@ -514,7 +661,7 @@ function breadthFirstAsSearch(origin, radius, searchTerm, keepSearchInside) {
 
 }
 
-function weightedAStar(origin, waypoints) {
+function weightedAStar(origin, waypoints, forGeneration) {
 
     if(waypoints && !waypoints.length) {
         waypoints = [waypoints]
@@ -557,7 +704,17 @@ function weightedAStar(origin, waypoints) {
                     }
 
                     //Mountain Tiles
-                    if (nb.pathStatus === IMPASSABLE) {
+                    if (nb.pathStatus === MOUNTAIN) {
+                        continue
+                    }
+
+                    let rng
+                    if(forGeneration){
+                        rng = 1+(Math.sin(Math.floor(Math.random() * 1000)));
+                        rng = rng*3
+                    }
+
+                    if(forGeneration === "river" && rng > 3){
                         continue
                     }
 
@@ -616,25 +773,30 @@ function weightedAStar(origin, waypoints) {
 
     }
 
+    let pathObjects = []
     if(found && !pathBroken){
         for(let i = 0; i < path.length; i++){
             let pathObject = tileMapByID.get(path[i])
-
-            if(pathObject.pathStatus === PLAIN){
-                pathObject.material.color.set(colours.path)
+            pathObjects.push(pathObject)
+            if(!forGeneration){
+                if(pathObject.pathStatus === PLAIN){
+                    pathObject.material.color.set(colours.path)
+                }
             }
-
         }
     }
 
-
+    return pathObjects
 }
 
 function addTileNeighbours() {
-    let tiles = mapStore.gameData.tiles
-    for (let[,v] of tiles ) {
-        v.neighbours = getAllNeighbours(v.cpos)
-        console.log(v.neighbours)
+    for (let t of tileMapByID ) {
+        let tile = t[1]
+        let nbs = getNeighbourObjects(tile)
+        for (let n of nbs) {
+            tile.neighbours.set(n.uid, n)
+        }
+
     }
 }
 
@@ -671,7 +833,7 @@ function clickHandler(object) {
         return
     }
 
-    if(object.pathStatus === IMPASSABLE) {
+    if(object.pathStatus === MOUNTAIN) {
         clearMapHandler()
         return
     }
@@ -714,8 +876,8 @@ function clickHandler(object) {
 }
 
 
-function impassableTileHandler(object){
-    object.pathStatus = IMPASSABLE
+function mountainTileHandler(object){
+    object.pathStatus = MOUNTAIN
 
     if(!object.seedGroup){
         object.seedGroup = seedGroupCounter
@@ -791,12 +953,12 @@ function pointLight() {
 }
 
 function spotLight() {
-    const light = new THREE.SpotLight(0xFFFFFF, 0.25);
-    light.position.set(0, 1000, 0);
+    const light = new THREE.SpotLight(0xFFFFFF, 0.85);
+    light.position.set(0, 10000, 0);
     light.rotation.set(DegToRad(180),0,0)
-    light.castShadow = true;
-    light.shadow.camera.x = light.shadow.mapSize.x * 20
-    light.shadow.camera.y = light.shadow.mapSize.y * 20
+    light.castShadow = false;
+    // light.shadow.camera.x = light.shadow.mapSize.x * 20
+    // light.shadow.camera.y = light.shadow.mapSize.y * 20
     light.shadow.camera.far *= 2
     light.angle = 1;
     const helper = new THREE.SpotLightHelper(light);
@@ -816,11 +978,11 @@ function cameraSetup(){
 }
 
 function getRenderer() {
-    const r = new THREE.WebGLRenderer({antialias: true, powerPreference:"high-performance"});
+    const r = new THREE.WebGLRenderer();
     r.setSize(window.innerWidth, window.innerHeight)
-    r.shadowMap.enabled = true;
-    r.outputEncoding = THREE.sRGBEncoding
-    r.toneMapping = THREE.ACESFilmicToneMapping
+    //r.shadowMap.enabled = true;
+    //r.outputEncoding = THREE.sRGBEncoding
+    //r.toneMapping = THREE.ACESFilmicToneMapping
 
     r.setClearColor("#5f9ea0")
     return r

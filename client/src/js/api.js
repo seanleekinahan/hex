@@ -2,6 +2,7 @@ import axios from "axios";
 
 function SendState(state){
 
+    console.log(state.gameData)
     //Stringify Map for gin-gonic JSON binding
     state.gameData.tiles = JSON.stringify(Object.fromEntries(state.gameData.tiles))
     let config = {

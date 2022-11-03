@@ -4,107 +4,80 @@ import (
 	"encoding/json"
 	"fmt"
 	. "gameserver"
-	"gameserver/internal/navigator"
+	"gameserver/internal/cache"
+	"gameserver/internal/manipulator"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 )
 
 type API struct {
-	cache  FetchGameData
-	engine gin.Engine
+	cache       *cache.Cache
+	engine      *gin.Engine
+	manipulator *manipulator.Manipulator
 }
 
-func NewAPI(e gin.Engine) (*API, error) {
+func NewAPI(e *gin.Engine, c *cache.Cache, m *manipulator.Manipulator) (*API, error) {
 
-	a := &API{}
-
-	mapData, err := loadMapStore()
-	if err != nil {
-		log.Fatal("failed to loadMapStore", err)
-		return nil, err
-	}
-
-	err = defaultPlayerStart(mapData.Tiles["5"], mapData.Tiles["27"])
-	if err != nil {
-		log.Fatal("failed to generate default player information")
-		return nil, err
+	a := &API{
+		cache:       c,
+		manipulator: m,
 	}
 
 	e.GET("api/gamestate/:LastState", a.GetGameState)
-	e.POST("api/gamestate", PostGameState)
+	e.POST("api/gamestate", a.PostGameState)
 
-	a.cache = *mapData
-
+	a.cache = c
 	a.engine = e
 	return a, nil
 }
 
-func (a *API) GetGameState(c *gin.Context) {
+//func BetterUnmarshalJSON(b []byte) error {
+//
+//	var f interface{}
+//	err := json.Unmarshal(b, &f)
+//	if err != nil {
+//		return errors.New("failed to do a thing")
+//	}
+//
+//	type tempGameData struct {
+//
+//	}
+//
+//	type tempContainer struct {
+//		gameData interface{}
+//	}
+//
+//	m := f.(map[string]interface{})
+//
+//	foomap := m["foo"]
+//	v := foomap.(map[string]interface{})
+//
+//	a.FooBar = v["bar"].(string)
+//	a.FooBaz = v["baz"].(string)
+//	a.More = m["more"].(string)
+//
+//	return nil
+//}
+
+func (a API) GetGameState(c *gin.Context) {
 
 	lastState := c.Param("LastState")
 	if lastState == strconv.Itoa(int(a.cache.StateID)) {
 		c.Status(http.StatusNoContent)
-	}
-
-	out := OutboundGameData{
-		StateID: a.cache.StateID,
-	}
-
-	playerData, err := loadUserStore()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, "failed to loadStore")
 		return
 	}
 
-	searchMap := navigator.NewSearchMap(a.cache.Tiles)
-	tileMap := make(map[string]*Tile)
-	for _, unit := range playerData.Units {
-		if tileMap[unit.ParentID] == nil {
-			parentTile := a.cache.Tiles[unit.ParentID]
-			parentTile.OnTile = append(parentTile.OnTile, unit)
-			tileMap[unit.ParentID] = &parentTile
-			out.Tiles = append(out.Tiles, &parentTile)
-		} else {
-			tileMap[unit.ParentID].OnTile = append(tileMap[unit.ParentID].OnTile, unit)
-		}
-
-		found := searchMap.BreadthFirstAsSearch(unit.ParentID, unit.VisionRadius, "plain")
-		for _, f := range found {
-			if tileMap[f] == nil {
-				foundTile := a.cache.Tiles[f]
-				tileMap[f] = &foundTile
-				out.Tiles = append(out.Tiles, &foundTile)
-			}
-		}
-	}
-
-	for _, structure := range playerData.Structures {
-		if tileMap[structure.ParentID] == nil {
-			parentTile := a.cache.Tiles[structure.ParentID]
-			parentTile.OnTile = append(parentTile.OnTile, structure)
-			tileMap[structure.ParentID] = &parentTile
-			out.Tiles = append(out.Tiles, &parentTile)
-		} else {
-			tileMap[structure.ParentID].OnTile = append(tileMap[structure.ParentID].OnTile, structure)
-		}
-
-		found := searchMap.BreadthFirstAsSearch(structure.ParentID, structure.VisionRadius, "plain")
-		for _, f := range found {
-			if tileMap[f] == nil {
-				foundTile := a.cache.Tiles[f]
-				tileMap[f] = &foundTile
-				out.Tiles = append(out.Tiles, &foundTile)
-			}
-		}
+	out, err := a.cache.GetGameState("user")
+	if err != nil {
+		c.Status(http.StatusInternalServerError)
 	}
 
 	c.JSON(http.StatusOK, out)
 }
 
-func PostGameState(c *gin.Context) {
+func (a API) PostGameState(c *gin.Context) {
 	type ReceiveGameData struct {
 		StateID int32  `json:"stateID"`
 		Tiles   string `json:"tiles"`
@@ -112,6 +85,14 @@ func PostGameState(c *gin.Context) {
 
 	type Receive struct {
 		ReceiveGameData `json:"gameData"`
+	}
+
+	type ReceiveTiles struct {
+		RenderPosition []float32 `json:"pos"`
+		ID             string    `json:"uid"`
+		Type           string    `json:"type"`
+		Neighbours     string    `json:"neighbours"`
+		CubePosition   []float32 `json:"cpos"`
 	}
 
 	var data Receive
@@ -122,126 +103,45 @@ func PostGameState(c *gin.Context) {
 		return
 	}
 
-	fmt.Println("Received New Map State: ")
-	fmt.Println("State ID: ", data.StateID)
-
-	var tileMap map[string]Tile
-	err = json.Unmarshal([]byte(data.Tiles), &tileMap)
+	var receiveTileMap map[string]*ReceiveTiles
+	err = json.Unmarshal([]byte(data.Tiles), &receiveTileMap)
 	if err != nil {
 		log.Println(err)
 		c.JSON(http.StatusInternalServerError, "failed to Unmarshal")
 		return
 	}
 
-	var s Store
-	s.StateID = data.ReceiveGameData.StateID
-	s.Tiles = tileMap
+	tileMap := make(map[string]*Tile)
+	for _, r := range receiveTileMap {
+		tile := Tile{
+			RenderPosition: r.RenderPosition,
+			ID:             r.ID,
+			Type:           r.Type,
+			CubePosition:   r.CubePosition,
+			Neighbours:     make(map[string]*Tile),
+			OnTile:         make(map[string]*TileChild),
+		}
 
-	err = writeMapStore(s.StoreGameData)
+		err = json.Unmarshal([]byte(r.Neighbours), &tile.Neighbours)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, "failed to Unmarshal neighbours")
+			return
+		}
+
+		tileMap[tile.ID] = &tile
+	}
+
+	err = a.cache.StoreGameState(tileMap)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, "failed to writeStore")
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, "failed to StoreGameState")
 		return
 	}
 
+	fmt.Println("Received New Map State: ")
+	fmt.Println("State ID: ", a.cache.StateID)
+	fmt.Println("Stored ", len(tileMap), " tiles.")
+
 	c.Status(http.StatusCreated)
-}
-
-func loadMapStore() (*FetchGameData, error) {
-
-	j, err := os.ReadFile("map.store.json")
-	if err != nil {
-		return nil, err
-	}
-
-	data := Fetch{}
-	err = json.Unmarshal(j, &data)
-	if err != nil {
-		return nil, err
-	}
-
-	return &data.FetchGameData, nil
-}
-
-func loadUserStore() (*PlayerData, error) {
-
-	j, err := os.ReadFile("user.store.json")
-	if err != nil {
-		return nil, err
-	}
-
-	data := PlayerData{}
-	err = json.Unmarshal(j, &data)
-	if err != nil {
-		return nil, err
-	}
-
-	return &data, nil
-}
-
-func writeMapStore(data StoreGameData) error {
-
-	s := Store{data}
-
-	file, err := json.MarshalIndent(s, "", " ")
-	if err != nil {
-		return err
-	}
-
-	err = os.WriteFile("map.store.json", file, 0644)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func writeUserStore(data PlayerData) error {
-
-	file, err := json.MarshalIndent(data, "", " ")
-	if err != nil {
-		return err
-	}
-
-	err = os.WriteFile("user.store.json", file, 0644)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func defaultPlayerStart(loc1 Tile, loc2 Tile) error {
-	data := PlayerData{
-		UserID:     "testUser",
-		Structures: make(map[string]*TileChild),
-		Units:      make(map[string]*TileChild),
-		Resource:   69,
-	}
-
-	structure := TileChild{
-		RenderPosition: []float32{
-			loc1.RenderPosition[0],
-			2.6,
-			loc1.RenderPosition[2]},
-		ID:           "s1",
-		ParentID:     loc1.ID,
-		Type:         "structure",
-		VisionRadius: 2,
-	}
-
-	unit := TileChild{
-		RenderPosition: []float32{
-			loc2.RenderPosition[0],
-			2.6,
-			loc2.RenderPosition[2]},
-		ID:           "u1",
-		ParentID:     loc2.ID,
-		Type:         "unit",
-		VisionRadius: 5,
-	}
-
-	data.Structures[structure.ID] = &structure
-	data.Units[unit.ID] = &unit
-
-	return writeUserStore(data)
 }
