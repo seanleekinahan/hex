@@ -4,12 +4,14 @@ function GetGamestate(currentState, gameStateSetter){
     axios.get("http://localhost:8080/api/gamestate/"+currentState)
     .then(response => {
         if(response.status === 204) {
-            //console.log("?")
+            //console.log("Found same state on server.")
         }
 
-        const gameData = response.data
-        //console.log("GetGamestate got gameData with state ID: ", gameData.stateID)
-        gameStateSetter(gameData)
+        if(response.status === 200) {
+            const gameData = response.data
+            //console.log("Found new state with state ID: ", gameData.stateID)
+            gameStateSetter(gameData)
+        }
     })
 }
 

@@ -2,6 +2,7 @@ package cache
 
 import (
 	"encoding/json"
+	"fmt"
 	. "gameserver"
 	"gameserver/internal/navigator"
 	"log"
@@ -22,12 +23,14 @@ func NewCache() (*Cache, error) {
 		log.Fatal("failed to loadMapStore", err)
 		return nil, err
 	}
+	fmt.Println("Loaded stored map data.")
 
 	err = defaultPlayerStart(*mapData.Tiles["t-5"], *mapData.Tiles["t-27"])
 	if err != nil {
 		log.Fatal("failed to generate default player information")
 		return nil, err
 	}
+	fmt.Println("Spoofed player data.")
 
 	c.Data = *mapData
 	c.StateID = 0

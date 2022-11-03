@@ -7,6 +7,7 @@ import (
 	"gameserver/internal/cache"
 	"gameserver/internal/manipulator"
 	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
 	"strconv"
@@ -25,6 +26,7 @@ func NewAPI(e *gin.Engine, c *cache.Cache, m *manipulator.Manipulator) (*API, er
 		manipulator: m,
 	}
 
+	e.GET("/api/websocket", a.SocketHandler)
 	e.GET("api/gamestate/:LastState", a.GetGameState)
 	e.POST("api/gamestate", a.PostGameState)
 
@@ -60,6 +62,81 @@ func NewAPI(e *gin.Engine, c *cache.Cache, m *manipulator.Manipulator) (*API, er
 //
 //	return nil
 //}
+
+func (a API) SocketHandler(c *gin.Context) {
+
+	fmt.Println("Received request to open WS")
+
+	u := websocket.Upgrader{
+		ReadBufferSize:  1024,
+		WriteBufferSize: 1024,
+		CheckOrigin: func(r *http.Request) bool {
+			return true
+		},
+	}
+
+	conn, err := u.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		fmt.Println("Failed to set websocket upgrade:", err)
+		return
+	}
+
+	fmt.Println("WS Connected on: ", conn.LocalAddr())
+
+	for {
+		t, msg, err := conn.ReadMessage()
+		if err != nil {
+			fmt.Println("Websocket ReadMessage error:", err)
+			return
+		}
+
+		receive := struct {
+			StateID int32 `json:"stateID"`
+		}{}
+
+		err = json.Unmarshal(msg, &receive)
+		if err != nil {
+			fmt.Println("failed to unmarshal ws message")
+		}
+
+		fmt.Println("Got message with state ID: ", receive.StateID)
+		if receive.StateID == a.cache.StateID {
+			out := struct {
+				StateID int32 `json:"stateID"`
+			}{
+				StateID: -1,
+			}
+
+			j, err := json.Marshal(out)
+			if err != nil {
+				log.Println("failed to Marshal ws reply")
+			}
+
+			err = conn.WriteMessage(t, j)
+			if err != nil {
+				fmt.Println("Websocket WriteMessage error:", err)
+				return
+			}
+		} else {
+			out, err := a.cache.GetGameState("user")
+			if err != nil {
+				log.Println("failed to GetGameState for ws user")
+			}
+
+			j, err := json.Marshal(out)
+			if err != nil {
+				log.Println("failed to Marshal ws reply")
+			}
+
+			err = conn.WriteMessage(t, j)
+			if err != nil {
+				fmt.Println("Websocket WriteMessage error:", err)
+				return
+			}
+		}
+
+	}
+}
 
 func (a API) GetGameState(c *gin.Context) {
 
