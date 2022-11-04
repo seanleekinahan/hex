@@ -11,6 +11,7 @@ var (
 	INTENT_HARVEST = "harvest"
 	INTENT_DEPOSIT = "deposit"
 	INTENT_SPAWN   = "deposit"
+	INTENT_CRAFT   = "craft"
 
 	TILE_PLAIN    = "plain"
 	TILE_MOUNTAIN = "mountain"
@@ -32,20 +33,40 @@ var (
 
 type Manipulator struct {
 	cache *cache.Cache
+	//Queue       map[string]*map[string]*Intent //map[userID]*map[intentID]*Intent
+	//ExpectedUsers //[]string:userID? map[string:userID]*nuffin? Does map require loop under hood, is it actually more efficient?
+	//UsersToExpectNextTick []*string //[]*userID, intents are expected the tick after a successful build
+	//
+	//IntentMap map[string]*Intent
+	//ActorsWithIntents map[string]map[string]*map[string]*Intent //map[userID]*[actorID]*[intentID]*Intent
 }
 
 type Intent struct {
+	IntentID     string
 	User         string
 	IntentType   string
 	Actor        string
 	ActorParent  *string
 	Target       string
 	TargetParent *string
+	TicksLeft    *int
 }
 
 func NewManipulator(c *cache.Cache) Manipulator {
-	return Manipulator{c}
+	return Manipulator{cache: c}
 }
+
+//func (m Manipulator) CheckUserReady(userID string) bool {
+//	intents := m.UserIntents[userID]
+//
+//	if
+//
+//	if readyUsers == len(m.Queue) {
+//		return true
+//	}
+//
+//	return false
+//}
 
 func (m Manipulator) Router(intent Intent) error {
 	if intent.IntentType == INTENT_MOVE {

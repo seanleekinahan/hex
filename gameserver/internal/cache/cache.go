@@ -33,7 +33,7 @@ func NewCache() (*Cache, error) {
 	fmt.Println("Spoofed player data.")
 
 	c.Data = *mapData
-	c.StateID = 0
+	c.StateID = mapData.StateID
 
 	return &c, nil
 }

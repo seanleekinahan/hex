@@ -1,10 +1,12 @@
 html, 
 body,
-#root {
-    height: 100vh;
-    width: 100vh;
+#root,
+.wrapper{
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     background-color: cadetblue;
+    z-index: 100;
 }
 
 body {
@@ -23,7 +25,3 @@ body {
     padding: 0;
 }
 
-.actor-label {
-    border-radius: 5px;
-    background: cornflowerblue;
-}

@@ -1,7 +1,7 @@
 function Hex(props) {
 
     let topRadius = 0.9
-    let bottomRadius = 0.95
+    let bottomRadius = 1
     let height = 0.1
     let divisions = 6
 
@@ -39,7 +39,7 @@ function Hex(props) {
         rotation={[0,rad(30),0]}
         onClick={(e) => {
             e.stopPropagation()
-            console.log(props)
+            props.contextSetter(props)
         }}
         >
             <cylinderGeometry args={[topRadius, bottomRadius, height, divisions]}/>

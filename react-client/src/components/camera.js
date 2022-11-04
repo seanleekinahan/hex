@@ -1,5 +1,9 @@
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 
+function DegToRad(deg){
+    return Math.PI/180 * deg
+}
+
 function Camera() {
     return (
         <group>
@@ -7,7 +11,7 @@ function Camera() {
             makeDefault 
             position={[0,450,400]}  
             far={10000}/>
-        <OrbitControls/>
+        <OrbitControls maxPolarAngle={DegToRad(75)}/>
         </group>
 
     )
