@@ -1,4 +1,4 @@
-export function Connect(setSocket, setGameData, stateID){
+export function Connect(setSocket, setGameData, stateID, setCode){
     let ws = new WebSocket("ws://localhost:8080/api/websocket")
 
     ws.onopen = () => {
@@ -19,6 +19,9 @@ export function Connect(setSocket, setGameData, stateID){
             //console.log("Server has no updated gamestate.")
         }
 
+        if(response.spoof){
+            setCode(response.spoof)
+        }
 
     }
 
@@ -37,11 +40,42 @@ export function Connect(setSocket, setGameData, stateID){
 
 export function RequestGameState(socket, stateID){
 
-    let testObj = {
+    let req = {
+        type: "state",
         stateID: stateID,
     }
 
-    //console.log("Requesting state with object: ", testObj)
+    //console.log("Requesting state with object: ", req)
+    socket.send(JSON.stringify(req))
+}
 
-    socket.send(JSON.stringify(testObj))
+export function RequestMoveIntent(socket, intent){
+
+    let req = {
+        type: "intent",
+        intent: {
+            user: "user",
+            type: "move",
+            actor: intent.actor,
+            actorParent: intent.actorParent,
+            target: intent.target
+        }
+    }
+
+
+    socket.send(JSON.stringify(req))
+}
+
+export function RequestCode(socket) {
+
+    let req = {
+        spoof: true
+    }
+
+    if(socket){
+        console.log("sending  ", req)
+
+        socket.send(JSON.stringify(req))
+    }
+
 }

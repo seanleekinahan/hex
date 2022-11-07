@@ -18,6 +18,7 @@ function App() {
   const [tileChildren, setTileChildren] = useState([]);
   const [socket, setSocket] = useState(null);
   const [contextOne, setContextOne] = useState({})
+  const [code, setCode] = useState("")
 
   const SECOND_MS = 1000;
 
@@ -29,7 +30,7 @@ function App() {
         const interval = setInterval(() => {
 
           if(!socket){
-            Connect(setSocket, setGameData, stateID)
+            Connect(setSocket, setGameData, stateID, setCode)
           }
 
         }, SECOND_MS);
@@ -89,6 +90,7 @@ function App() {
             uid={tile.uid}
             type={tile.type}
             cpos={tile.cpos}
+            adj={tile.neighbours}
             contextSetter={setContextOne}
           />
         )
@@ -109,7 +111,7 @@ function App() {
           {tileChildren}
         </Canvas>
         <div className="ui">
-          <UI contextOne={contextOne} key={"context1"}/>
+          <UI ws={socket} contextOne={contextOne} code={code} setCode={setCode} key={"context1"}/>
         </div>
       </div>
 

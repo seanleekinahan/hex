@@ -2,8 +2,10 @@ package manipulator
 
 import (
 	"errors"
+	"fmt"
 	. "gameserver"
 	"gameserver/internal/cache"
+	"sort"
 )
 
 var (
@@ -33,22 +35,21 @@ var (
 
 type Manipulator struct {
 	cache *cache.Cache
-	//Queue       map[string]*map[string]*Intent //map[userID]*map[intentID]*Intent
-	//ExpectedUsers //[]string:userID? map[string:userID]*nuffin? Does map require loop under hood, is it actually more efficient?
-	//UsersToExpectNextTick []*string //[]*userID, intents are expected the tick after a successful build
-	//
-	//IntentMap map[string]*Intent
-	//ActorsWithIntents map[string]map[string]*map[string]*Intent //map[userID]*[actorID]*[intentID]*Intent
+
+	ExpectedUserSet map[string]*int //int value describes how performant the user script was
+	NewUsers        map[string]*int
+
+	QueuedIntents map[string]*map[string]*Intent //map[userID]*[actorID]*Intent
+
 }
 
 type Intent struct {
-	IntentID     string
-	User         string
-	IntentType   string
-	Actor        string
-	ActorParent  *string
-	Target       string
-	TargetParent *string
+	User         string  `json:"user"`
+	IntentType   string  `json:"type"`
+	Actor        string  `json:"actor"`
+	ActorParent  *string `json:"actorParent"`
+	Target       string  `json:"target"`
+	TargetParent *string `json:"targetParent"`
 	TicksLeft    *int
 }
 
@@ -56,17 +57,67 @@ func NewManipulator(c *cache.Cache) Manipulator {
 	return Manipulator{cache: c}
 }
 
-//func (m Manipulator) CheckUserReady(userID string) bool {
-//	intents := m.UserIntents[userID]
-//
-//	if
-//
-//	if readyUsers == len(m.Queue) {
-//		return true
-//	}
-//
-//	return false
-//}
+func (m Manipulator) ReceiveUserIntents(intentMap map[string]*Intent, userID string) {
+	userIntents := *m.QueuedIntents[userID]
+	if userIntents == nil {
+		m.QueuedIntents[userID] = &intentMap
+	} else {
+		for actorKey, actorValue := range intentMap {
+			if userIntents[actorKey] == nil {
+				userIntents[actorKey] = actorValue
+			}
+		}
+	}
+
+	if len(m.QueuedIntents) == len(m.ExpectedUserSet) {
+
+	}
+}
+
+func (m Manipulator) HandleFailedUserScript(userID string) {
+	delete(m.ExpectedUserSet, userID)
+}
+
+func (m Manipulator) HandleNewUserScript(userID string, weight int) {
+	m.ExpectedUserSet[userID] = &weight
+}
+
+func (m Manipulator) SortExistingUsersByWeight() []string {
+
+	users := m.ExpectedUserSet
+	keys := make([]string, 0, len(users))
+
+	for key := range users {
+		keys = append(keys, key)
+	}
+
+	sort.SliceStable(keys, func(i, j int) bool {
+		return *users[keys[i]] < *users[keys[j]]
+	})
+
+	return keys
+}
+
+func (m Manipulator) ExecuteIntents() {
+
+	users := m.SortExistingUsersByWeight()
+	for _, user := range users {
+
+		actorIntents := m.QueuedIntents[user]
+		for _, intent := range *actorIntents {
+			err := m.Router(*intent)
+			if err != nil {
+				fmt.Println("Error executing intent: ", err)
+			}
+		}
+
+	}
+
+	for key, value := range m.NewUsers {
+		m.ExpectedUserSet[key] = value
+	}
+
+}
 
 func (m Manipulator) Router(intent Intent) error {
 	if intent.IntentType == INTENT_MOVE {

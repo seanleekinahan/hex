@@ -2,7 +2,7 @@
 .DS_Store
 three/
 gRPC/
-client/.parcel-cache/
-client/node_modules/
-client/dist/
+generator/.parcel-cache/
+generator/node_modules/
+generator/dist/
 react-client/node_modules/

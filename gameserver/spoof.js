@@ -1,0 +1,4 @@
+function ThisFunctionIsLoadedFromServer(){
+
+    return "SUCCESS!"
+}

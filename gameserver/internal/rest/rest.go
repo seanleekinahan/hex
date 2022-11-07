@@ -10,6 +10,7 @@ import (
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -91,7 +92,10 @@ func (a API) SocketHandler(c *gin.Context) {
 		}
 
 		receive := struct {
-			StateID int32 `json:"stateID"`
+			Type    string              `json:"type"`
+			StateID *int32              `json:"stateID"`
+			Intent  *manipulator.Intent `json:"intent"`
+			SpoofJS bool                `json:"spoof"`
 		}{}
 
 		err = json.Unmarshal(msg, &receive)
@@ -99,8 +103,34 @@ func (a API) SocketHandler(c *gin.Context) {
 			fmt.Println("failed to unmarshal ws message")
 		}
 
-		fmt.Println("Got message with state ID: ", receive.StateID)
-		if receive.StateID == a.cache.StateID {
+		if receive.SpoofJS {
+			f, err := os.ReadFile("spoof.js")
+			if err != nil {
+				fmt.Println("FUCK YOU THEN")
+			}
+
+			type spoof struct {
+				Spoof string `json:"spoof"`
+			}
+
+			s := spoof{Spoof: string(f)}
+			j, err := json.Marshal(s)
+			if err != nil {
+				log.Println("failed to Marshal ws reply")
+			}
+
+			fmt.Println("Sending Spoof: ", j)
+
+			err = conn.WriteMessage(t, j)
+			if err != nil {
+				fmt.Println("Websocket WriteMessage error:", err)
+				return
+			}
+		}
+
+		//Return nothing on matching state ID
+		if receive.StateID != nil && *receive.StateID == a.cache.StateID {
+			fmt.Println("Received matching State ID - returning nothing")
 			out := struct {
 				StateID int32 `json:"stateID"`
 			}{
@@ -117,7 +147,11 @@ func (a API) SocketHandler(c *gin.Context) {
 				fmt.Println("Websocket WriteMessage error:", err)
 				return
 			}
-		} else {
+		}
+
+		//Return new state on mismatched state ID
+		if receive.StateID != nil && *receive.StateID != a.cache.StateID {
+			fmt.Println("Received old State ID - returning new state")
 			out, err := a.cache.GetGameState("user")
 			if err != nil {
 				log.Println("failed to GetGameState for ws user")
@@ -133,6 +167,26 @@ func (a API) SocketHandler(c *gin.Context) {
 				fmt.Println("Websocket WriteMessage error:", err)
 				return
 			}
+		}
+
+		//Add intent from UI client to queue
+		if receive.Intent != nil {
+			user := receive.Intent.User
+			i := *receive.Intent
+
+			//User is not in Expected Set and should be added
+			if a.manipulator.ExpectedUserSet[user] == nil {
+				a.manipulator.HandleNewUserScript(i.User, 0)
+
+			}
+
+			//Adding intent
+			intentMap := make(map[string]*manipulator.Intent)
+
+			intentMap[i.Actor] = &i
+
+			a.manipulator.ReceiveUserIntents(intentMap, i.User)
+
 		}
 
 	}
