@@ -20,17 +20,6 @@ function worldPlane() {
     return plane
 }
 
-function hexMeshOriginMarker(parent) {
-    const color = 0x00ff00
-    const realRadius =  2
-    const geo = new THREE.CylinderGeometry(realRadius,realRadius,1,6,2)
-    const mat = new THREE.MeshStandardMaterial({color: color})
-    const hex = new THREE.Mesh(geo, mat)
-    hex.position.set(parent.position.x, parent.position.y, parent.position.z)
-    hex.scale.set(0.1,5,0.1)
-    return hex
-}
-
 function ambientLight() {
     const a = new THREE.AmbientLight(0x333333, 0)
     return a
